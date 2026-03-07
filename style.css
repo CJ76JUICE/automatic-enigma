@@ -1,10 +1,14 @@
 .site-header {
     display: flex;
-    justify-content: space-between; /* Puts space between the logo and navigation */
     align-items: center; /* Vertically centers the logo and nav */
     padding: 10px 20px;
     background-color: #ffffff; /* Example background color */
     border-bottom: 1px solid #ddd;
+}
+
+nav {
+    margin: 0 auto;
+    text-align: center;
 }
 
 .logo-img {
