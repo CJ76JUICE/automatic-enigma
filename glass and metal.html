@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VivaVita®</title>
+    <title>VitaViva®</title>
+    <link rel="stylesheet" href="style.css">
+
     <style>
         /* Basic CSS for the layout can go here */
         body {
@@ -20,6 +22,8 @@
         }
         main {
             padding: 2em;
+            max-width: 800px;
+            margin: 0 auto;
         }
         nav ul {
             list-style-type: none;
@@ -31,37 +35,82 @@
         }
         a {
             text-decoration: none;
-            color: #820482;
+            color: #f9e2f9;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>VitaViva®</h1>
-    </header>
-
-    <nav>
+     <header class="site-header">
+        <a href="index.html" class="logo-link">
+            <img src="images/vitavivamini.png" alt="vivavita logo" class="logo-img" width="65" height="65">
+        </a>
+        <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="art.html">Shop</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="goods.html">Goods</a></li>
+            <li><a href="index.html">Legendary Creations</a></li>
+            <li><a href="glass and metal.html">Glass & Metal Works</a></li>
+            <li><a href="custom paintings.html">Custom Paintings</a></li>
+            <li><a href="home furnishings.html">Home Furnishings</a></li>
+            <li><a href="sign_in.html">Sign In</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
-    </nav>
+        </nav>
+    </header>
 
     <main>
-        <h2>Ledgendary Creations</h2>
-        <p>Delights for Joy</p>
         
-        <h3>Gifts</h3>
-        <p>copy</p>
+        <section class="product-carousel">
+            <div class="carousel-container">
+                <input type="radio" name="carousel" id="slide1" checked>
+                <input type="radio" name="carousel" id="slide2">
+                <input type="radio" name="carousel" id="slide3">
+                
+                <div class="carousel-slides">
+                    <div class="slide">
+                        <img src="https://via.placeholder.com/300x200?text=Product+1" alt="Product 1">
+                        <h4>Beautifully Broken® Glass & Metal Works</h4>
+                        <p>Decorate your environment with our handcrafted glass and metal pieces.</p>
+                    </div>
+                    <div class="slide">
+                        <img src="https://via.placeholder.com/300x200?text=Product+2" alt="Product 2">
+                        <h4>Personalized Paintings</h4>
+                        <p>Custom acrylic on canvas paintings for your home or office</p>
+                    </div>
+                    <div class="slide">
+                        <img src="https://via.placeholder.com/300x200?text=Product+3" alt="Product 3">
+                        <h4>Household Love</h4>
+                        <p>Home furnishing designed for your taste.</p>
+                    </div>
+                </div>
+                
+                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="next" onclick="changeSlide(1)">&#10095;</button>
+                
+                <div class="carousel-nav">
+                    <label for="slide1"></label>
+                    <label for="slide2"></label>
+                    <label for="slide3"></label>
+                </div>
+            </div>
+        </section>
+        
     </main>
 
     <footer>
         <p>&copy; 2026 VitaViva®</p>
     </footer>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 3;
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 1) currentSlide = totalSlides;
+            if (currentSlide > totalSlides) currentSlide = 1;
+            document.getElementById('slide' + currentSlide).checked = true;
+        }
+    </script>
 
 </body>
 </html>
