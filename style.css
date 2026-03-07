@@ -17,15 +17,6 @@ nav a {
     text-decoration: none;
     color: #333;
 }
-  }
-        #navbar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 65vw;
-            height: 65px;
-            background-color: rgb(241, 221, 221);
-        }
 
         #navbar img {
             width: 65px;
