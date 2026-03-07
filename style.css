@@ -43,3 +43,104 @@ nav a {
     color: #333;
 }
 
+/* Product Carousel Styles */
+.product-carousel {
+    margin: 2em 0;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 1em;
+    text-align: center;
+}
+
+.slide img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.carousel-nav {
+    text-align: center;
+    margin-top: 1em;
+}
+
+.carousel-nav label {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: #ddd;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.carousel-nav label:hover {
+    background: #bbb;
+}
+
+/* Hide radio buttons */
+input[type="radio"] {
+    display: none;
+}
+
+/* Show slides based on checked radio */
+#slide1:checked ~ .carousel-slides {
+    transform: translateX(0);
+}
+
+#slide2:checked ~ .carousel-slides {
+    transform: translateX(-100%);
+}
+
+#slide3:checked ~ .carousel-slides {
+    transform: translateX(-200%);
+}
+
+/* Highlight active nav dot */
+#slide1:checked ~ .carousel-nav label[for="slide1"],
+#slide2:checked ~ .carousel-nav label[for="slide2"],
+#slide3:checked ~ .carousel-nav label[for="slide3"] {
+    background: #333;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev:hover, .next:hover {
+    background: rgba(0,0,0,0.8);
+}
+
