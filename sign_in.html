@@ -59,40 +59,18 @@
 
     <main>
         
-        <section class="product-carousel">
-            <div class="carousel-container">
-                <input type="radio" name="carousel" id="slide1" checked>
-                <input type="radio" name="carousel" id="slide2">
-                <input type="radio" name="carousel" id="slide3">
-                
-                <div class="carousel-slides">
-                    <div class="slide">
-                        <img src="https://via.placeholder.com/300x200?text=Product+1" alt="Product 1">
-                        <h4>Beautifully Broken® Glass & Metal Works</h4>
-                        <p>Decorate your environment with our handcrafted glass and metal pieces.</p>
-                    </div>
-                    <div class="slide">
-                        <img src="https://via.placeholder.com/300x200?text=Product+2" alt="Product 2">
-                        <h4>Personalized Paintings</h4>
-                        <p>Custom acrylic on canvas paintings for your home or office</p>
-                    </div>
-                    <div class="slide">
-                        <img src="https://via.placeholder.com/300x200?text=Product+3" alt="Product 3">
-                        <h4>Household Love</h4>
-                        <p>Home furnishing designed for your taste.</p>
-                    </div>
-                </div>
-                
-                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-                <button class="next" onclick="changeSlide(1)">&#10095;</button>
-                
-                <div class="carousel-nav">
-                    <label for="slide1"></label>
-                    <label for="slide2"></label>
-                    <label for="slide3"></label>
-                </div>
+        <h2>Customer Login</h2>
+        <form action="#" method="post" style="max-width: 400px; margin: 0 auto;">
+            <div style="margin-bottom: 1em;">
+                <label for="email" style="display: block; margin-bottom: 0.5em;">Email:</label>
+                <input type="email" id="email" name="email" required style="width: 100%; padding: 0.5em; box-sizing: border-box;">
             </div>
-        </section>
+            <div style="margin-bottom: 1em;">
+                <label for="password" style="display: block; margin-bottom: 0.5em;">Password:</label>
+                <input type="password" id="password" name="password" required style="width: 100%; padding: 0.5em; box-sizing: border-box;">
+            </div>
+            <button type="submit" style="width: 100%; padding: 0.5em; background-color: #333; color: white; border: none; cursor: pointer;">Login</button>
+        </form>
         
     </main>
 
