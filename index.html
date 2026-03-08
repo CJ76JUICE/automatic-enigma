@@ -48,6 +48,14 @@
         footer nav a {
             color: lightgray;
         }
+        .product-grid .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .product {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -67,37 +75,22 @@
 
     <main>
         
-        <section class="product-carousel">
-            <div class="carousel-container">
-                <input type="radio" name="carousel" id="slide1" checked>
-                <input type="radio" name="carousel" id="slide2">
-                <input type="radio" name="carousel" id="slide3">
-                
-                <div class="carousel-slides">
-                    <div class="slide">
-                        <img src="https://via.placeholder.com/300x200?text=Product+1" alt="Product 1">
-                        <h4>Beautifully Broken® Glass & Metal Works</h4>
-                        <p>Decorate your environment with our handcrafted glass and metal pieces.</p>
-                    </div>
-                    <div class="slide">
-                        <img src="https://via.placeholder.com/300x200?text=Product+2" alt="Product 2">
-                        <h4>Personalized Paintings by Ashley</h4>
-                        <p>Custom acrylic on canvas paintings for your home or office</p>
-                    </div>
-                    <div class="slide">
-                        <img src="https://via.placeholder.com/300x200?text=Product+3" alt="Product 3">
-                        <h4>Chalet 222® Dêcor</h4>
-                        <p>Our collection of furnishings.</p>
-                    </div>
+        <section class="product-grid">
+            <div class="grid-container">
+                <div class="product">
+                    <img src="https://via.placeholder.com/300x200?text=Product+1" alt="Product 1">
+                    <h4>Beautifully Broken® Glass & Metal Works</h4>
+                    <p>Decorate your environment with our handcrafted glass and metal pieces.</p>
                 </div>
-                
-                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-                <button class="next" onclick="changeSlide(1)">&#10095;</button>
-                
-                <div class="carousel-nav">
-                    <label for="slide1"></label>
-                    <label for="slide2"></label>
-                    <label for="slide3"></label>
+                <div class="product">
+                    <img src="https://via.placeholder.com/300x200?text=Product+2" alt="Product 2">
+                    <h4>Personalized Paintings by Ashley</h4>
+                    <p>Custom acrylic on canvas paintings for your home or office</p>
+                </div>
+                <div class="product">
+                    <img src="https://via.placeholder.com/300x200?text=Product+3" alt="Product 3">
+                    <h4>Chalet 222® Dêcor</h4>
+                    <p>Our collection of furnishings.</p>
                 </div>
             </div>
         </section>
@@ -113,18 +106,6 @@
         </nav>
         <p>&copy; 2026 Chalet 222®</p>
     </footer>
-
-    <script>
-        let currentSlide = 1;
-        const totalSlides = 3;
-
-        function changeSlide(direction) {
-            currentSlide += direction;
-            if (currentSlide < 1) currentSlide = totalSlides;
-            if (currentSlide > totalSlides) currentSlide = 1;
-            document.getElementById('slide' + currentSlide).checked = true;
-        }
-    </script>
 
 </body>
 </html>
