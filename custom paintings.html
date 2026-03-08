@@ -29,8 +29,9 @@
         }
         main {
             padding: 2em;
-            max-width: 800px;
-            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
         }
         nav ul {
             list-style-type: none;
@@ -48,13 +49,49 @@
         footer nav a {
             color: lightgray;
         }
-        .product-grid .grid-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        /* Carousel styles */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            width: 30%;
+            margin: 0;
         }
-        .product {
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-item {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
             text-align: center;
+        }
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            max-width: 200px;
+        }
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+        .carousel-buttons button {
+            pointer-events: all;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .carousel h3 {
+            text-align: center;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -73,74 +110,74 @@
         </nav>
     </header>
 
-     <main>
+    <main>
         
-        <!-- Portrait Carousel -->
-        <section class="carousel" id="portrait-carousel">
-            <h3>Portrait Paintings</h3>
+        <!-- Kitchen Carousel -->
+        <section class="carousel" id="kitchen-carousel">
+            <h3>Kitchen</h3>
             <div class="carousel-container">
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Family+Portrait" alt="Family Portrait">
-                    <p>Custom family portraits.</p>
+                    <img src="https://via.placeholder.com/200x150?text=Rustic+Table" alt="Rustic Table">
+                    <p>Handcrafted wooden tables.</p>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Individual+Portrait" alt="Individual Portrait">
-                    <p>Personalized individual portraits.</p>
+                    <img src="https://via.placeholder.com/200x150?text=Wooden+Chair" alt="Wooden Chair">
+                    <p>Comfortable wooden chairs.</p>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Couple+Portrait" alt="Couple Portrait">
-                    <p>Romantic couple portraits.</p>
+                    <img src="https://via.placeholder.com/200x150?text=Kitchen+Cabinet" alt="Kitchen Cabinet">
+                    <p>Stylish cabinets.</p>
                 </div>
             </div>
             <div class="carousel-buttons">
-                <button onclick="prevSlide('portrait-carousel')">Prev</button>
-                <button onclick="nextSlide('portrait-carousel')">Next</button>
+                <button onclick="prevSlide('kitchen-carousel')">Prev</button>
+                <button onclick="nextSlide('kitchen-carousel')">Next</button>
             </div>
         </section>
 
-        <!-- Landscape Carousel -->
-        <section class="carousel" id="landscape-carousel">
-            <h3>Landscape Paintings</h3>
+        <!-- Bath Carousel -->
+        <section class="carousel" id="bath-carousel">
+            <h3>Bath</h3>
             <div class="carousel-container">
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Mountain+Landscape" alt="Mountain Landscape">
-                    <p>Majestic mountain scenes.</p>
+                    <img src="https://via.placeholder.com/200x150?text=Modern+Chair" alt="Modern Chair">
+                    <p>Contemporary chairs.</p>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Beach+Landscape" alt="Beach Landscape">
-                    <p>Serene beach landscapes.</p>
+                    <img src="https://via.placeholder.com/200x150?text=Bath+Towel+Rack" alt="Bath Towel Rack">
+                    <p>Elegant towel racks.</p>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Forest+Landscape" alt="Forest Landscape">
-                    <p>Tranquil forest views.</p>
+                    <img src="https://via.placeholder.com/200x150?text=Soap+Dispenser" alt="Soap Dispenser">
+                    <p>Modern soap dispensers.</p>
                 </div>
             </div>
             <div class="carousel-buttons">
-                <button onclick="prevSlide('landscape-carousel')">Prev</button>
-                <button onclick="nextSlide('landscape-carousel')">Next</button>
+                <button onclick="prevSlide('bath-carousel')">Prev</button>
+                <button onclick="nextSlide('bath-carousel')">Next</button>
             </div>
         </section>
 
-        <!-- Animal Carousel -->
-        <section class="carousel" id="animal-carousel">
-            <h3>Animal Paintings</h3>
+        <!-- Home Carousel -->
+        <section class="carousel" id="home-carousel">
+            <h3>Home</h3>
             <div class="carousel-container">
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Dog+Portrait" alt="Dog Portrait">
-                    <p>Adorable dog portraits.</p>
+                    <img src="https://via.placeholder.com/200x150?text=Ambient+Lighting" alt="Ambient Lighting">
+                    <p>Our collection of home furnishings.</p>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Cat+Portrait" alt="Cat Portrait">
-                    <p>Charming cat portraits.</p>
+                    <img src="https://via.placeholder.com/200x150?text=Decorative+Pillow" alt="Decorative Pillow">
+                    <p>Soft pillows.</p>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Wildlife+Portrait" alt="Wildlife Portrait">
-                    <p>Wildlife animal portraits.</p>
+                    <img src="https://via.placeholder.com/200x150?text=Wall+Art" alt="Wall Art">
+                    <p>Beautiful wall art.</p>
                 </div>
             </div>
             <div class="carousel-buttons">
-                <button onclick="prevSlide('animal-carousel')">Prev</button>
-                <button onclick="nextSlide('animal-carousel')">Next</button>
+                <button onclick="prevSlide('home-carousel')">Prev</button>
+                <button onclick="nextSlide('home-carousel')">Next</button>
             </div>
         </section>
         
