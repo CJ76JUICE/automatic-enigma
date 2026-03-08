@@ -193,5 +193,42 @@
         <p>&copy; 2026 Chalet 222®</p>
     </footer>
 
+    <script>
+        function nextSlide(carouselId) {
+            const carousel = document.getElementById(carouselId);
+            const container = carousel.querySelector('.carousel-container');
+            const items = container.children;
+            const totalItems = items.length;
+            let currentIndex = parseInt(container.dataset.currentIndex || 0);
+            currentIndex = (currentIndex + 1) % totalItems;
+            container.style.transform = `translateX(-${currentIndex * 100}%)`;
+            container.dataset.currentIndex = currentIndex;
+        }
+
+        function prevSlide(carouselId) {
+            const carousel = document.getElementById(carouselId);
+            const container = carousel.querySelector('.carousel-container');
+            const items = container.children;
+            const totalItems = items.length;
+            let currentIndex = parseInt(container.dataset.currentIndex || 0);
+            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+            container.style.transform = `translateX(-${currentIndex * 100}%)`;
+            container.dataset.currentIndex = currentIndex;
+        }
+    </script>
+
+</body>
+
+
+    <footer>
+        <nav>
+        <ul>
+            <li><a href="sign_in.html">Sign In</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        </nav>
+        <p>&copy; 2026 Chalet 222®</p>
+    </footer>
+
 </body>
 </html>
