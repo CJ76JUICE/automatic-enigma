@@ -17,8 +17,15 @@
         header, footer {
             background-color: #333;
             color: white;
-            text-align: center;
             padding: 1em 0;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        footer {
+            text-align: center;
         }
         main {
             padding: 2em;
@@ -28,6 +35,7 @@
         nav ul {
             list-style-type: none;
             padding: 0;
+            text-align: center;
         }
         nav ul li {
             display: inline;
@@ -37,22 +45,23 @@
             text-decoration: none;
             color: #f9e2f9;
         }
+        footer nav a {
+            color: lightgray;
+        }
     </style>
 </head>
 <body>
 
      <header class="site-header">
         <a href="index.html" class="logo-link">
-            <img src="images/Chalet 222.png" alt="chalet 222 logo" class="logo-img" width="200" height="65">
+            <img src="images/chalet222.png" alt="chalet 222 logo" class="logo-img" width="200" height="65">
         </a>
         <nav>
         <ul>
-            <li><a href="index.html">Legendary Creations</a></li>
+        
             <li><a href="glass and metal.html">Glass & Metal Works</a></li>
             <li><a href="custom paintings.html">Custom Paintings</a></li>
-            <li><a href="chalet 222 furnishings.html">Funishings</a></li>
-            <li><a href="sign_in.html">Sign In</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="chalet 222 furnishings.html">222 Furnishings</a></li>
         </ul>
         </nav>
     </header>
@@ -68,18 +77,18 @@
                 <div class="carousel-slides">
                     <div class="slide">
                         <img src="https://via.placeholder.com/300x200?text=Product+1" alt="Product 1">
-                        <h4>Beautifully Broken® Glass & Metal</h4>
-                        <p>Handcrafted works</p>
+                        <h4>Beautifully Broken® Glass & Metal Works</h4>
+                        <p>Decorate your environment with our handcrafted glass and metal pieces.</p>
                     </div>
                     <div class="slide">
                         <img src="https://via.placeholder.com/300x200?text=Product+2" alt="Product 2">
-                        <h4>Personalized Paintings</h4>
-                        <p>Custom acrylic paintings on canvas</p>
+                        <h4>Personalized Paintings by Ashley</h4>
+                        <p>Custom acrylic on canvas paintings for your home or office</p>
                     </div>
                     <div class="slide">
                         <img src="https://via.placeholder.com/300x200?text=Product+3" alt="Product 3">
                         <h4>Chalet 222® Furnishings</h4>
-                        <p>Our collection of home furninshings</p>
+                        <p>Our collection of furnishings.</p>
                     </div>
                 </div>
                 
@@ -97,6 +106,12 @@
     </main>
 
     <footer>
+        <nav>
+        <ul>
+            <li><a href="sign_in.html">Sign In</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        </nav>
         <p>&copy; 2026 Chalet 222®</p>
     </footer>
 
