@@ -82,8 +82,8 @@
         }
         .carousel-buttons button {
             pointer-events: all;
-            background: rgba(0,0,0,0.5);
-            color: white;
+            background: none;
+            color: black;
             border: none;
             padding: 5px;
             cursor: pointer;
@@ -112,76 +112,86 @@
 
     <main>
         
-        <!-- Kitchen Carousel -->
-        <section class="carousel" id="kitchen-carousel">
-            <h3>Kitchen</h3>
+        <!-- Portrait Carousel -->
+        <section class="carousel" id="portrait-carousel">
+            <h3>Portrait Paintings</h3>
             <div class="carousel-container">
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Rustic+Table" alt="Rustic Table">
-                    <p>Handcrafted wooden tables.</p>
+                    <img src="https://via.placeholder.com/200x150?text=Family+Portrait" alt="Family Portrait">
+                    <p>Custom family portraits.</p>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Wooden+Chair" alt="Wooden Chair">
-                    <p>Comfortable wooden chairs.</p>
+                    <img src="https://via.placeholder.com/200x150?text=Individual+Portrait" alt="Individual Portrait">
+                    <p>Personalized individual portraits.</p>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Kitchen+Cabinet" alt="Kitchen Cabinet">
-                    <p>Stylish cabinets.</p>
+                    <img src="https://via.placeholder.com/200x150?text=Couple+Portrait" alt="Couple Portrait">
+                    <p>Romantic couple portraits.</p>
                 </div>
             </div>
             <div class="carousel-buttons">
-                <button onclick="prevSlide('kitchen-carousel')">Prev</button>
-                <button onclick="nextSlide('kitchen-carousel')">Next</button>
+                <button onclick="prevSlide('portrait-carousel')">&lt;</button>
+                <button onclick="nextSlide('portrait-carousel')">&gt;</button>
             </div>
         </section>
 
-        <!-- Bath Carousel -->
-        <section class="carousel" id="bath-carousel">
-            <h3>Bath</h3>
+        <!-- Landscape Carousel -->
+        <section class="carousel" id="landscape-carousel">
+            <h3>Landscape Paintings</h3>
             <div class="carousel-container">
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Modern+Chair" alt="Modern Chair">
-                    <p>Contemporary chairs.</p>
+                    <img src="https://via.placeholder.com/200x150?text=Mountain+Landscape" alt="Mountain Landscape">
+                    <p>Majestic mountain scenes.</p>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Bath+Towel+Rack" alt="Bath Towel Rack">
-                    <p>Elegant towel racks.</p>
+                    <img src="https://via.placeholder.com/200x150?text=Beach+Landscape" alt="Beach Landscape">
+                    <p>Serene beach landscapes.</p>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Soap+Dispenser" alt="Soap Dispenser">
-                    <p>Modern soap dispensers.</p>
+                    <img src="https://via.placeholder.com/200x150?text=Forest+Landscape" alt="Forest Landscape">
+                    <p>Tranquil forest views.</p>
                 </div>
             </div>
             <div class="carousel-buttons">
-                <button onclick="prevSlide('bath-carousel')">Prev</button>
-                <button onclick="nextSlide('bath-carousel')">Next</button>
+                <button onclick="prevSlide('landscape-carousel')">&lt;</button>
+                <button onclick="nextSlide('landscape-carousel')">&gt;</button>
             </div>
         </section>
 
-        <!-- Home Carousel -->
-        <section class="carousel" id="home-carousel">
-            <h3>Home</h3>
+        <!-- Animal Carousel -->
+        <section class="carousel" id="animal-carousel">
+            <h3>Animal Paintings</h3>
             <div class="carousel-container">
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Ambient+Lighting" alt="Ambient Lighting">
-                    <p>Our collection of home furnishings.</p>
+                    <img src="https://via.placeholder.com/200x150?text=Dog+Portrait" alt="Dog Portrait">
+                    <p>Adorable dog portraits.</p>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Decorative+Pillow" alt="Decorative Pillow">
-                    <p>Soft pillows.</p>
+                    <img src="https://via.placeholder.com/200x150?text=Cat+Portrait" alt="Cat Portrait">
+                    <p>Charming cat portraits.</p>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Wall+Art" alt="Wall Art">
-                    <p>Beautiful wall art.</p>
+                    <img src="https://via.placeholder.com/200x150?text=Wildlife+Portrait" alt="Wildlife Portrait">
+                    <p>Wildlife animal portraits.</p>
                 </div>
             </div>
             <div class="carousel-buttons">
-                <button onclick="prevSlide('home-carousel')">Prev</button>
-                <button onclick="nextSlide('home-carousel')">Next</button>
+                <button onclick="prevSlide('animal-carousel')">&lt;</button>
+                <button onclick="nextSlide('animal-carousel')">&gt;</button>
             </div>
         </section>
         
     </main>
+
+    <footer>
+        <nav>
+        <ul>
+            <li><a href="sign_in.html">Sign In</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        </nav>
+        <p>&copy; 2026 Chalet 222®</p>
+    </footer>
 
     <script>
         function nextSlide(carouselId) {
@@ -206,19 +216,6 @@
             container.dataset.currentIndex = currentIndex;
         }
     </script>
-
-</body>
-
-
-    <footer>
-        <nav>
-        <ul>
-            <li><a href="sign_in.html">Sign In</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        </nav>
-        <p>&copy; 2026 Chalet 222®</p>
-    </footer>
 
 </body>
 </html>
