@@ -22,15 +22,16 @@
         header {
             display: flex;
             align-items: center;
-            gap: 0px;
+            gap: 20px;
         }
         footer {
             text-align: center;
         }
         main {
             padding: 2em;
-            max-width: 800px;
-            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
         }
         nav ul {
             list-style-type: none;
@@ -48,13 +49,49 @@
         footer nav a {
             color: lightgray;
         }
-        .product-grid .grid-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        /* Carousel styles */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            width: 30%;
+            margin: 0;
         }
-        .product {
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-item {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
             text-align: center;
+        }
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            max-width: 200px;
+        }
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+        .carousel-buttons button {
+            pointer-events: all;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .carousel h3 {
+            text-align: center;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -66,7 +103,7 @@
         </a>
         <nav>
         <ul>
-            <li><a href="decor.html">222 | Dêcor</a></li>
+           <li><a href="decor.html">222 | Dêcor</a></li>
             <li><a href="custom paintings.html">Paintings by Ashley</a></li>
             <li><a href="glass and metal.html">Beautifully Broken®</a></li>
         </ul>
