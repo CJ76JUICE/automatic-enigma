@@ -101,6 +101,10 @@ nav a {
     color: #333;
 }
 
+.site-header nav ul li:first-child a {
+    margin-left: 0;
+}
+
 @media (max-width: 900px) {
     .site-header {
         flex-direction: column;
