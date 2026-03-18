@@ -73,6 +73,7 @@ body {
     border-bottom: 1px solid #ddd;
     position: relative;
     min-height: 85px;
+    margin-bottom: 24px;
 }
 
 .site-header .logo-link {
