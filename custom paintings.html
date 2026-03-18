@@ -76,20 +76,26 @@
         .carousel-buttons {
             position: absolute;
             top: 50%;
-            transform: translateY(-50%);
-            width: 100%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(100%, 320px);
             display: flex;
             justify-content: space-between;
             pointer-events: none;
+            z-index: 2;
         }
         .carousel-buttons button {
             pointer-events: all;
-            background: none;
-            color: black;
+            background: rgba(0, 0, 0, 0.45);
+            color: white;
             border: none;
-            padding: 5px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            padding: 0;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 14px;
+            line-height: 1;
         }
         .carousel h3 {
             text-align: center;
