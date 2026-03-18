@@ -58,11 +58,36 @@ body {
     padding: 10px 20px;
     background-color: #ffffff; /* Example background color */
     border-bottom: 1px solid #ddd;
+    position: relative;
+    min-height: 85px;
+}
+
+.site-header .logo-link {
+    flex: 0 0 200px;
+    width: 200px;
+}
+
+.site-header::after {
+    content: "";
+    flex: 0 0 200px;
+    width: 200px;
 }
 
 nav {
     margin: 0 auto;
     text-align: center;
+}
+
+.site-header nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    width: max-content;
+}
+
+.site-header nav ul {
+    margin: 0;
 }
 
 .logo-img {
@@ -74,6 +99,31 @@ nav a {
     margin-left: 15px; /* Adds space between navigation links */
     text-decoration: none;
     color: #333;
+}
+
+@media (max-width: 900px) {
+    .site-header {
+        flex-direction: column;
+        justify-content: center;
+        min-height: auto;
+        gap: 10px;
+    }
+
+    .site-header .logo-link,
+    .site-header::after {
+        flex: none;
+        width: auto;
+    }
+
+    .site-header::after {
+        content: none;
+    }
+
+    .site-header nav {
+        position: static;
+        left: auto;
+        transform: none;
+    }
 }
 
         #navbar img {
