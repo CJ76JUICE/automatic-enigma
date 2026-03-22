@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="65" viewBox="0 0 200 65" role="img" aria-label="Chalet 222 logo with orange outline">
+  <defs>
+    <filter id="orangeOutline" x="-20%" y="-40%" width="140%" height="180%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="dilated"/>
+      <feFlood flood-color="#ff8a00" result="orange"/>
+      <feComposite in="orange" in2="dilated" operator="in" result="outline"/>
+      <feMerge>
+        <feMergeNode in="outline"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <image href="chalet222.png" x="0" y="0" width="200" height="65" filter="url(#orangeOutline)"/>
+</svg>
