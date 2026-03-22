@@ -85,10 +85,19 @@ body {
     width: 200px;
 }
 
-.site-header::after {
-    content: "";
+.header-signin {
     flex: 0 0 200px;
     width: 200px;
+    text-align: right;
+    padding-right: 20px;
+    font-size: 0.8em;
+    color: #333;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.header-signin:hover {
+    text-decoration: underline;
 }
 
 nav {
@@ -132,13 +141,14 @@ nav a {
     }
 
     .site-header .logo-link,
-    .site-header::after {
+    .header-signin {
         flex: none;
         width: auto;
     }
 
-    .site-header::after {
-        content: none;
+    .header-signin {
+        text-align: center;
+        padding-right: 0;
     }
 
     .site-header nav {
