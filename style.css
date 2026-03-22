@@ -108,7 +108,8 @@ nav {
 .site-header nav {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
     margin: 0;
     width: max-content;
 }
