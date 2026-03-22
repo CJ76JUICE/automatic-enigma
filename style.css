@@ -130,9 +130,13 @@ nav a {
 }
 
 .site-header nav a,
-.header-signin,
 footer nav a {
     position: relative;
+    display: inline-block;
+    padding-bottom: 3px;
+}
+
+.header-signin {
     display: inline-block;
     padding-bottom: 3px;
 }
