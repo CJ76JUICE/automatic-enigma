@@ -129,6 +129,26 @@ nav a {
     color: #333;
 }
 
+.site-header nav a,
+.header-signin,
+footer nav a {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 3px;
+}
+
+.site-header nav a[aria-current="page"]::after,
+.header-signin[aria-current="page"]::after,
+footer nav a[aria-current="page"]::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 2px;
+    background-color: #2fa24f;
+}
+
 .site-header nav ul li:first-child a {
     margin-left: 0;
 }
