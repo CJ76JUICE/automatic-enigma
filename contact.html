@@ -44,6 +44,55 @@
         footer nav a {
             color: lightgray;
         }
+        main {
+            color: #fff;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+        }
+        main p {
+            font-size: 1.2em;
+            text-align: center;
+        }
+        .contact-card {
+            background-color: rgba(255, 255, 255, 0.92);
+            padding: 2em;
+            border-radius: 10px;
+            margin: 1em auto;
+            max-width: 640px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            color: #222;
+            text-shadow: none;
+        }
+        .contact-card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .contact-card label {
+            font-weight: 600;
+            color: #333;
+        }
+        .contact-card input,
+        .contact-card textarea {
+            width: 100%;
+            padding: 0.6em;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        .contact-card button[type="submit"] {
+            width: 100%;
+            padding: 0.7em;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 0.5em;
+        }
+        .contact-card button[type="submit"]:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
@@ -63,25 +112,24 @@
 
     <main>
         <p>Questions about our hand designed creations?</p>
-        <section style="background-color: rgba(0, 0, 0, 0); padding: 2em; border-radius: 8px; margin: 2em 0;">         
+        <section class="contact-card">
             <h3>Drop us a line</h3>
-            <form action="#" method="post" style="max-width: 600px; margin: 0 auto;">
+            <form action="#" method="post">
                 <div style="margin-bottom: 1em;">
-                    <label for="name" style="display: block; margin-bottom: 0.5em;">Name:</label>
-                    <input type="text" id="name" name="name" required style="width: 100%; padding: 0.5em; box-sizing: border-box;">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
                 </div>
                 <div style="margin-bottom: 1em;">
-                    <label for="email" style="display: block; margin-bottom: 0.5em;">Email:</label>
-                    <input type="email" id="email" name="email" required style="width: 100%; padding: 0.5em; box-sizing: border-box;">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
                 <div style="margin-bottom: 1em;">
-                    <label for="message" style="display: block; margin-bottom: 0.5em;">Inquiry:</label>
-                    <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 0.5em; box-sizing: border-box;"></textarea>
+                    <label for="message">Inquiry:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
                 </div>
-                <button type="submit" style="width: 100%; padding: 0.5em; background-color: #333; color: white; border: none; cursor: pointer;">Send Inquiry</button>
+                <button type="submit">Send Inquiry</button>
             </form>
         </section>
-        
     </main>
 
     <footer>
