@@ -58,7 +58,7 @@
         .carousel {
             position: relative;
             overflow: hidden;
-            width: 34%;
+            width: min(100%, 520px);
             margin: 0;
         }
         .carousel-container {
@@ -74,14 +74,14 @@
         .carousel-item img {
             width: 100%;
             height: auto;
-            max-width: 320px;
+            max-width: 520px;
         }
         .carousel-buttons {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: min(100%, 320px);
+            width: min(100%, 520px);
             display: flex;
             justify-content: space-between;
             pointer-events: none;
