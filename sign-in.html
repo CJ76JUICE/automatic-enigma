@@ -48,6 +48,49 @@
         footer nav a {
             color: lightgray;
         }
+        .signin-card {
+            background-color: rgba(255, 255, 255, 0.75);
+            padding: 2em;
+            border-radius: 0;
+            max-width: 560px;
+            width: 100%;
+            margin: 0 auto 1em;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            color: #222;
+        }
+        .signin-card h2 {
+            margin-top: 0;
+            text-align: left;
+            color: #333;
+        }
+        .signin-card label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-weight: 600;
+            color: #333;
+        }
+        .signin-card input {
+            width: 100%;
+            padding: 0.6em;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        .signin-card button[type="submit"] {
+            width: 100%;
+            padding: 0.7em;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 0.5em;
+        }
+        .signin-card button[type="submit"]:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
@@ -68,17 +111,17 @@
 
     <main>
         
-        <form action="#" method="post" style="width: min(92vw, 760px); margin: 0 auto 1em;">
-            <h2 style="margin-top: 0; text-align: left; width: auto; margin-left: 0;">Sign In</h2>
+        <form action="#" method="post" class="signin-card">
+            <h2>Sign In</h2>
             <div style="margin-bottom: 1em;">
-                <label for="email" style="display: block; margin-bottom: 0.5em;">Email:</label>
-                <input type="email" id="email" name="email" required style="width: 100%; padding: 0.5em; box-sizing: border-box;">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
             </div>
             <div style="margin-bottom: 1em;">
-                <label for="password" style="display: block; margin-bottom: 0.5em;">Password:</label>
-                <input type="password" id="password" name="password" required style="width: 100%; padding: 0.5em; box-sizing: border-box;">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit" style="width: 100%; padding: 0.5em; background-color: #333; color: white; border: none; cursor: pointer;">Login</button>
+            <button type="submit">Login</button>
         </form>
         
     </main>
