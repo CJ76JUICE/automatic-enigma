@@ -64,6 +64,13 @@ body {
         footer nav a {
             color: lightgray;
         }
+
+        .footer-brand-logo {
+            height: 1.2em;
+            width: auto;
+            vertical-align: text-bottom;
+        }
+
         .product-grid .grid-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
