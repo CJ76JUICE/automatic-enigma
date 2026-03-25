@@ -132,6 +132,12 @@ footer nav a {
     padding-bottom: 3px;
 }
 
+.footer-about-logo {
+    height: 20px;
+    width: auto;
+    vertical-align: middle;
+}
+
 .header-signin {
     display: inline-block;
     padding-bottom: 3px;
