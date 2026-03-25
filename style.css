@@ -29,8 +29,8 @@ body {
         }
         footer {
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.35);
-            color: white;
+            background-color: rgba(34, 85, 34, 0.45);
+            color: #bdbdbd;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
             margin-top: 2rem;
         }
@@ -62,7 +62,7 @@ body {
             color: #f9e2f9;
         }
         footer nav a {
-            color: lightgray;
+            color: #bdbdbd;
         }
 
         footer p {
