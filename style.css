@@ -84,8 +84,8 @@ body {
     display: flex;
     align-items: center; /* Vertically centers the logo and nav */
     padding: 10px 20px;
-    background-color: #ffffff; /* Example background color */
-    border-bottom: 1px solid #ddd;
+    background-color: transparent;
+    border-bottom: none;
     position: relative;
     min-height: 85px;
     margin-bottom: 40px;
