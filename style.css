@@ -65,8 +65,12 @@ body {
             color: lightgray;
         }
 
+        footer p {
+            font-size: 0.85rem;
+        }
+
         .footer-brand-logo {
-            height: 1.2em;
+            height: 1em;
             width: auto;
             vertical-align: text-bottom;
         }
