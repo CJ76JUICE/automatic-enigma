@@ -158,7 +158,7 @@ footer nav a[aria-current="page"]::after {
     right: 0;
     bottom: -2px;
     height: 2px;
-    background-color: #2fa24f;
+    background-color: #225522;
 }
 
 .site-header nav ul li:first-child a {
