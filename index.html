@@ -21,33 +21,35 @@
             overflow: hidden;
             box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
             background: rgba(255, 255, 255, 0.72);
+            padding: 14px 0 20px;
         }
 
         .carousel-track {
             display: flex;
-            transition: transform 0.45s ease;
+            width: max-content;
+            animation: scrollRow 26s linear infinite;
         }
 
         .carousel-slide {
-            min-width: 100%;
-            position: relative;
+            flex: 0 0 clamp(220px, 28vw, 320px);
+            margin: 0 10px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .carousel-slide img {
             width: 100%;
-            height: clamp(340px, 52vw, 560px);
+            height: clamp(180px, 24vw, 260px);
             object-fit: cover;
             display: block;
         }
 
         .slide-caption {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            padding: 18px 20px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.05));
-            color: #fff;
+            padding: 12px 14px 14px;
+            background: #fff;
+            color: #273227;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -62,8 +64,8 @@
 
         .slide-caption a {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.92);
-            color: #1f2a1f;
+            background: #274127;
+            color: #fff;
             padding: 7px 12px;
             border-radius: 999px;
             font-size: 0.9rem;
@@ -71,62 +73,50 @@
             white-space: nowrap;
         }
 
-        .carousel-btn {
+        .product-carousel::before,
+        .product-carousel::after {
+            content: "";
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            border: none;
-            background: rgba(0, 0, 0, 0.45);
-            color: #fff;
-            width: 44px;
-            height: 44px;
-            border-radius: 999px;
-            cursor: pointer;
-            font-size: 1.2rem;
+            top: 0;
+            bottom: 0;
+            width: 72px;
             z-index: 2;
+            pointer-events: none;
         }
 
-        .carousel-btn.prev {
-            left: 12px;
+        .product-carousel::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
         }
 
-        .carousel-btn.next {
-            right: 12px;
+        .product-carousel::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
         }
 
-        .carousel-dots {
-            position: absolute;
-            left: 50%;
-            bottom: 14px;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-            z-index: 2;
+        .product-carousel:hover .carousel-track {
+            animation-play-state: paused;
         }
 
-        .carousel-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            border: none;
-            background: rgba(255, 255, 255, 0.55);
-            cursor: pointer;
-            padding: 0;
+        @keyframes scrollRow {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
         }
 
-        .carousel-dot.active {
-            background: #fff;
+        @media (prefers-reduced-motion: reduce) {
+            .carousel-track {
+                animation: none;
+            }
         }
 
         @media (max-width: 720px) {
             .slide-caption {
                 flex-direction: column;
                 align-items: flex-start;
-            }
-
-            .carousel-btn {
-                width: 38px;
-                height: 38px;
             }
         }
     </style>
@@ -149,7 +139,6 @@
 
     <main>
         <section class="product-carousel" aria-label="Featured products">
-            <button class="carousel-btn prev" type="button" aria-label="Previous slide">&#10094;</button>
             <div class="carousel-track">
                 <article class="carousel-slide">
                     <img src="images/blueswoon.png" alt="Decor collection preview">
@@ -172,62 +161,30 @@
                         <a href="glass-metal.html">Explore Glass &amp; Metal</a>
                     </div>
                 </article>
-            </div>
-            <button class="carousel-btn next" type="button" aria-label="Next slide">&#10095;</button>
-            <div class="carousel-dots" aria-label="Slide selector">
-                <button class="carousel-dot active" type="button" aria-label="Go to slide 1"></button>
-                <button class="carousel-dot" type="button" aria-label="Go to slide 2"></button>
-                <button class="carousel-dot" type="button" aria-label="Go to slide 3"></button>
+                <article class="carousel-slide" aria-hidden="true">
+                    <img src="images/blueswoon.png" alt="">
+                    <div class="slide-caption">
+                        <h4>222 | Decor</h4>
+                        <a href="decor.html" tabindex="-1">Shop Decor</a>
+                    </div>
+                </article>
+                <article class="carousel-slide" aria-hidden="true">
+                    <img src="images/wakkafox2026.png" alt="">
+                    <div class="slide-caption">
+                        <h4>Paintings by Ashley</h4>
+                        <a href="custom-paintings.html" tabindex="-1">View Paintings</a>
+                    </div>
+                </article>
+                <article class="carousel-slide" aria-hidden="true">
+                    <img src="images/vitavivabackground.jpeg" alt="">
+                    <div class="slide-caption">
+                        <h4>Beautifully Broken</h4>
+                        <a href="glass-metal.html" tabindex="-1">Explore Glass &amp; Metal</a>
+                    </div>
+                </article>
             </div>
         </section>
     </main>
-
-    <script>
-        const track = document.querySelector('.carousel-track');
-        const slides = Array.from(document.querySelectorAll('.carousel-slide'));
-        const dots = Array.from(document.querySelectorAll('.carousel-dot'));
-        const prevBtn = document.querySelector('.carousel-btn.prev');
-        const nextBtn = document.querySelector('.carousel-btn.next');
-
-        let currentIndex = 0;
-        let autoAdvance;
-
-        function updateCarousel(index) {
-            currentIndex = (index + slides.length) % slides.length;
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentIndex);
-            });
-        }
-
-        function startAutoAdvance() {
-            clearInterval(autoAdvance);
-            autoAdvance = setInterval(() => {
-                updateCarousel(currentIndex + 1);
-            }, 5000);
-        }
-
-        prevBtn.addEventListener('click', () => {
-            updateCarousel(currentIndex - 1);
-            startAutoAdvance();
-        });
-
-        nextBtn.addEventListener('click', () => {
-            updateCarousel(currentIndex + 1);
-            startAutoAdvance();
-        });
-
-        dots.forEach((dot, i) => {
-            dot.addEventListener('click', () => {
-                updateCarousel(i);
-                startAutoAdvance();
-            });
-        });
-
-        updateCarousel(0);
-        startAutoAdvance();
-    </script>
 
     <footer>
         <nav>
