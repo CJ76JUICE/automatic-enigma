@@ -13,61 +13,120 @@
             margin-bottom: 2rem;
         }
 
-        .product-grid .grid-container {
+        .product-carousel {
+            width: min(1120px, 100% - 40px);
+            margin: 0 auto;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+            background: rgba(255, 255, 255, 0.72);
+        }
+
+        .carousel-track {
             display: flex;
-            flex-wrap: nowrap;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 8px;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            transition: transform 0.45s ease;
         }
 
-        .product-grid .product {
-            flex: 0 0 270px;
-            min-width: 0;
-            max-width: 270px;
-            box-sizing: border-box;
-            text-align: center;
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
         }
 
-        .product-grid .product img {
+        .carousel-slide img {
             width: 100%;
-            aspect-ratio: 1 / 1;
-            height: auto;
+            height: clamp(340px, 52vw, 560px);
             object-fit: cover;
             display: block;
-            border-radius: 4px;
         }
 
-        @media (max-width: 1200px) {
-            .product-grid .grid-container {
-                flex-wrap: wrap;
-            }
-
-            .product-grid .product {
-                flex-basis: 270px;
-                max-width: 270px;
-            }
+        .slide-caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 18px 20px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.05));
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
         }
 
-        @media (max-width: 768px) {
-            .product-grid .grid-container {
-                flex-wrap: wrap;
-            }
-
-            .product-grid .product {
-                flex: 1 1 calc(50% - 20px);
-                max-width: 220px;
-            }
+        .slide-caption h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
         }
 
-        @media (max-width: 480px) {
-            .product-grid .product {
-                flex-basis: 100%;
-                max-width: 240px;
+        .slide-caption a {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.92);
+            color: #1f2a1f;
+            padding: 7px 12px;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: rgba(0, 0, 0, 0.45);
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 2;
+        }
+
+        .carousel-btn.prev {
+            left: 12px;
+        }
+
+        .carousel-btn.next {
+            right: 12px;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            left: 50%;
+            bottom: 14px;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 2;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.55);
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .carousel-dot.active {
+            background: #fff;
+        }
+
+        @media (max-width: 720px) {
+            .slide-caption {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .carousel-btn {
+                width: 38px;
+                height: 38px;
             }
         }
     </style>
@@ -89,24 +148,86 @@
     </header>
 
     <main>
-        
-        <section class="product-grid">
-            <div class="grid-container">
-                 <div class="product">
-                    <img src="https://via.placeholder.com/300x200?text=Product+3" alt="Product 3">
-                    <h4>Dêcor</h4>
-                </div>
-                <div class="product">
-                    <img src="https://via.placeholder.com/300x200?text=Product+2" alt="Product 2">
-                    <h4>Paintings</h4>
-                </div>
-                <div class="product">
-                    <img src="https://via.placeholder.com/300x200?text=Product+1" alt="Product 1">
-                    <h4>Glass & Metal</h4>
-                </div>
+        <section class="product-carousel" aria-label="Featured products">
+            <button class="carousel-btn prev" type="button" aria-label="Previous slide">&#10094;</button>
+            <div class="carousel-track">
+                <article class="carousel-slide">
+                    <img src="images/blueswoon.png" alt="Decor collection preview">
+                    <div class="slide-caption">
+                        <h4>222 | Decor</h4>
+                        <a href="decor.html">Shop Decor</a>
+                    </div>
+                </article>
+                <article class="carousel-slide">
+                    <img src="images/wakkafox2026.png" alt="Custom painting sample">
+                    <div class="slide-caption">
+                        <h4>Paintings by Ashley</h4>
+                        <a href="custom-paintings.html">View Paintings</a>
+                    </div>
+                </article>
+                <article class="carousel-slide">
+                    <img src="images/vitavivabackground.jpeg" alt="Glass and metal artwork preview">
+                    <div class="slide-caption">
+                        <h4>Beautifully Broken</h4>
+                        <a href="glass-metal.html">Explore Glass &amp; Metal</a>
+                    </div>
+                </article>
+            </div>
+            <button class="carousel-btn next" type="button" aria-label="Next slide">&#10095;</button>
+            <div class="carousel-dots" aria-label="Slide selector">
+                <button class="carousel-dot active" type="button" aria-label="Go to slide 1"></button>
+                <button class="carousel-dot" type="button" aria-label="Go to slide 2"></button>
+                <button class="carousel-dot" type="button" aria-label="Go to slide 3"></button>
+            </div>
         </section>
-        
     </main>
+
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+        const dots = Array.from(document.querySelectorAll('.carousel-dot'));
+        const prevBtn = document.querySelector('.carousel-btn.prev');
+        const nextBtn = document.querySelector('.carousel-btn.next');
+
+        let currentIndex = 0;
+        let autoAdvance;
+
+        function updateCarousel(index) {
+            currentIndex = (index + slides.length) % slides.length;
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        function startAutoAdvance() {
+            clearInterval(autoAdvance);
+            autoAdvance = setInterval(() => {
+                updateCarousel(currentIndex + 1);
+            }, 5000);
+        }
+
+        prevBtn.addEventListener('click', () => {
+            updateCarousel(currentIndex - 1);
+            startAutoAdvance();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            updateCarousel(currentIndex + 1);
+            startAutoAdvance();
+        });
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                updateCarousel(i);
+                startAutoAdvance();
+            });
+        });
+
+        updateCarousel(0);
+        startAutoAdvance();
+    </script>
 
     <footer>
         <nav>
