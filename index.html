@@ -14,14 +14,16 @@
         }
 
         .product-carousel {
-            width: min(1120px, 100% - 40px);
-            margin: 0 auto;
+            width: 100vw;
+            max-width: 100vw;
+            margin: 0;
+            margin-left: calc(50% - 50vw);
             position: relative;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
             background: rgba(255, 255, 255, 0.72);
-            padding: 18px 50px 24px;
+            padding: 22px 56px 28px;
         }
 
         .carousel-viewport {
@@ -36,7 +38,7 @@
         }
 
         .carousel-slide {
-            flex: 0 0 calc((100% - 32px) / 3);
+            flex: 0 0 calc((100% - 16px) / 2);
             border-radius: 10px;
             overflow: hidden;
             background: #fff;
@@ -45,7 +47,7 @@
 
         .carousel-slide img {
             width: 100%;
-            height: clamp(180px, 24vw, 260px);
+            height: clamp(260px, 32vw, 420px);
             object-fit: cover;
             display: block;
         }
@@ -110,18 +112,18 @@
         }
 
         @media (max-width: 960px) {
+            .product-carousel {
+                padding: 16px 48px 22px;
+            }
+
             .carousel-slide {
-                flex: 0 0 calc((100% - 16px) / 2);
+                flex: 0 0 100%;
             }
         }
 
         @media (max-width: 720px) {
             .product-carousel {
-                padding: 14px 44px 20px;
-            }
-
-            .carousel-slide {
-                flex: 0 0 100%;
+                padding: 12px 40px 18px;
             }
 
             .slide-caption {
@@ -202,13 +204,10 @@
         let startIndex = 0;
 
         function visibleCount() {
-            if (window.innerWidth <= 720) {
+            if (window.innerWidth <= 960) {
                 return 1;
             }
-            if (window.innerWidth <= 960) {
-                return 2;
-            }
-            return 3;
+            return 2;
         }
 
         function updateCarousel() {
