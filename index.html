@@ -21,18 +21,22 @@
             overflow: hidden;
             box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
             background: rgba(255, 255, 255, 0.72);
-            padding: 14px 0 20px;
+            padding: 18px 50px 24px;
+        }
+
+        .carousel-viewport {
+            overflow: hidden;
         }
 
         .carousel-track {
             display: flex;
-            width: max-content;
-            animation: scrollRow 26s linear infinite;
+            gap: 16px;
+            transition: transform 0.45s ease;
+            will-change: transform;
         }
 
         .carousel-slide {
-            flex: 0 0 clamp(220px, 28vw, 320px);
-            margin: 0 10px;
+            flex: 0 0 calc((100% - 32px) / 3);
             border-radius: 10px;
             overflow: hidden;
             background: #fff;
@@ -73,47 +77,53 @@
             white-space: nowrap;
         }
 
-        .product-carousel::before,
-        .product-carousel::after {
-            content: "";
+        .carousel-btn {
             position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 72px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(39, 65, 39, 0.9);
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
             z-index: 2;
-            pointer-events: none;
         }
 
-        .product-carousel::before {
-            left: 0;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+        .carousel-btn:hover {
+            background: rgba(28, 47, 28, 0.95);
         }
 
-        .product-carousel::after {
-            right: 0;
-            background: linear-gradient(to left, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+        .carousel-btn.prev {
+            left: 10px;
         }
 
-        .product-carousel:hover .carousel-track {
-            animation-play-state: paused;
+        .carousel-btn.next {
+            right: 10px;
         }
 
-        @keyframes scrollRow {
-            from {
-                transform: translateX(0);
-            }
-            to {
-                transform: translateX(-50%);
-            }
+        .carousel-btn:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            .carousel-track {
-                animation: none;
+        @media (max-width: 960px) {
+            .carousel-slide {
+                flex: 0 0 calc((100% - 16px) / 2);
             }
         }
 
         @media (max-width: 720px) {
+            .product-carousel {
+                padding: 14px 44px 20px;
+            }
+
+            .carousel-slide {
+                flex: 0 0 100%;
+            }
+
             .slide-caption {
                 flex-direction: column;
                 align-items: flex-start;
@@ -139,52 +149,98 @@
 
     <main>
         <section class="product-carousel" aria-label="Featured products">
-            <div class="carousel-track">
-                <article class="carousel-slide">
-                    <img src="images/blueswoon.png" alt="Decor collection preview">
-                    <div class="slide-caption">
-                        <h4>222 | Decor</h4>
-                        <a href="decor.html">Shop Decor</a>
-                    </div>
-                </article>
-                <article class="carousel-slide">
-                    <img src="images/wakkafox2026.png" alt="Custom painting sample">
-                    <div class="slide-caption">
-                        <h4>Paintings by Ashley</h4>
-                        <a href="custom-paintings.html">View Paintings</a>
-                    </div>
-                </article>
-                <article class="carousel-slide">
-                    <img src="images/vitavivabackground.jpeg" alt="Glass and metal artwork preview">
-                    <div class="slide-caption">
-                        <h4>Beautifully Broken</h4>
-                        <a href="glass-metal.html">Explore Glass &amp; Metal</a>
-                    </div>
-                </article>
-                <article class="carousel-slide" aria-hidden="true">
-                    <img src="images/blueswoon.png" alt="">
-                    <div class="slide-caption">
-                        <h4>222 | Decor</h4>
-                        <a href="decor.html" tabindex="-1">Shop Decor</a>
-                    </div>
-                </article>
-                <article class="carousel-slide" aria-hidden="true">
-                    <img src="images/wakkafox2026.png" alt="">
-                    <div class="slide-caption">
-                        <h4>Paintings by Ashley</h4>
-                        <a href="custom-paintings.html" tabindex="-1">View Paintings</a>
-                    </div>
-                </article>
-                <article class="carousel-slide" aria-hidden="true">
-                    <img src="images/vitavivabackground.jpeg" alt="">
-                    <div class="slide-caption">
-                        <h4>Beautifully Broken</h4>
-                        <a href="glass-metal.html" tabindex="-1">Explore Glass &amp; Metal</a>
-                    </div>
-                </article>
+            <button class="carousel-btn prev" type="button" aria-label="Previous products">&#10094;</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <article class="carousel-slide">
+                        <img src="images/blueswoon.png" alt="Decor collection preview">
+                        <div class="slide-caption">
+                            <h4>222 | Decor</h4>
+                            <a href="decor.html">Shop Decor</a>
+                        </div>
+                    </article>
+                    <article class="carousel-slide">
+                        <img src="images/wakkafox2026.png" alt="Custom painting sample">
+                        <div class="slide-caption">
+                            <h4>Paintings by Ashley</h4>
+                            <a href="custom-paintings.html">View Paintings</a>
+                        </div>
+                    </article>
+                    <article class="carousel-slide">
+                        <img src="images/vitavivabackground.jpeg" alt="Glass and metal artwork preview">
+                        <div class="slide-caption">
+                            <h4>Beautifully Broken</h4>
+                            <a href="glass-metal.html">Explore Glass &amp; Metal</a>
+                        </div>
+                    </article>
+                    <article class="carousel-slide">
+                        <img src="images/vitavivabackground-1920.jpg" alt="Chalet 222 gallery scene">
+                        <div class="slide-caption">
+                            <h4>Curated Collections</h4>
+                            <a href="product.html">View Collection</a>
+                        </div>
+                    </article>
+                    <article class="carousel-slide">
+                        <img src="images/chalet222.png" alt="Chalet 222 brand mark">
+                        <div class="slide-caption">
+                            <h4>About Chalet 222</h4>
+                            <a href="about-us.html">Read Origin</a>
+                        </div>
+                    </article>
             </div>
+            </div>
+            <button class="carousel-btn next" type="button" aria-label="Next products">&#10095;</button>
         </section>
     </main>
+
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+        const prevBtn = document.querySelector('.carousel-btn.prev');
+        const nextBtn = document.querySelector('.carousel-btn.next');
+
+        let startIndex = 0;
+
+        function visibleCount() {
+            if (window.innerWidth <= 720) {
+                return 1;
+            }
+            if (window.innerWidth <= 960) {
+                return 2;
+            }
+            return 3;
+        }
+
+        function updateCarousel() {
+            const slideWidth = slides[0].offsetWidth;
+            const gap = 16;
+            const offset = startIndex * (slideWidth + gap);
+            const maxIndex = Math.max(0, slides.length - visibleCount());
+
+            track.style.transform = `translateX(-${offset}px)`;
+            prevBtn.disabled = startIndex === 0;
+            nextBtn.disabled = startIndex >= maxIndex;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            startIndex = Math.max(0, startIndex - 1);
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const maxIndex = Math.max(0, slides.length - visibleCount());
+            startIndex = Math.min(maxIndex, startIndex + 1);
+            updateCarousel();
+        });
+
+        window.addEventListener('resize', () => {
+            const maxIndex = Math.max(0, slides.length - visibleCount());
+            startIndex = Math.min(startIndex, maxIndex);
+            updateCarousel();
+        });
+
+        updateCarousel();
+    </script>
 
     <footer>
         <nav>
