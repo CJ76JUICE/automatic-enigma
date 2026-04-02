@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>222 Decor | Shower Curtain</title>
+    <title>222 Decor | Shower Curtains</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body { font-family: sans-serif; margin: 0; min-height: 100vh; display: flex; flex-direction: column; }
-        main { width: min(900px, 94vw); margin: 2rem auto; flex: 1; }
-        .empty-state { padding: 1rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; background: rgba(255,255,255,0.06); color: #f0f0f0; }
+        main { width: min(1100px, 94vw); margin: 2rem auto; flex: 1; }
+        .image-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+        .product-card { display: block; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; overflow: hidden; text-decoration: none; transition: transform 0.18s ease, box-shadow 0.18s ease; }
+        .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.45); }
+        .product-card img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; }
+        .product-card-body { padding: 0.85rem 1rem 1rem; }
+        .product-card-body h3 { margin: 0; font-size: 1.05rem; color: #f4f4f4; }
         a { color: #f9e2f9; text-decoration: none; }
     </style>
 </head>
@@ -20,11 +25,22 @@
     </header>
     <main>
         <p><a href="decor.html">Back to 222 Decor</a></p>
-        <h1>Shower Curtain</h1>
-        <p>Folder: images/222-Decor/shower-curtain</p>
-        <div class="empty-state">
-            <p>This folder currently has no images.</p>
-            <p>Use the subfolder pages for currently available product photos.</p>
+        <h1>Shower Curtains</h1>
+
+        <div class="image-grid">
+            <a class="product-card" href="222-decor-shower-curtain-peaceful-buddha.html">
+                <img src="images/222-Decor/shower-curtain/peaceful-buddha/Chalet222-shower-curtain-peaceful-buddha.jpg" alt="Peaceful Buddha shower curtain">
+                <div class="product-card-body">
+                    <h3>Peaceful Buddha</h3>
+                </div>
+            </a>
+
+            <a class="product-card" href="222-decor-shower-curtain-original.html">
+                <img src="images/222-Decor/shower-curtain/original/Chalet222-shower-curtain-original.jpg" alt="Origin shower curtain">
+                <div class="product-card-body">
+                    <h3>Origin</h3>
+                </div>
+            </a>
         </div>
     </main>
     <footer>
