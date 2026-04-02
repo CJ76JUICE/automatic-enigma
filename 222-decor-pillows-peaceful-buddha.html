@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <style>
         body { font-family: sans-serif; margin: 0; min-height: 100vh; display: flex; flex-direction: column; }
-        main { width: min(900px, 94vw); margin: 2rem auto; flex: 1; }
-        .empty-state { padding: 1rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; background: rgba(255,255,255,0.06); color: #f0f0f0; }
+        main { width: min(1100px, 94vw); margin: 2rem auto; flex: 1; }
+        .image-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+        .image-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; overflow: hidden; }
+        .image-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+        .image-card p { margin: 0; padding: 0.75rem; color: #f4f4f4; font-size: 0.92rem; word-break: break-word; }
         a { color: #f9e2f9; text-decoration: none; }
     </style>
 </head>
@@ -19,13 +22,22 @@
         <a href="sign-in.html" class="header-signin">Sign In</a>
     </header>
     <main>
-        <p><a href="decor.html">Back to 222 Decor</a></p>
-        <h1>Pillows Peaceful Buddha</h1>
-        <p>Folder: images/222-Decor/pillows/peaceful-buddha</p>
-        <div class="empty-state">
-            <p>This folder currently has no images.</p>
-            <p>Add images to this folder and this page can be updated to show them in a grid.</p>
-        </div>
+        <p><a href="222-decor-pillows.html">Back to Pillows</a></p>
+        <h1>Peaceful Buddha Pillows</h1>
+        <section class="image-grid">
+            <article class="image-card">
+                <img src="images/222-Decor/pillows/peaceful-buddha/Chalet222-peacefull-buddha-pillow-12x12.jpg" alt="Peaceful Buddha pillow">
+                <p>Chalet222-peacefull-buddha-pillow-12x12.jpg</p>
+            </article>
+            <article class="image-card">
+                <img src="images/222-Decor/pillows/peaceful-buddha/Chalet222-peacefull-buddha-pillow-12x12.a.jpg" alt="Peaceful Buddha pillow view A">
+                <p>Chalet222-peacefull-buddha-pillow-12x12.a.jpg</p>
+            </article>
+            <article class="image-card">
+                <img src="images/222-Decor/pillows/peaceful-buddha/Chalet222-peacefull-buddha-pillow-12x12.b.jpg" alt="Peaceful Buddha pillow view B">
+                <p>Chalet222-peacefull-buddha-pillow-12x12.b.jpg</p>
+            </article>
+        </section>
     </main>
     <footer>
         <nav><ul><li><a href="about-us.html">Origin</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
