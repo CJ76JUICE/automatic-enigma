@@ -50,12 +50,36 @@
         footer nav a {
             color: #bdbdbd;
         }
+        /* Category sections */
+        .category {
+            margin-top: 2.5rem;
+        }
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .category-header h2 {
+            margin: 0;
+            font-size: 1.35rem;
+            color: #f4f4f4;
+            letter-spacing: 0.02em;
+        }
+        .category-header .count {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.45);
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 0.15rem 0.55rem;
+        }
         /* Product grid */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 1.5rem;
-            margin-top: 1.5rem;
         }
         .product-card {
             display: block;
@@ -121,62 +145,74 @@
     <main>
         <h1>222 Dêcor</h1>
 
-        <section class="product-grid" aria-label="222 Decor product folders">
+        <!-- ── Pillows ── -->
+        <section class="category" aria-label="Pillows">
+            <div class="category-header">
+                <h2>Pillows</h2>
+                <span class="count">3 collections</span>
+            </div>
+            <div class="product-grid">
 
-            <!-- pillows -->
-            <a class="product-card" href="222-decor-pillows.html">
-                <img src="images/222-Decor/pillows/Chalet222-peacefull-buddha-pillow-12x12.jpg" alt="Pillows collection preview">
-                <div class="product-card-body">
-                    <h3>Pillows</h3>
-                    <p>3 images</p>
-                </div>
-            </a>
+                <a class="product-card" href="222-decor-pillows.html">
+                    <img src="images/222-Decor/pillows/Chalet222-peacefull-buddha-pillow-12x12.jpg" alt="Pillows collection preview">
+                    <div class="product-card-body">
+                        <h3>All Pillows</h3>
+                        <p>3 images</p>
+                    </div>
+                </a>
 
-            <!-- pillows / original -->
-            <a class="product-card" href="222-decor-pillows-original.html">
-                <img src="images/222-Decor/pillows/original/Chalet222-original-pillow-12x12.png" alt="Pillows Original collection preview">
-                <div class="product-card-body">
-                    <h3>Pillows — Original</h3>
-                    <p>3 images</p>
-                </div>
-            </a>
+                <a class="product-card" href="222-decor-pillows-original.html">
+                    <img src="images/222-Decor/pillows/original/Chalet222-original-pillow-12x12.png" alt="Pillows Original collection preview">
+                    <div class="product-card-body">
+                        <h3>Original</h3>
+                        <p>3 images</p>
+                    </div>
+                </a>
 
-            <!-- pillows / peaceful-buddha -->
-            <a class="product-card" href="222-decor-pillows-peaceful-buddha.html">
-                <div class="product-card-placeholder" aria-hidden="true">&#128338;</div>
-                <div class="product-card-body">
-                    <h3>Pillows — Peaceful Buddha</h3>
-                    <p>Coming soon</p>
-                </div>
-            </a>
+                <a class="product-card" href="222-decor-pillows-peaceful-buddha.html">
+                    <div class="product-card-placeholder" aria-hidden="true">&#128338;</div>
+                    <div class="product-card-body">
+                        <h3>Peaceful Buddha</h3>
+                        <p>Coming soon</p>
+                    </div>
+                </a>
 
-            <!-- shower-curtain -->
-            <a class="product-card" href="222-decor-shower-curtain.html">
-                <div class="product-card-placeholder" aria-hidden="true">&#128338;</div>
-                <div class="product-card-body">
-                    <h3>Shower Curtain</h3>
-                    <p>Coming soon</p>
-                </div>
-            </a>
+            </div>
+        </section>
 
-            <!-- shower-curtain / original -->
-            <a class="product-card" href="222-decor-shower-curtain-original.html">
-                <img src="images/222-Decor/shower-curtain/original/Chalet222-shower-curtain-original.jpg" alt="Shower Curtain Original collection preview">
-                <div class="product-card-body">
-                    <h3>Shower Curtain — Original</h3>
-                    <p>3 images</p>
-                </div>
-            </a>
+        <!-- ── Shower Curtains ── -->
+        <section class="category" aria-label="Shower Curtains">
+            <div class="category-header">
+                <h2>Shower Curtains</h2>
+                <span class="count">3 collections</span>
+            </div>
+            <div class="product-grid">
 
-            <!-- shower-curtain / peaceful-buddha -->
-            <a class="product-card" href="222-decor-shower-curtain-peaceful-buddha.html">
-                <img src="images/222-Decor/shower-curtain/peaceful-buddha/Chalet222-shower-curtain-peaceful-buddha.jpg" alt="Shower Curtain Peaceful Buddha collection preview">
-                <div class="product-card-body">
-                    <h3>Shower Curtain — Peaceful Buddha</h3>
-                    <p>3 images</p>
-                </div>
-            </a>
+                <a class="product-card" href="222-decor-shower-curtain.html">
+                    <div class="product-card-placeholder" aria-hidden="true">&#128338;</div>
+                    <div class="product-card-body">
+                        <h3>All Shower Curtains</h3>
+                        <p>Coming soon</p>
+                    </div>
+                </a>
 
+                <a class="product-card" href="222-decor-shower-curtain-original.html">
+                    <img src="images/222-Decor/shower-curtain/original/Chalet222-shower-curtain-original.jpg" alt="Shower Curtain Original collection preview">
+                    <div class="product-card-body">
+                        <h3>Original</h3>
+                        <p>3 images</p>
+                    </div>
+                </a>
+
+                <a class="product-card" href="222-decor-shower-curtain-peaceful-buddha.html">
+                    <img src="images/222-Decor/shower-curtain/peaceful-buddha/Chalet222-shower-curtain-peaceful-buddha.jpg" alt="Shower Curtain Peaceful Buddha collection preview">
+                    <div class="product-card-body">
+                        <h3>Peaceful Buddha</h3>
+                        <p>3 images</p>
+                    </div>
+                </a>
+
+            </div>
         </section>
     </main>
 
