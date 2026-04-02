@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Basic CSS for the layout can go here */
         body {
             font-family: sans-serif;
             margin: 0;
@@ -31,34 +30,9 @@
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
         }
         main {
-            padding: 2em;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            align-items: flex-start;
-            gap: 20px;
-            max-width: 1400px;
-            margin: 0 auto 2rem;
-        }
-        .folder-page-links {
-            width: 100%;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.06);
-        }
-        .folder-page-links ul {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 0.6rem;
-            margin: 0;
-            padding-left: 1rem;
-        }
-        .folder-page-links li {
-            display: list-item;
-            margin-right: 0;
-            text-align: left;
+            width: min(1200px, 94vw);
+            margin: 2rem auto;
+            padding: 0 1rem;
         }
         nav ul {
             list-style-type: none;
@@ -76,55 +50,55 @@
         footer nav a {
             color: #bdbdbd;
         }
-        /* Carousel styles */
-        .carousel {
-            position: relative;
+        /* Product grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .product-card {
+            display: block;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 12px;
             overflow: hidden;
-            width: min(100%, 520px);
-            margin: 0;
+            text-decoration: none;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
         }
-        .carousel-container {
-            display: flex;
-            transition: transform 0.5s ease;
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
         }
-        .carousel-item {
-            min-width: 100%;
-            box-sizing: border-box;
-            padding: 10px;
-            text-align: center;
-        }
-        .carousel-item img {
+        .product-card img {
             width: 100%;
-            height: auto;
-            max-width: 520px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
         }
-        .carousel-buttons {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: min(100%, 520px);
+        .product-card-placeholder {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: rgba(255, 255, 255, 0.04);
             display: flex;
-            justify-content: space-between;
-            pointer-events: none;
-            z-index: 2;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 2.5rem;
         }
-        .carousel-buttons button {
-            pointer-events: all;
-            background: rgba(0, 0, 0, 0.45);
-            color: white;
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            padding: 0;
-            cursor: pointer;
-            font-size: 14px;
-            line-height: 1;
+        .product-card-body {
+            padding: 0.85rem 1rem 1rem;
         }
-        .carousel h3 {
-            text-align: center;
-            margin-bottom: 10px;
+        .product-card-body h3 {
+            margin: 0 0 0.2rem;
+            font-size: 1.05rem;
+            color: #f4f4f4;
+            text-transform: capitalize;
+        }
+        .product-card-body p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.55);
         }
     </style>
 </head>
