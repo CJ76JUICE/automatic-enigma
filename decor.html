@@ -33,10 +33,32 @@
         main {
             padding: 2em;
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-around;
+            align-items: flex-start;
             gap: 20px;
             max-width: 1400px;
             margin: 0 auto 2rem;
+        }
+        .folder-page-links {
+            width: 100%;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .folder-page-links ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.6rem;
+            margin: 0;
+            padding-left: 1rem;
+        }
+        .folder-page-links li {
+            display: list-item;
+            margin-right: 0;
+            text-align: left;
         }
         nav ul {
             list-style-type: none;
@@ -123,22 +145,45 @@
     </header>
 
     <main>
-        
+        <section class="folder-page-links" aria-label="222 Decor folder pages">
+            <h3>Folder Product Pages</h3>
+            <ul>
+                <li><a href="222-decor-pillows.html">pillows</a></li>
+                <li><a href="222-decor-pillows-original.html">pillows/original</a></li>
+                <li><a href="222-decor-pillows-peaceful-buddha.html">pillows/peaceful-buddha</a></li>
+                <li><a href="222-decor-shower-curtain.html">shower-curtain</a></li>
+                <li><a href="222-decor-shower-curtain-original.html">shower-curtain/original</a></li>
+                <li><a href="222-decor-shower-curtain-peaceful-buddha.html">shower-curtain/peaceful-buddha</a></li>
+            </ul>
+        </section>
+
         <!-- Kitchen Carousel -->
         <section class="carousel" id="kitchen-carousel">
             <h3>Kitchen</h3>
             <div class="carousel-container">
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Rustic+Table" alt="Rustic Table">
-                    <p>Handcrafted wooden tables.</p>
+                    <img src="images/222-Decor/pillows/Chalet222-peacefull-buddha-pillow-12x12.jpg" alt="Peaceful Buddha pillow front view">
+                    <p><a href="product.html?img=images/222-Decor/pillows/Chalet222-peacefull-buddha-pillow-12x12.jpg">View Product Page</a></p>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Wooden+Chair" alt="Wooden Chair">
-                    <p>Comfortable wooden chairs.</p>
+                    <img src="images/222-Decor/pillows/Chalet222-peacefull-buddha-pillow-12x12.a.jpg" alt="Peaceful Buddha pillow alternate view A">
+                    <p><a href="product.html?img=images/222-Decor/pillows/Chalet222-peacefull-buddha-pillow-12x12.a.jpg">View Product Page</a></p>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Kitchen+Cabinet" alt="Kitchen Cabinet">
-                    <p>Stylish cabinets.</p>
+                    <img src="images/222-Decor/pillows/Chalet222-peacefull-buddha-pillow-12x12.b.jpg" alt="Peaceful Buddha pillow alternate view B">
+                    <p><a href="product.html?img=images/222-Decor/pillows/Chalet222-peacefull-buddha-pillow-12x12.b.jpg">View Product Page</a></p>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/222-Decor/pillows/original/Chalet222-original-pillow-12x12.png" alt="Original pillow front view">
+                    <p><a href="product.html?img=images/222-Decor/pillows/original/Chalet222-original-pillow-12x12.png">View Product Page</a></p>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/222-Decor/pillows/original/Chalet222-original-pillow-12x12..a.png" alt="Original pillow alternate view A">
+                    <p><a href="product.html?img=images/222-Decor/pillows/original/Chalet222-original-pillow-12x12..a.png">View Product Page</a></p>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/222-Decor/pillows/original/Chalet222-original-pillow-12x12.b.png" alt="Original pillow alternate view B">
+                    <p><a href="product.html?img=images/222-Decor/pillows/original/Chalet222-original-pillow-12x12.b.png">View Product Page</a></p>
                 </div>
             </div>
             <div class="carousel-buttons">
@@ -152,16 +197,16 @@
             <h3>Bath</h3>
             <div class="carousel-container">
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Modern+Chair" alt="Modern Chair">
-                    <p>Contemporary chairs.</p>
+                    <img src="images/222-Decor/shower-curtain/original/Chalet222-shower-curtain-original.jpg" alt="Original shower curtain full view">
+                    <p><a href="product.html?img=images/222-Decor/shower-curtain/original/Chalet222-shower-curtain-original.jpg">View Product Page</a></p>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Bath+Towel+Rack" alt="Bath Towel Rack">
-                    <p>Elegant towel racks.</p>
+                    <img src="images/222-Decor/shower-curtain/original/Chalet222-shower-curtain-original-detail.jpg" alt="Original shower curtain detail view">
+                    <p><a href="product.html?img=images/222-Decor/shower-curtain/original/Chalet222-shower-curtain-original-detail.jpg">View Product Page</a></p>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Soap+Dispenser" alt="Soap Dispenser">
-                    <p>Modern soap dispensers.</p>
+                    <img src="images/222-Decor/shower-curtain/original/Chalet222-shower-curtain-original-bathroom.jpg" alt="Original shower curtain in bathroom">
+                    <p><a href="product.html?img=images/222-Decor/shower-curtain/original/Chalet222-shower-curtain-original-bathroom.jpg">View Product Page</a></p>
                 </div>
             </div>
             <div class="carousel-buttons">
@@ -175,16 +220,16 @@
             <h3>Home</h3>
             <div class="carousel-container">
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Ambient+Lighting" alt="Ambient Lighting">
-                    <p>Our collection of home furnishings.</p>
+                    <img src="images/222-Decor/shower-curtain/peaceful-buddha/Chalet222-shower-curtain-peaceful-buddha.jpg" alt="Peaceful Buddha shower curtain full view">
+                    <p><a href="product.html?img=images/222-Decor/shower-curtain/peaceful-buddha/Chalet222-shower-curtain-peaceful-buddha.jpg">View Product Page</a></p>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Decorative+Pillow" alt="Decorative Pillow">
-                    <p>Soft pillows.</p>
+                    <img src="images/222-Decor/shower-curtain/peaceful-buddha/Chalet222-shower-curtain-peaceful-buddha-detail.jpg" alt="Peaceful Buddha shower curtain detail view">
+                    <p><a href="product.html?img=images/222-Decor/shower-curtain/peaceful-buddha/Chalet222-shower-curtain-peaceful-buddha-detail.jpg">View Product Page</a></p>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Wall+Art" alt="Wall Art">
-                    <p>Beautiful wall art.</p>
+                    <img src="images/222-Decor/shower-curtain/peaceful-buddha/Chalet222-shower-curtain-peaceful-buddha-bathroom.jpg" alt="Peaceful Buddha shower curtain in bathroom">
+                    <p><a href="product.html?img=images/222-Decor/shower-curtain/peaceful-buddha/Chalet222-shower-curtain-peaceful-buddha-bathroom.jpg">View Product Page</a></p>
                 </div>
             </div>
             <div class="carousel-buttons">

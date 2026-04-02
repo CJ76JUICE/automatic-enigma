@@ -35,6 +35,27 @@
             color: #fff;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
         }
+        .product-layout {
+            display: grid;
+            gap: 1.25rem;
+        }
+        .product-image {
+            width: 100%;
+            max-width: 640px;
+            border-radius: 10px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+        }
+        .product-meta {
+            margin: 0;
+            color: #f0f0f0;
+        }
+        .error-note {
+            color: #ffd4d4;
+            background: rgba(120, 10, 10, 0.55);
+            border: 1px solid rgba(255, 170, 170, 0.45);
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+        }
         nav ul {
             list-style-type: none;
             padding: 0;
@@ -69,8 +90,14 @@
     </header>
 
     <main>
-        <h2>Products</h2>
-        <p>Explore our curated collection of hand-designed creations.</p>
+        <div class="product-layout">
+            <p><a href="decor.html">&larr; Back to 222 Dêcor</a></p>
+            <h2 id="product-title">Product</h2>
+            <img id="product-image" class="product-image" src="images/222-Decor/pillows/Chalet222-peacefull-buddha-pillow-12x12.jpg" alt="Product image">
+            <p id="product-path" class="product-meta"></p>
+            <p id="product-description" class="product-meta">Explore our curated collection of hand-designed creations.</p>
+            <div id="product-error" class="error-note" hidden></div>
+        </div>
     </main>
 
     <footer>
@@ -82,6 +109,46 @@
         </nav>
         <p>©2026 All rights reserved. If you are using a screen reader and are having problems using this website, please call (248) 123-4567 for assistance.</p>
     </footer>
+
+    <script>
+        function toTitleFromFilename(path) {
+            const fileName = path.split('/').pop() || '';
+            const noExt = fileName.replace(/\.[a-z0-9]+$/i, '');
+            return noExt
+                .replace(/[-_.]+/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim()
+                .replace(/\b\w/g, (char) => char.toUpperCase());
+        }
+
+        function isAllowedProductImage(path) {
+            return /^images\/222-Decor\/.+\.(jpg|jpeg|png|webp)$/i.test(path);
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const imagePath = params.get('img');
+
+        if (imagePath) {
+            const decodedPath = decodeURIComponent(imagePath);
+            if (isAllowedProductImage(decodedPath)) {
+                const title = toTitleFromFilename(decodedPath);
+                document.title = title + ' | Chalet 222®';
+                document.getElementById('product-title').textContent = title;
+                document.getElementById('product-image').src = decodedPath;
+                document.getElementById('product-image').alt = title;
+                document.getElementById('product-path').textContent = 'Image: ' + decodedPath;
+                document.getElementById('product-description').textContent = 'This design is part of our 222 Dêcor collection.';
+            } else {
+                const error = document.getElementById('product-error');
+                error.hidden = false;
+                error.textContent = 'Invalid image path. Please open this page from a 222 Dêcor product link.';
+            }
+        } else {
+            const error = document.getElementById('product-error');
+            error.hidden = false;
+            error.textContent = 'No product image selected. Please choose a product from the 222 Dêcor page.';
+        }
+    </script>
 
 </body>
 </html>
