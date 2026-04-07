@@ -184,6 +184,8 @@
                 <a href="glass-metal.html" aria-current="page">Beautifully Broken®</a>
                 <ul class="dropdown-menu">
                     <li><a href="#tree-of-life">Tree of Life</a></li>
+                    <li><a href="beautifully-broken-creatures.html">Creatures</a></li>
+                    <li><a href="beautifully-broken-cactus.html">Cactus</a></li>
                 </ul>
             </li>
         </ul>
@@ -228,6 +230,38 @@
             </div>
         </section>
 
+        <section class="carousel" id="creatures-carousel" aria-label="Creatures" data-subcategory="creatures">
+            <h3 id="creatures">Creatures</h3>
+            <div class="carousel-container">
+                <div class="carousel-item">
+                    <a href="bird-metal-glass-stone.html">
+                        <img src="images/Beautifully-Broken-images/bird-metal-glass-stone.png" alt="Bird mixed-media art by Beautifully Broken">
+                    </a>
+                    <p><a href="bird-metal-glass-stone.html">Bird in Metal, Glass &amp; Stone.</a></p>
+                </div>
+            </div>
+            <div class="carousel-buttons">
+                <button onclick="prevSlide('creatures-carousel')">&lt;</button>
+                <button onclick="nextSlide('creatures-carousel')">&gt;</button>
+            </div>
+        </section>
+
+        <section class="carousel" id="cactus-carousel" aria-label="Cactus" data-subcategory="cactus">
+            <h3 id="cactus">Cactus</h3>
+            <div class="carousel-container">
+                <div class="carousel-item">
+                    <a href="saguaro-cactus-bb.html">
+                        <img src="images/Beautifully-Broken-images/saguaro-cactus-bb.png" alt="Saguaro cactus mixed-media art">
+                    </a>
+                    <p><a href="saguaro-cactus-bb.html">Saguaro Cactus.</a></p>
+                </div>
+            </div>
+            <div class="carousel-buttons">
+                <button onclick="prevSlide('cactus-carousel')">&lt;</button>
+                <button onclick="nextSlide('cactus-carousel')">&gt;</button>
+            </div>
+        </section>
+
 
     </main>
 
@@ -242,30 +276,39 @@
     </footer>
 
     <script>
-        const navDropdown = document.querySelector('.site-header .nav-dropdown');
-        const navDropdownLink = navDropdown ? navDropdown.querySelector('a') : null;
+        const navDropdowns = Array.from(document.querySelectorAll('.site-header .nav-dropdown'));
 
-        if (navDropdown && navDropdownLink) {
-            navDropdownLink.setAttribute('aria-expanded', 'false');
+        navDropdowns.forEach((dropdown) => {
+            const trigger = dropdown.querySelector('a');
+            if (!trigger) {
+                return;
+            }
 
-            navDropdownLink.addEventListener('click', (event) => {
+            trigger.setAttribute('aria-expanded', 'false');
+
+            trigger.addEventListener('click', (event) => {
                 const isTouchLike = window.matchMedia('(hover: none), (pointer: coarse)').matches;
-                const isOpen = navDropdown.classList.contains('is-open');
+                const isOpen = dropdown.classList.contains('is-open');
 
                 if (isTouchLike && !isOpen) {
                     event.preventDefault();
-                    navDropdown.classList.add('is-open');
-                    navDropdownLink.setAttribute('aria-expanded', 'true');
+                    dropdown.classList.add('is-open');
+                    trigger.setAttribute('aria-expanded', 'true');
                 }
             });
+        });
 
-            document.addEventListener('click', (event) => {
-                if (!navDropdown.contains(event.target)) {
-                    navDropdown.classList.remove('is-open');
-                    navDropdownLink.setAttribute('aria-expanded', 'false');
+        document.addEventListener('click', (event) => {
+            navDropdowns.forEach((dropdown) => {
+                const trigger = dropdown.querySelector('a');
+                if (!dropdown.contains(event.target)) {
+                    dropdown.classList.remove('is-open');
+                    if (trigger) {
+                        trigger.setAttribute('aria-expanded', 'false');
+                    }
                 }
             });
-        }
+        });
 
         function nextSlide(carouselId) {
             const carousel = document.getElementById(carouselId);
@@ -312,25 +355,32 @@
         }
 
         window.addEventListener('resize', () => {
-            const carousel = document.getElementById('kitchen-carousel');
-            const container = carousel.querySelector('.carousel-container');
-            const items = container.children;
-            const totalItems = items.length;
-            const visible = window.innerWidth <= 640 ? 1 : (window.innerWidth <= 980 ? 2 : 3);
-            const maxIndex = Math.max(0, totalItems - visible);
-            const gap = parseFloat(getComputedStyle(container).columnGap || getComputedStyle(container).gap || '0');
-            const itemWidth = items[0].getBoundingClientRect().width;
-            let currentIndex = parseInt(container.dataset.currentIndex || 0);
-            currentIndex = Math.min(currentIndex, maxIndex);
-            container.style.transform = `translateX(-${currentIndex * (itemWidth + gap)}px)`;
-            container.dataset.currentIndex = currentIndex;
+            const carousels = Array.from(document.querySelectorAll('.carousel'));
 
-            const prev = carousel.querySelector('.carousel-buttons button:first-child');
-            const next = carousel.querySelector('.carousel-buttons button:last-child');
-            if (prev && next) {
-                prev.disabled = currentIndex === 0;
-                next.disabled = currentIndex >= maxIndex;
-            }
+            carousels.forEach((carousel) => {
+                const container = carousel.querySelector('.carousel-container');
+                if (!container || !container.children.length) {
+                    return;
+                }
+
+                const items = container.children;
+                const totalItems = items.length;
+                const visible = window.innerWidth <= 640 ? 1 : (window.innerWidth <= 980 ? 2 : 3);
+                const maxIndex = Math.max(0, totalItems - visible);
+                const gap = parseFloat(getComputedStyle(container).columnGap || getComputedStyle(container).gap || '0');
+                const itemWidth = items[0].getBoundingClientRect().width;
+                let currentIndex = parseInt(container.dataset.currentIndex || 0);
+                currentIndex = Math.min(currentIndex, maxIndex);
+                container.style.transform = `translateX(-${currentIndex * (itemWidth + gap)}px)`;
+                container.dataset.currentIndex = currentIndex;
+
+                const prev = carousel.querySelector('.carousel-buttons button:first-child');
+                const next = carousel.querySelector('.carousel-buttons button:last-child');
+                if (prev && next) {
+                    prev.disabled = currentIndex === 0;
+                    next.disabled = currentIndex >= maxIndex;
+                }
+            });
         });
 
         window.dispatchEvent(new Event('resize'));
