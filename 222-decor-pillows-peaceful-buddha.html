@@ -91,6 +91,45 @@
             background: #f0c8f0;
             transform: translateY(-2px);
         }
+
+        .related-products {
+            margin-top: 2rem;
+        }
+        .related-products h2 {
+            margin: 0 0 1rem;
+            font-size: 1.2rem;
+            color: #f4f4f4;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+        .related-card {
+            display: block;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+        .related-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+        }
+        .related-card img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+        }
+        .related-card span {
+            display: block;
+            padding: 0.65rem 0.8rem 0.8rem;
+            color: #f4f4f4;
+            font-size: 0.95rem;
+        }
     </style>
 </head>
 <body>
@@ -126,6 +165,20 @@
             </div>
 
         </div>
+
+        <section class="related-products" aria-label="Suggested products">
+            <h2>You may also like</h2>
+            <div class="related-grid">
+                <a class="related-card" href="222-decor-pillows-original.html">
+                    <img src="images/222-Decor/pillows/original/Chalet222-original-pillow-12x12.png" alt="Origin pillow">
+                    <span>Origin Pillow</span>
+                </a>
+                <a class="related-card" href="222-decor-shower-curtain-peaceful-buddha.html">
+                    <img src="images/222-Decor/shower-curtain/peaceful-buddha/Chalet222-shower-curtain-peaceful-buddha.jpg" alt="Peaceful Buddha shower curtain">
+                    <span>Peaceful Buddha Shower Curtain</span>
+                </a>
+            </div>
+        </section>
     </main>
     <footer>
         <nav><ul><li><a href="about-us.html">Origin</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
