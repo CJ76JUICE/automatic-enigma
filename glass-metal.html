@@ -105,30 +105,32 @@
         .carousel {
             position: relative;
             overflow: hidden;
-            width: min(100%, 520px);
+            width: min(100%, 1200px);
             margin: 0;
         }
         .carousel-container {
             display: flex;
+            gap: 16px;
             transition: transform 0.5s ease;
         }
         .carousel-item {
-            min-width: 100%;
+            min-width: calc((100% - 32px) / 3);
             box-sizing: border-box;
-            padding: 10px;
+            padding: 0;
             text-align: center;
         }
         .carousel-item img {
             width: 100%;
             height: auto;
-            max-width: 520px;
+            max-width: none;
         }
         .carousel-buttons {
             position: absolute;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: min(100%, 520px);
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            width: 100%;
             display: flex;
             justify-content: space-between;
             pointer-events: none;
@@ -153,29 +155,16 @@
         }
         #kitchen-carousel {
             width: 100%;
-            overflow: visible;
-        }
-        #kitchen-carousel .carousel-container {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(220px, 1fr));
-            gap: 14px;
-            transform: none !important;
-        }
-        #kitchen-carousel .carousel-item {
-            min-width: 0;
-            padding: 0;
-        }
-        #kitchen-carousel .carousel-buttons {
-            display: none;
+            overflow: hidden;
         }
         @media (max-width: 980px) {
-            #kitchen-carousel .carousel-container {
-                grid-template-columns: repeat(2, minmax(220px, 1fr));
+            .carousel-item {
+                min-width: calc((100% - 16px) / 2);
             }
         }
         @media (max-width: 640px) {
-            #kitchen-carousel .carousel-container {
-                grid-template-columns: 1fr;
+            .carousel-item {
+                min-width: 100%;
             }
         }
     </style>
@@ -282,22 +271,68 @@
             const container = carousel.querySelector('.carousel-container');
             const items = container.children;
             const totalItems = items.length;
+            const gap = parseFloat(getComputedStyle(container).columnGap || getComputedStyle(container).gap || '0');
+            const itemWidth = items[0].getBoundingClientRect().width;
+            const visible = window.innerWidth <= 640 ? 1 : (window.innerWidth <= 980 ? 2 : 3);
+            const maxIndex = Math.max(0, totalItems - visible);
             let currentIndex = parseInt(container.dataset.currentIndex || 0);
-            currentIndex = (currentIndex + 1) % totalItems;
-            container.style.transform = `translateX(-${currentIndex * 100}%)`;
+            currentIndex = Math.min(maxIndex, currentIndex + 1);
+            container.style.transform = `translateX(-${currentIndex * (itemWidth + gap)}px)`;
             container.dataset.currentIndex = currentIndex;
+
+            const prev = carousel.querySelector('.carousel-buttons button:first-child');
+            const next = carousel.querySelector('.carousel-buttons button:last-child');
+            if (prev && next) {
+                prev.disabled = currentIndex === 0;
+                next.disabled = currentIndex >= maxIndex;
+            }
         }
 
         function prevSlide(carouselId) {
             const carousel = document.getElementById(carouselId);
             const container = carousel.querySelector('.carousel-container');
             const items = container.children;
+            const gap = parseFloat(getComputedStyle(container).columnGap || getComputedStyle(container).gap || '0');
+            const itemWidth = items[0].getBoundingClientRect().width;
             const totalItems = items.length;
+            const visible = window.innerWidth <= 640 ? 1 : (window.innerWidth <= 980 ? 2 : 3);
+            const maxIndex = Math.max(0, totalItems - visible);
             let currentIndex = parseInt(container.dataset.currentIndex || 0);
-            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-            container.style.transform = `translateX(-${currentIndex * 100}%)`;
+            currentIndex = Math.max(0, currentIndex - 1);
+            container.style.transform = `translateX(-${currentIndex * (itemWidth + gap)}px)`;
             container.dataset.currentIndex = currentIndex;
+
+            const prev = carousel.querySelector('.carousel-buttons button:first-child');
+            const next = carousel.querySelector('.carousel-buttons button:last-child');
+            if (prev && next) {
+                prev.disabled = currentIndex === 0;
+                next.disabled = currentIndex >= maxIndex;
+            }
         }
+
+        window.addEventListener('resize', () => {
+            const carousel = document.getElementById('kitchen-carousel');
+            const container = carousel.querySelector('.carousel-container');
+            const items = container.children;
+            const totalItems = items.length;
+            const visible = window.innerWidth <= 640 ? 1 : (window.innerWidth <= 980 ? 2 : 3);
+            const maxIndex = Math.max(0, totalItems - visible);
+            const gap = parseFloat(getComputedStyle(container).columnGap || getComputedStyle(container).gap || '0');
+            const itemWidth = items[0].getBoundingClientRect().width;
+            let currentIndex = parseInt(container.dataset.currentIndex || 0);
+            currentIndex = Math.min(currentIndex, maxIndex);
+            container.style.transform = `translateX(-${currentIndex * (itemWidth + gap)}px)`;
+            container.dataset.currentIndex = currentIndex;
+
+            const prev = carousel.querySelector('.carousel-buttons button:first-child');
+            const next = carousel.querySelector('.carousel-buttons button:last-child');
+            if (prev && next) {
+                prev.disabled = currentIndex === 0;
+                next.disabled = currentIndex >= maxIndex;
+            }
+        });
+
+        window.dispatchEvent(new Event('resize'));
     </script>
 
 </body>
