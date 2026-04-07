@@ -3,106 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chalet 222®</title>
+    <title>Paintings by Ashley | Chalet 222®</title>
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Basic CSS for the layout can go here */
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        header, footer {
-            background-color: #333;
-            color: white;
-            padding: 1em 0;
-        }
-        header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        footer {
-            text-align: center;
-            background-color: rgba(34, 85, 34, 0.10);
-            color: #bdbdbd;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
-        }
         main {
-            padding: 2em;
-            display: flex;
-            justify-content: space-around;
-            gap: 20px;
-            max-width: 1400px;
-            margin: 0 auto 2rem;
+            width: min(1280px, 96vw);
+            margin: 2rem auto;
+            flex: 1;
         }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            text-align: center;
+        h1 {
+            color: #f4f4f4;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+            margin-bottom: 1rem;
         }
-        nav ul li {
-            display: inline;
-            margin-right: 10px;
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1.5rem;
+        }
+        .product-card {
+            display: block;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+        }
+        .product-card img {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            display: block;
+        }
+        .product-card-body {
+            padding: 0.85rem 1rem 1rem;
+        }
+        .product-card-body h3 {
+            margin: 0;
+            font-size: 1.05rem;
+            color: #f4f4f4;
+        }
+        .product-card-body p {
+            margin: 0.5rem 0 0;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
         }
         a {
-            text-decoration: none;
             color: #f9e2f9;
-        }
-        footer nav a {
-            color: #bdbdbd;
-        }
-        /* Carousel styles */
-        .carousel {
-            position: relative;
-            overflow: hidden;
-            width: min(100%, 520px);
-            margin: 0;
-        }
-        .carousel-container {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        .carousel-item {
-            min-width: 100%;
-            box-sizing: border-box;
-            padding: 10px;
-            text-align: center;
-        }
-        .carousel-item img {
-            width: 100%;
-            height: auto;
-            max-width: 520px;
-        }
-        .carousel-buttons {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: min(100%, 520px);
-            display: flex;
-            justify-content: space-between;
-            pointer-events: none;
-            z-index: 2;
-        }
-        .carousel-buttons button {
-            pointer-events: all;
-            background: rgba(0, 0, 0, 0.45);
-            color: white;
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            padding: 0;
-            cursor: pointer;
-            font-size: 14px;
-            line-height: 1;
-        }
-        .carousel h3 {
-            text-align: center;
-            margin-bottom: 10px;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -123,76 +77,17 @@
     </header>
 
     <main>
-        
-        <!-- Portrait Carousel -->
-        <section class="carousel" id="portrait-carousel">
-            <h3>Portrait Paintings</h3>
-            <div class="carousel-container">
-                <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Family+Portrait" alt="Family Portrait">
-                    <p>Custom family portraits.</p>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Individual+Portrait" alt="Individual Portrait">
-                    <p>Personalized individual portraits.</p>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Couple+Portrait" alt="Couple Portrait">
-                    <p>Romantic couple portraits.</p>
-                </div>
-            </div>
-            <div class="carousel-buttons">
-                <button onclick="prevSlide('portrait-carousel')">&lt;</button>
-                <button onclick="nextSlide('portrait-carousel')">&gt;</button>
-            </div>
-        </section>
+        <h1>Paintings by Ashley</h1>
 
-        <!-- Landscape Carousel -->
-        <section class="carousel" id="landscape-carousel">
-            <h3>Landscape Paintings</h3>
-            <div class="carousel-container">
-                <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Mountain+Landscape" alt="Mountain Landscape">
-                    <p>Majestic mountain scenes.</p>
+        <div class="image-grid">
+            <a class="product-card" href="ashley-bella.html">
+                <img src="images/Ashley/Bella/bella-final-painting-on-canvas-by-ashley.png" alt="Bella custom portrait painting">
+                <div class="product-card-body">
+                    <h3>Bella Custom Portrait</h3>
+                    <p>View progress photos and final painted canvas.</p>
                 </div>
-                <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Beach+Landscape" alt="Beach Landscape">
-                    <p>Serene beach landscapes.</p>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Forest+Landscape" alt="Forest Landscape">
-                    <p>Tranquil forest views.</p>
-                </div>
-            </div>
-            <div class="carousel-buttons">
-                <button onclick="prevSlide('landscape-carousel')">&lt;</button>
-                <button onclick="nextSlide('landscape-carousel')">&gt;</button>
-            </div>
-        </section>
-
-        <!-- Animal Carousel -->
-        <section class="carousel" id="animal-carousel">
-            <h3>Animal Paintings</h3>
-            <div class="carousel-container">
-                <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Dog+Portrait" alt="Dog Portrait">
-                    <p>Adorable dog portraits.</p>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Cat+Portrait" alt="Cat Portrait">
-                    <p>Charming cat portraits.</p>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://via.placeholder.com/200x150?text=Wildlife+Portrait" alt="Wildlife Portrait">
-                    <p>Wildlife animal portraits.</p>
-                </div>
-            </div>
-            <div class="carousel-buttons">
-                <button onclick="prevSlide('animal-carousel')">&lt;</button>
-                <button onclick="nextSlide('animal-carousel')">&gt;</button>
-            </div>
-        </section>
-        
+            </a>
+        </div>
     </main>
 
     <footer>
@@ -204,30 +99,6 @@
         </nav>
         <p>©2026 All rights reserved. If you are using a screen reader and are having problems using this website, please call (248) 123-4567 for assistance.</p>
     </footer>
-
-    <script>
-        function nextSlide(carouselId) {
-            const carousel = document.getElementById(carouselId);
-            const container = carousel.querySelector('.carousel-container');
-            const items = container.children;
-            const totalItems = items.length;
-            let currentIndex = parseInt(container.dataset.currentIndex || 0);
-            currentIndex = (currentIndex + 1) % totalItems;
-            container.style.transform = `translateX(-${currentIndex * 100}%)`;
-            container.dataset.currentIndex = currentIndex;
-        }
-
-        function prevSlide(carouselId) {
-            const carousel = document.getElementById(carouselId);
-            const container = carousel.querySelector('.carousel-container');
-            const items = container.children;
-            const totalItems = items.length;
-            let currentIndex = parseInt(container.dataset.currentIndex || 0);
-            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-            container.style.transform = `translateX(-${currentIndex * 100}%)`;
-            container.dataset.currentIndex = currentIndex;
-        }
-    </script>
 
 </body>
 </html>
