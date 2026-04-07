@@ -81,6 +81,7 @@
             background: rgba(255, 255, 255, 0.12);
         }
         .site-header .nav-dropdown:hover .dropdown-menu,
+        .site-header .nav-dropdown.is-open .dropdown-menu,
         .site-header .nav-dropdown:focus-within .dropdown-menu {
             display: block;
         }
@@ -260,6 +261,31 @@
     </footer>
 
     <script>
+        const navDropdown = document.querySelector('.site-header .nav-dropdown');
+        const navDropdownLink = navDropdown ? navDropdown.querySelector('a') : null;
+
+        if (navDropdown && navDropdownLink) {
+            navDropdownLink.setAttribute('aria-expanded', 'false');
+
+            navDropdownLink.addEventListener('click', (event) => {
+                const isTouchLike = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+                const isOpen = navDropdown.classList.contains('is-open');
+
+                if (isTouchLike && !isOpen) {
+                    event.preventDefault();
+                    navDropdown.classList.add('is-open');
+                    navDropdownLink.setAttribute('aria-expanded', 'true');
+                }
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!navDropdown.contains(event.target)) {
+                    navDropdown.classList.remove('is-open');
+                    navDropdownLink.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
         function nextSlide(carouselId) {
             const carousel = document.getElementById(carouselId);
             const container = carousel.querySelector('.carousel-container');
