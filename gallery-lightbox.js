@@ -10,9 +10,11 @@
     lightbox.setAttribute('aria-hidden', 'true');
     lightbox.innerHTML = [
         '<button class="product-lightbox-close" type="button" aria-label="Close image viewer">&times;</button>',
+        '<div class="product-lightbox-stage">',
         '<button class="product-lightbox-btn product-lightbox-prev" type="button" aria-label="Previous image">&#10094;</button>',
         '<img class="product-lightbox-image" src="" alt="Expanded product image">',
         '<button class="product-lightbox-btn product-lightbox-next" type="button" aria-label="Next image">&#10095;</button>',
+        '</div>',
         '<div class="product-lightbox-counter" aria-live="polite"></div>'
     ].join('');
 

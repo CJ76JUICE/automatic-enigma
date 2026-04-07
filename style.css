@@ -360,6 +360,12 @@ input[type="radio"] {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
+.product-lightbox-stage {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
 .product-lightbox-btn {
     position: absolute;
     top: 50%;
@@ -381,11 +387,11 @@ input[type="radio"] {
 }
 
 .product-lightbox-prev {
-    left: 1rem;
+    left: -66px;
 }
 
 .product-lightbox-next {
-    right: 1rem;
+    right: -66px;
 }
 
 .product-lightbox-close {
@@ -420,6 +426,14 @@ input[type="radio"] {
         width: 46px;
         height: 46px;
         font-size: 1.55rem;
+    }
+
+    .product-lightbox-prev {
+        left: 8px;
+    }
+
+    .product-lightbox-next {
+        right: 8px;
     }
 }
 
