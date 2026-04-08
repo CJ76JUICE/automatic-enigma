@@ -275,12 +275,12 @@ button,
 }
 
 .related-grid {
-    justify-content: center !important;
+    justify-content: start !important;
 }
 
-.related-card {
-    margin-left: auto;
-    margin-right: auto;
+.image-grid {
+    justify-content: flex-start !important;
+    justify-items: start !important;
 }
 
 @media (max-width: 900px) {
