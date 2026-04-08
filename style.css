@@ -98,6 +98,7 @@ body {
     position: relative;
     min-height: 85px;
     margin-bottom: 18px;
+    z-index: 100;
 }
 
 .site-header + main {
@@ -194,12 +195,17 @@ footer nav a[aria-current="page"]::after {
     min-width: 170px;
     background: rgba(24, 24, 24, 0.96);
     border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 10px;
+    border-radius: 0;
     padding: 0.45rem;
     margin-top: 4px;
     text-align: left;
     list-style: none;
-    display: none;
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(4px);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
     z-index: 20;
 }
 
@@ -221,7 +227,7 @@ footer nav a[aria-current="page"]::after {
     display: block;
     margin-left: 0;
     padding: 0.45rem 0.55rem;
-    border-radius: 6px;
+    border-radius: 0;
     color: #f9e2f9;
 }
 
@@ -247,7 +253,10 @@ button,
 .site-header .nav-dropdown:hover .dropdown-menu,
 .site-header .nav-dropdown.is-open .dropdown-menu,
 .site-header .nav-dropdown:focus-within .dropdown-menu {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
 }
 
 @media (max-width: 900px) {
