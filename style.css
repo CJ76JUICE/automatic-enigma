@@ -75,6 +75,16 @@ body {
             border-radius: 0 !important;
         }
 
+        .product-card,
+        .related-card,
+        .product-box,
+        .carousel-item,
+        .product-image,
+        .image-grid,
+        .carousel-container {
+            border-radius: 0 !important;
+        }
+
         footer nav a {
             color: #bdbdbd;
         }
