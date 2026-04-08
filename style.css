@@ -225,6 +225,21 @@ footer nav a[aria-current="page"]::after {
     color: #f9e2f9;
 }
 
+/* Global corner reset for product media and controls */
+.product-image,
+.product-card img,
+.related-card img,
+.image-grid img,
+.main-image {
+    border-radius: 0 !important;
+}
+
+button,
+.btn-cart,
+.carousel-buttons button {
+    border-radius: 0 !important;
+}
+
 .site-header .dropdown-menu a:hover {
     background: rgba(255, 255, 255, 0.12);
 }
