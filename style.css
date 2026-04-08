@@ -11,7 +11,7 @@ body {
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
-            background-image: url('images/vitavivabackground-1920.jpg');
+            background-image: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)), url('images/vitavivabackground-1920.jpg');
             background-size: cover;
             background-attachment: fixed;
             background-position: center;
@@ -21,7 +21,7 @@ body {
 
         @media (max-width: 900px) {
             body {
-                background-image: url('vitavivamini.png');
+                background-image: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)), url('vitavivamini.png');
                 background-attachment: scroll;
             }
         }
