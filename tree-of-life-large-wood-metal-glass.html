@@ -22,6 +22,13 @@
         .divider { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 0; }
         .btn-cart { display: inline-block; background: #f9e2f9; color: #1a1a1a; font-size: 1rem; font-weight: 700; padding: 0.85rem 1.5rem; border: none; border-radius: 10px; cursor: pointer; transition: background 0.18s ease, transform 0.12s ease; text-align: center; }
         .btn-cart:hover { background: #f0c8f0; transform: translateY(-2px); }
+        .related-products { margin-top: 2rem; }
+        .related-products h2 { margin: 0 0 1rem; font-size: 1.2rem; color: #f4f4f4; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 220px)); justify-content: start; gap: 1rem; }
+        .related-card { display: block; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; overflow: hidden; text-decoration: none; transition: transform 0.18s ease, box-shadow 0.18s ease; }
+        .related-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.35); }
+        .related-card img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; }
+        .related-card span { display: block; padding: 0.65rem 0.8rem 0.8rem; color: #f4f4f4; font-size: 0.95rem; }
     </style>
 </head>
 <body>
@@ -49,6 +56,20 @@
                 <button class="btn-cart" type="button">Request Piece</button>
             </div>
         </div>
+
+        <section class="related-products" aria-label="Suggested products">
+            <h2>You may also like</h2>
+            <div class="related-grid">
+                <a class="related-card" href="tree-of-life-detail-6-inch.html">
+                    <img src="images/Beautifully-Broken-images/tree-of-life/Tree of Life_Beautifully Broken_6inches.JPG" alt="Tree of Life detail 6 inches">
+                    <span>Tree of Life Detail 6 Inches</span>
+                </a>
+                <a class="related-card" href="four-seasons-26x8.html">
+                    <img src="images/Beautifully-Broken-images/tree-of-life/Four Seasons_by Beautifully Broken_26x8 inches.JPG" alt="Four Seasons by Beautifully Broken 26x8 inches">
+                    <span>Four Seasons 26x8</span>
+                </a>
+            </div>
+        </section>
     </main>
     <footer>
         <nav><ul><li><a href="about-us.html">Origin</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
