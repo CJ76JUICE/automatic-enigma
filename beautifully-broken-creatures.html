@@ -15,6 +15,13 @@
         .product-card-body { padding: 0.85rem 1rem 1rem; }
         .product-card-body h3 { margin: 0; font-size: 1.05rem; color: #f4f4f4; }
         .subtitle { margin-top: -0.5rem; color: rgba(255,255,255,0.72); }
+        .related-products { margin-top: 2rem; }
+        .related-products h2 { margin: 0 0 1rem; font-size: 1.2rem; color: #f4f4f4; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 220px)); justify-content: start; gap: 1rem; }
+        .related-card { display: block; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); overflow: hidden; text-decoration: none; transition: transform 0.18s ease, box-shadow 0.18s ease; }
+        .related-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.35); }
+        .related-card img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; }
+        .related-card span { display: block; padding: 0.65rem 0.8rem 0.8rem; color: #f4f4f4; font-size: 0.95rem; }
         a { color: #f9e2f9; text-decoration: none; }
     </style>
 </head>
@@ -37,6 +44,20 @@
                 </div>
             </a>
         </div>
+
+        <section class="related-products" aria-label="Suggested products">
+            <h2>You may also like</h2>
+            <div class="related-grid">
+                <a class="related-card" href="saguaro-cactus-bb.html">
+                    <img src="images/Beautifully-Broken-images/cactus/saguaro-cactus-livingroom.png" alt="Saguaro cactus living room view">
+                    <span>Saguaro Cactus</span>
+                </a>
+                <a class="related-card" href="tree-of-life-beautifully-broken.html">
+                    <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken.JPG" alt="Tree of Life artwork">
+                    <span>Tree of Life</span>
+                </a>
+            </div>
+        </section>
     </main>
     <footer>
         <nav><ul><li><a href="about-us.html">Origin</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
