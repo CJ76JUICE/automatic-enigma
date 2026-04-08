@@ -97,7 +97,11 @@ body {
     border-bottom: none;
     position: relative;
     min-height: 85px;
-    margin-bottom: 40px;
+    margin-bottom: 18px;
+}
+
+.site-header + main {
+    margin-top: 0 !important;
 }
 
 .site-header .logo-link {
