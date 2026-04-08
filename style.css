@@ -274,6 +274,15 @@ button,
     transform: translateY(0);
 }
 
+.related-grid {
+    justify-content: center !important;
+}
+
+.related-card {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 @media (max-width: 900px) {
     .site-header {
         flex-direction: column;
