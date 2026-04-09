@@ -15,6 +15,13 @@
         .product-card-body { padding: 0.85rem 1rem 1rem; }
         .product-card-body h3 { margin: 0; font-size: 1.05rem; color: #f4f4f4; }
         a { color: #f9e2f9; text-decoration: none; }
+        .breadcrumb { margin: 0 0 1rem; }
+        .breadcrumb ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem; align-items: center; }
+        .breadcrumb li { font-size: 0.88rem; color: rgba(255,255,255,0.65); }
+        .breadcrumb li + li::before { content: '/'; margin-right: 0.25rem; color: rgba(255,255,255,0.4); }
+        .breadcrumb a { color: rgba(255,255,255,0.75); text-decoration: none; }
+        .breadcrumb a:hover { color: #f9e2f9; }
+        .breadcrumb li[aria-current="page"] { color: #f4f4f4; font-weight: 500; }
     </style>
 </head>
 <body>
@@ -24,7 +31,7 @@
         <a href="sign-in.html" class="header-signin">Sign In</a>
     </header>
     <main>
-        <p><a href="decor.html">Back to Décor</a></p>
+        <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="decor.html">Décor</a></li><li aria-current="page">Shower Curtains</li></ol></nav>
         <h1>Shower Curtains</h1>
 
         <div class="image-grid">

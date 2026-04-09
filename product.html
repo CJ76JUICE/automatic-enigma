@@ -110,6 +110,13 @@
         footer nav a {
             color: #bdbdbd;
         }
+        .breadcrumb { margin: 0 0 1rem; }
+        .breadcrumb ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem; align-items: center; }
+        .breadcrumb li { font-size: 0.88rem; color: rgba(255,255,255,0.65); }
+        .breadcrumb li + li::before { content: '/'; margin-right: 0.25rem; color: rgba(255,255,255,0.4); }
+        .breadcrumb a { color: rgba(255,255,255,0.75); text-decoration: none; }
+        .breadcrumb a:hover { color: #f9e2f9; }
+        .breadcrumb li[aria-current="page"] { color: #f4f4f4; font-weight: 500; }
     </style>
 </head>
 <body>
@@ -130,7 +137,7 @@
 
     <main>
         <div class="product-layout">
-            <p><a href="decor.html">&larr; Back to Décor</a></p>
+            <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="decor.html">Décor</a></li><li aria-current="page">Product</li></ol></nav>
             <h2 id="product-title">Product</h2>
             <img id="product-image" class="product-image" src="images/222-Decor/pillows/Chalet222-peacefull-buddha-pillow-12x12.jpg" alt="Product image">
             <p id="product-path" class="product-meta"></p>
