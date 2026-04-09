@@ -128,7 +128,7 @@ body {
 
 .header-signin {
     position: absolute;
-    right: 30px;
+    right: 50px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 0.8em;
