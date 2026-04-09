@@ -112,7 +112,7 @@
             transition: transform 0.5s ease;
         }
         .carousel-item {
-            min-width: calc((100% - 32px) / 3);
+            min-width: calc((100% - 48px) / 4);
             box-sizing: border-box;
             padding: 0;
             text-align: center;
@@ -163,7 +163,12 @@
             width: 100%;
             overflow: hidden;
         }
-        @media (max-width: 980px) {
+        @media (max-width: 1200px) {
+            .carousel-item {
+                min-width: calc((100% - 32px) / 3);
+            }
+        }
+        @media (max-width: 900px) {
             .carousel-item {
                 min-width: calc((100% - 16px) / 2);
             }
@@ -221,6 +226,12 @@
                         <img src="images/Beautifully-Broken-images/cactus/saguaro-cactus-livingroom.png" alt="Saguaro cactus mixed-media artwork">
                     </a>
                     <p><a href="saguaro-cactus-bb.html">Cactus: Saguaro Cactus.</a></p>
+                </div>
+                <div class="carousel-item">
+                    <a href="tree-of-life-beautifully-broken.html">
+                        <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken.JPG" alt="Tree of Life mixed-media artwork">
+                    </a>
+                    <p><a href="tree-of-life-beautifully-broken.html">Tree of Life: Original.</a></p>
                 </div>
             </div>
             <div class="carousel-buttons">
@@ -284,7 +295,7 @@
             const totalItems = items.length;
             const gap = parseFloat(getComputedStyle(container).columnGap || getComputedStyle(container).gap || '0');
             const itemWidth = items[0].getBoundingClientRect().width;
-            const visible = window.innerWidth <= 640 ? 1 : (window.innerWidth <= 980 ? 2 : 3);
+            const visible = Math.max(1, Math.floor((container.parentElement.clientWidth + gap) / (itemWidth + gap)));
             const maxIndex = Math.max(0, totalItems - visible);
             let currentIndex = parseInt(container.dataset.currentIndex || 0);
             currentIndex = Math.min(maxIndex, currentIndex + 1);
@@ -306,7 +317,7 @@
             const gap = parseFloat(getComputedStyle(container).columnGap || getComputedStyle(container).gap || '0');
             const itemWidth = items[0].getBoundingClientRect().width;
             const totalItems = items.length;
-            const visible = window.innerWidth <= 640 ? 1 : (window.innerWidth <= 980 ? 2 : 3);
+            const visible = Math.max(1, Math.floor((container.parentElement.clientWidth + gap) / (itemWidth + gap)));
             const maxIndex = Math.max(0, totalItems - visible);
             let currentIndex = parseInt(container.dataset.currentIndex || 0);
             currentIndex = Math.max(0, currentIndex - 1);
@@ -332,10 +343,10 @@
 
                 const items = container.children;
                 const totalItems = items.length;
-                const visible = window.innerWidth <= 640 ? 1 : (window.innerWidth <= 980 ? 2 : 3);
-                const maxIndex = Math.max(0, totalItems - visible);
                 const gap = parseFloat(getComputedStyle(container).columnGap || getComputedStyle(container).gap || '0');
                 const itemWidth = items[0].getBoundingClientRect().width;
+                const visible = Math.max(1, Math.floor((container.parentElement.clientWidth + gap) / (itemWidth + gap)));
+                const maxIndex = Math.max(0, totalItems - visible);
                 let currentIndex = parseInt(container.dataset.currentIndex || 0);
                 currentIndex = Math.min(currentIndex, maxIndex);
                 container.style.transform = `translateX(-${currentIndex * (itemWidth + gap)}px)`;
