@@ -120,7 +120,7 @@
         </a>
         <nav>
         <ul>
-            <li class="nav-dropdown"><a href="decor.html">222 Decor</a><ul class="dropdown-menu"><li><a href="222-decor-shower-curtain.html">Shower Curtains</a></li><li><a href="222-decor-pillows.html">Pillows</a></li></ul></li>
+            <li class="nav-dropdown"><a href="decor.html">Decor</a><ul class="dropdown-menu"><li><a href="222-decor-shower-curtain.html">Shower Curtains</a></li><li><a href="222-decor-pillows.html">Pillows</a></li></ul></li>
             <li><a href="custom-paintings.html">Paintings</a></li><li><a href="prints.html">Prints</a></li>
             <li class="nav-dropdown"><a href="glass-metal.html">Beautifully Broken®</a><ul class="dropdown-menu"><li><a href="glass-metal.html#tree-of-life">Tree of Life</a></li><li><a href="beautifully-broken-creatures.html">Creatures</a></li><li><a href="beautifully-broken-cactus.html">Cactus</a></li></ul></li>
         </ul>
@@ -130,7 +130,7 @@
 
     <main>
         <div class="product-layout">
-            <p><a href="decor.html">&larr; Back to 222 Dêcor</a></p>
+            <p><a href="decor.html">&larr; Back to Decor</a></p>
             <h2 id="product-title">Product</h2>
             <img id="product-image" class="product-image" src="images/222-Decor/pillows/Chalet222-peacefull-buddha-pillow-12x12.jpg" alt="Product image">
             <p id="product-path" class="product-meta"></p>
@@ -190,16 +190,16 @@
                 document.getElementById('product-image').src = decodedPath;
                 document.getElementById('product-image').alt = title;
                 document.getElementById('product-path').textContent = 'Image: ' + decodedPath;
-                document.getElementById('product-description').textContent = 'This design is part of our 222 Dêcor collection.';
+                document.getElementById('product-description').textContent = 'This design is part of our Decor collection.';
             } else {
                 const error = document.getElementById('product-error');
                 error.hidden = false;
-                error.textContent = 'Invalid image path. Please open this page from a 222 Dêcor product link.';
+                error.textContent = 'Invalid image path. Please open this page from a Decor product link.';
             }
         } else {
             const error = document.getElementById('product-error');
             error.hidden = false;
-            error.textContent = 'No product image selected. Please choose a product from the 222 Dêcor page.';
+            error.textContent = 'No product image selected. Please choose a product from the Decor page.';
         }
     </script>
     <script src="gallery-lightbox.js"></script>
