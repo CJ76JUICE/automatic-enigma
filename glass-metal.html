@@ -99,60 +99,42 @@
         footer nav a {
             color: #bdbdbd;
         }
-        /* Carousel styles */
-        .carousel {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            margin: 0 auto;
-        }
-        .carousel-container {
+        .mixed-row {
             display: flex;
             flex-wrap: nowrap;
             gap: 1.5rem;
-            transition: transform 0.5s ease;
+            overflow-x: auto;
+            padding-bottom: 0.35rem;
+            scroll-snap-type: x proximity;
         }
-        .carousel-item {
+        .mixed-card {
+            display: block;
             flex: 0 0 260px;
-            box-sizing: border-box;
-            padding: 0;
-            text-align: center;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 0;
+            overflow: hidden;
+            text-decoration: none;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+            scroll-snap-align: start;
         }
-        .carousel-item img {
+        .mixed-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+        }
+        .mixed-card img {
             width: 100%;
             aspect-ratio: 3 / 4;
             object-fit: cover;
-            border-radius: 10px;
-            max-width: none;
+            border-radius: 0;
+            display: block;
         }
-        .carousel-buttons {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            transform: translateY(-50%);
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            pointer-events: none;
-            z-index: 2;
-        }
-        .carousel-buttons button {
-            pointer-events: all;
-            background: rgba(0, 0, 0, 0.45);
-            color: white;
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            padding: 0;
-            cursor: pointer;
-            font-size: 14px;
-            line-height: 1;
-        }
-        .carousel h3 {
-            text-align: center;
-            margin-bottom: 10px;
+        .mixed-card span {
+            display: block;
+            padding: 0.75rem 0.85rem 0.9rem;
+            color: #f4f4f4;
+            font-size: 0.95rem;
+            line-height: 1.35;
         }
         .intro {
             color: rgba(255, 255, 255, 0.9);
@@ -160,13 +142,9 @@
             margin: 0 0 1.5rem;
             max-width: 860px;
         }
-        #kitchen-carousel {
-            width: 100%;
-            overflow: hidden;
-        }
         @media (max-width: 640px) {
-            .carousel-item {
-                flex-basis: 100%;
+            .mixed-card {
+                flex-basis: 80vw;
             }
         }
     </style>
@@ -184,7 +162,7 @@
             <li class="nav-dropdown">
                 <a href="glass-metal.html" aria-current="page">Mixed</a>
                 <ul class="dropdown-menu">
-                    <li><a href="tree-of-life-beautifully-broken.html">Tree of Life</a></li>
+                    <li><a href="tree-of-life.html">Tree of Life</a></li>
                     <li><a href="beautifully-broken-creatures.html">Creatures</a></li>
                     <li><a href="beautifully-broken-cactus.html">Cactus</a></li>
                 </ul>
@@ -198,49 +176,32 @@
         <p class="intro">Discover mixed-media work blending glass, metal, and texture across Tree of Life, Creatures, and Cactus themes.</p>
         
         <span id="tree-of-life" aria-hidden="true"></span>
-        <!-- Kitchen Carousel -->
-        <section class="carousel" id="kitchen-carousel" aria-label="Tree of Life" data-subcategory="tree-of-life">
-            <div class="carousel-container">
-                <div class="carousel-item">
-                    <a href="tree-of-life-large-wood-metal-glass.html">
-                        <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-large-wood-metal-glass.png" alt="Tree of Life large wood metal glass art">
-                    </a>
-                    <p><a href="tree-of-life-large-wood-metal-glass.html">Tree of Life: Large Wood Metal Glass.</a></p>
-                </div>
-                <div class="carousel-item">
-                    <a href="bird-metal-glass-stone.html">
-                        <img src="images/Beautifully-Broken-images/bird-metal-glass-stone.png" alt="Bird in metal, glass, and stone artwork">
-                    </a>
-                    <p><a href="bird-metal-glass-stone.html">Creatures: Bird in Metal, Glass and Stone.</a></p>
-                </div>
-                <div class="carousel-item">
-                    <a href="saguaro-cactus-bb.html">
-                        <img src="images/Beautifully-Broken-images/cactus/saguaro-cactus-livingroom.png" alt="Saguaro cactus mixed-media artwork">
-                    </a>
-                    <p><a href="saguaro-cactus-bb.html">Cactus: Saguaro Cactus.</a></p>
-                </div>
-                <div class="carousel-item">
-                    <a href="tree-of-life-beautifully-broken.html">
-                        <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken.JPG" alt="Tree of Life mixed-media artwork">
-                    </a>
-                    <p><a href="tree-of-life-beautifully-broken.html">Tree of Life: Original.</a></p>
-                </div>
-                <div class="carousel-item">
-                    <a href="tree-of-life-journal-5x7.html">
-                        <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken-journal.jpeg" alt="Tree of Life journal 5x7 mixed-media artwork">
-                    </a>
-                    <p><a href="tree-of-life-journal-5x7.html">Tree of Life: Journal 5x7.</a></p>
-                </div>
-                <div class="carousel-item">
-                    <a href="four-seasons-26x8.html">
-                        <img src="images/Beautifully-Broken-images/tree-of-life/four-seasons-beautifully-broken.JPG" alt="Four Seasons 26x8 mixed-media artwork">
-                    </a>
-                    <p><a href="four-seasons-26x8.html">Tree of Life: Four Seasons 26x8.</a></p>
-                </div>
-            </div>
-            <div class="carousel-buttons">
-                <button onclick="prevSlide('kitchen-carousel')">&lt;</button>
-                <button onclick="nextSlide('kitchen-carousel')">&gt;</button>
+        <section aria-label="Mixed media image cards">
+            <div class="mixed-row">
+                <a class="mixed-card" href="tree-of-life-large-wood-metal-glass.html">
+                    <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-large-wood-metal-glass.png" alt="Tree of Life large wood metal glass art">
+                    <span>Tree of Life: Large Wood Metal Glass.</span>
+                </a>
+                <a class="mixed-card" href="bird-metal-glass-stone.html">
+                    <img src="images/Beautifully-Broken-images/bird-metal-glass-stone.png" alt="Bird in metal, glass, and stone artwork">
+                    <span>Creatures: Bird in Metal, Glass and Stone.</span>
+                </a>
+                <a class="mixed-card" href="saguaro-cactus-bb.html">
+                    <img src="images/Beautifully-Broken-images/cactus/saguaro-cactus-livingroom.png" alt="Saguaro cactus mixed-media artwork">
+                    <span>Cactus: Saguaro Cactus.</span>
+                </a>
+                <a class="mixed-card" href="tree-of-life.html">
+                    <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken.JPG" alt="Tree of Life mixed-media artwork">
+                    <span>Tree of Life: Main Page.</span>
+                </a>
+                <a class="mixed-card" href="tree-of-life-journal-5x7.html">
+                    <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken-journal.jpeg" alt="Tree of Life journal 5x7 mixed-media artwork">
+                    <span>Tree of Life: Journal 5x7.</span>
+                </a>
+                <a class="mixed-card" href="four-seasons-26x8.html">
+                    <img src="images/Beautifully-Broken-images/tree-of-life/four-seasons-beautifully-broken.JPG" alt="Four Seasons 26x8 mixed-media artwork">
+                    <span>Tree of Life: Four Seasons 26x8.</span>
+                </a>
             </div>
         </section>
 
@@ -292,80 +253,6 @@
             });
         });
 
-        function nextSlide(carouselId) {
-            const carousel = document.getElementById(carouselId);
-            const container = carousel.querySelector('.carousel-container');
-            const items = container.children;
-            const totalItems = items.length;
-            const gap = parseFloat(getComputedStyle(container).columnGap || getComputedStyle(container).gap || '0');
-            const itemWidth = items[0].getBoundingClientRect().width;
-            const visible = Math.max(1, Math.floor((container.parentElement.clientWidth + gap) / (itemWidth + gap)));
-            const maxIndex = Math.max(0, totalItems - visible);
-            let currentIndex = parseInt(container.dataset.currentIndex || 0);
-            currentIndex = Math.min(maxIndex, currentIndex + 1);
-            container.style.transform = `translateX(-${currentIndex * (itemWidth + gap)}px)`;
-            container.dataset.currentIndex = currentIndex;
-
-            const prev = carousel.querySelector('.carousel-buttons button:first-child');
-            const next = carousel.querySelector('.carousel-buttons button:last-child');
-            if (prev && next) {
-                prev.disabled = currentIndex === 0;
-                next.disabled = currentIndex >= maxIndex;
-            }
-        }
-
-        function prevSlide(carouselId) {
-            const carousel = document.getElementById(carouselId);
-            const container = carousel.querySelector('.carousel-container');
-            const items = container.children;
-            const gap = parseFloat(getComputedStyle(container).columnGap || getComputedStyle(container).gap || '0');
-            const itemWidth = items[0].getBoundingClientRect().width;
-            const totalItems = items.length;
-            const visible = Math.max(1, Math.floor((container.parentElement.clientWidth + gap) / (itemWidth + gap)));
-            const maxIndex = Math.max(0, totalItems - visible);
-            let currentIndex = parseInt(container.dataset.currentIndex || 0);
-            currentIndex = Math.max(0, currentIndex - 1);
-            container.style.transform = `translateX(-${currentIndex * (itemWidth + gap)}px)`;
-            container.dataset.currentIndex = currentIndex;
-
-            const prev = carousel.querySelector('.carousel-buttons button:first-child');
-            const next = carousel.querySelector('.carousel-buttons button:last-child');
-            if (prev && next) {
-                prev.disabled = currentIndex === 0;
-                next.disabled = currentIndex >= maxIndex;
-            }
-        }
-
-        window.addEventListener('resize', () => {
-            const carousels = Array.from(document.querySelectorAll('.carousel'));
-
-            carousels.forEach((carousel) => {
-                const container = carousel.querySelector('.carousel-container');
-                if (!container || !container.children.length) {
-                    return;
-                }
-
-                const items = container.children;
-                const totalItems = items.length;
-                const gap = parseFloat(getComputedStyle(container).columnGap || getComputedStyle(container).gap || '0');
-                const itemWidth = items[0].getBoundingClientRect().width;
-                const visible = Math.max(1, Math.floor((container.parentElement.clientWidth + gap) / (itemWidth + gap)));
-                const maxIndex = Math.max(0, totalItems - visible);
-                let currentIndex = parseInt(container.dataset.currentIndex || 0);
-                currentIndex = Math.min(currentIndex, maxIndex);
-                container.style.transform = `translateX(-${currentIndex * (itemWidth + gap)}px)`;
-                container.dataset.currentIndex = currentIndex;
-
-                const prev = carousel.querySelector('.carousel-buttons button:first-child');
-                const next = carousel.querySelector('.carousel-buttons button:last-child');
-                if (prev && next) {
-                    prev.disabled = currentIndex === 0;
-                    next.disabled = currentIndex >= maxIndex;
-                }
-            });
-        });
-
-        window.dispatchEvent(new Event('resize'));
     </script>
 
 </body>

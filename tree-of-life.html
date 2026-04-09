@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mixed | Tree of Life</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header, footer {
+            background-color: #333;
+            color: white;
+            padding: 1em 0;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        footer {
+            text-align: center;
+            background-color: rgba(34, 85, 34, 0.10);
+            color: #bdbdbd;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+        }
+        main {
+            padding: 2em;
+            display: block;
+            max-width: 1400px;
+            margin: 0 auto 2rem;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        .site-header nav > ul > li {
+            position: relative;
+            display: inline-block;
+        }
+        .site-header nav > ul > li:last-child {
+            margin-right: 0;
+        }
+        .site-header .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 170px;
+            background: rgba(24, 24, 24, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 0;
+            padding: 0.45rem;
+            margin-top: 4px;
+            text-align: left;
+            display: none;
+            z-index: 20;
+        }
+        .site-header .nav-dropdown::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100%;
+            height: 10px;
+        }
+        .site-header .dropdown-menu li {
+            display: block;
+            margin: 0;
+        }
+        .site-header .dropdown-menu a {
+            display: block;
+            padding: 0.45rem 0.55rem;
+            border-radius: 0;
+            color: #f9e2f9;
+        }
+        .site-header .dropdown-menu a:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+        .site-header .nav-dropdown:hover .dropdown-menu,
+        .site-header .nav-dropdown.is-open .dropdown-menu,
+        .site-header .nav-dropdown:focus-within .dropdown-menu {
+            display: block;
+        }
+        a {
+            text-decoration: none;
+            color: #f9e2f9;
+        }
+        footer nav a {
+            color: #bdbdbd;
+        }
+        .breadcrumb {
+            margin: 0 0 1rem;
+        }
+        .breadcrumb ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+            align-items: center;
+        }
+        .breadcrumb li {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.65);
+        }
+        .breadcrumb li + li::before {
+            content: '/';
+            margin-right: 0.25rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+        .breadcrumb a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            color: #f9e2f9;
+        }
+        .breadcrumb li[aria-current="page"] {
+            color: #f4f4f4;
+            font-weight: 500;
+        }
+        .intro {
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.65);
+            margin: 0 0 1.5rem;
+            max-width: 860px;
+        }
+
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .carousel-container {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.5s ease;
+        }
+        .carousel-item {
+            min-width: calc((100% - 32px) / 3);
+            box-sizing: border-box;
+            padding: 0;
+            text-align: center;
+        }
+        .carousel-item img {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            display: block;
+        }
+        .carousel-item p {
+            margin: 0.6rem 0 0;
+        }
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .carousel-buttons button {
+            pointer-events: all;
+            background: rgba(0, 0, 0, 0.45);
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            padding: 0;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 1;
+        }
+        @media (max-width: 900px) {
+            .carousel-item {
+                min-width: calc((100% - 16px) / 2);
+            }
+        }
+        @media (max-width: 640px) {
+            .carousel-item {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="index.html" class="logo-link">
+            <img src="images/chalet222.png" alt="chalet 222 logo" class="logo-img" width="200" height="65">
+        </a>
+        <nav>
+        <ul>
+           <li class="nav-dropdown"><a href="decor.html">Décor</a><ul class="dropdown-menu"><li><a href="222-decor-shower-curtain.html">Shower Curtains</a></li><li><a href="222-decor-pillows.html">Pillows</a></li></ul></li>
+            <li><a href="custom-paintings.html">Paint</a></li><li><a href="prints.html">Print</a></li>
+            <li class="nav-dropdown">
+                <a href="glass-metal.html" aria-current="page">Mixed</a>
+                <ul class="dropdown-menu">
+                    <li><a href="tree-of-life.html">Tree of Life</a></li>
+                    <li><a href="beautifully-broken-creatures.html">Creatures</a></li>
+                    <li><a href="beautifully-broken-cactus.html">Cactus</a></li>
+                </ul>
+            </li>
+        </ul>
+        </nav>
+        <a href="sign-in.html" class="header-signin">Orders & Sign In</a>
+    </header>
+
+    <main>
+        <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="glass-metal.html">Mixed</a></li><li aria-current="page">Tree of Life</li></ol></nav>
+        <p class="intro">Browse the complete Tree of Life mixed-media collection and open each piece for full product details.</p>
+
+        <section class="carousel" id="tree-of-life-carousel" aria-label="Tree of Life products">
+            <div class="carousel-container">
+                <div class="carousel-item">
+                    <a href="tree-of-life-large-wood-metal-glass.html">
+                        <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-large-wood-metal-glass.png" alt="Tree of Life large wood metal glass art">
+                    </a>
+                    <p><a href="tree-of-life-large-wood-metal-glass.html">Tree of Life: Large Wood Metal Glass.</a></p>
+                </div>
+                <div class="carousel-item">
+                    <a href="tree-of-life-beautifully-broken.html">
+                        <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken.JPG" alt="Tree of Life mixed-media artwork">
+                    </a>
+                    <p><a href="tree-of-life-beautifully-broken.html">Tree of Life: Original.</a></p>
+                </div>
+                <div class="carousel-item">
+                    <a href="tree-of-life-journal-5x7.html">
+                        <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken-journal.jpeg" alt="Tree of Life journal 5x7 mixed-media artwork">
+                    </a>
+                    <p><a href="tree-of-life-journal-5x7.html">Tree of Life: Journal 5x7.</a></p>
+                </div>
+                <div class="carousel-item">
+                    <a href="four-seasons-26x8.html">
+                        <img src="images/Beautifully-Broken-images/tree-of-life/four-seasons-beautifully-broken.JPG" alt="Four Seasons 26x8 mixed-media artwork">
+                    </a>
+                    <p><a href="four-seasons-26x8.html">Tree of Life: Four Seasons 26x8.</a></p>
+                </div>
+            </div>
+            <div class="carousel-buttons">
+                <button onclick="prevSlide('tree-of-life-carousel')">&lt;</button>
+                <button onclick="nextSlide('tree-of-life-carousel')">&gt;</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <nav>
+        <ul>
+            <li><a href="about-us.html">Origin</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        </nav>
+        <p>©2026 All rights reserved. If you are using a screen reader and are having problems using this website, please call (248) 123-4567 for assistance.</p>
+    </footer>
+
+    <script>
+        const navDropdowns = Array.from(document.querySelectorAll('.site-header .nav-dropdown'));
+
+        navDropdowns.forEach((dropdown) => {
+            const trigger = dropdown.querySelector('a');
+            if (!trigger) {
+                return;
+            }
+
+            trigger.setAttribute('aria-expanded', 'false');
+
+            trigger.addEventListener('click', (event) => {
+                const isTouchLike = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+                const isOpen = dropdown.classList.contains('is-open');
+
+                if (isTouchLike && !isOpen) {
+                    event.preventDefault();
+                    dropdown.classList.add('is-open');
+                    trigger.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        document.addEventListener('click', (event) => {
+            navDropdowns.forEach((dropdown) => {
+                const trigger = dropdown.querySelector('a');
+                if (!dropdown.contains(event.target)) {
+                    dropdown.classList.remove('is-open');
+                    if (trigger) {
+                        trigger.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+        });
+
+        function nextSlide(carouselId) {
+            const carousel = document.getElementById(carouselId);
+            const container = carousel.querySelector('.carousel-container');
+            const items = container.children;
+            const totalItems = items.length;
+            const gap = parseFloat(getComputedStyle(container).columnGap || getComputedStyle(container).gap || '0');
+            const itemWidth = items[0].getBoundingClientRect().width;
+            const visible = Math.max(1, Math.floor((container.parentElement.clientWidth + gap) / (itemWidth + gap)));
+            const maxIndex = Math.max(0, totalItems - visible);
+            let currentIndex = parseInt(container.dataset.currentIndex || 0);
+            currentIndex = Math.min(maxIndex, currentIndex + 1);
+            container.style.transform = `translateX(-${currentIndex * (itemWidth + gap)}px)`;
+            container.dataset.currentIndex = currentIndex;
+
+            const prev = carousel.querySelector('.carousel-buttons button:first-child');
+            const next = carousel.querySelector('.carousel-buttons button:last-child');
+            if (prev && next) {
+                prev.disabled = currentIndex === 0;
+                next.disabled = currentIndex >= maxIndex;
+            }
+        }
+
+        function prevSlide(carouselId) {
+            const carousel = document.getElementById(carouselId);
+            const container = carousel.querySelector('.carousel-container');
+            const items = container.children;
+            const gap = parseFloat(getComputedStyle(container).columnGap || getComputedStyle(container).gap || '0');
+            const itemWidth = items[0].getBoundingClientRect().width;
+            const totalItems = items.length;
+            const visible = Math.max(1, Math.floor((container.parentElement.clientWidth + gap) / (itemWidth + gap)));
+            const maxIndex = Math.max(0, totalItems - visible);
+            let currentIndex = parseInt(container.dataset.currentIndex || 0);
+            currentIndex = Math.max(0, currentIndex - 1);
+            container.style.transform = `translateX(-${currentIndex * (itemWidth + gap)}px)`;
+            container.dataset.currentIndex = currentIndex;
+
+            const prev = carousel.querySelector('.carousel-buttons button:first-child');
+            const next = carousel.querySelector('.carousel-buttons button:last-child');
+            if (prev && next) {
+                prev.disabled = currentIndex === 0;
+                next.disabled = currentIndex >= maxIndex;
+            }
+        }
+
+        window.addEventListener('resize', () => {
+            const carousels = Array.from(document.querySelectorAll('.carousel'));
+
+            carousels.forEach((carousel) => {
+                const container = carousel.querySelector('.carousel-container');
+                if (!container || !container.children.length) {
+                    return;
+                }
+
+                const items = container.children;
+                const totalItems = items.length;
+                const gap = parseFloat(getComputedStyle(container).columnGap || getComputedStyle(container).gap || '0');
+                const itemWidth = items[0].getBoundingClientRect().width;
+                const visible = Math.max(1, Math.floor((container.parentElement.clientWidth + gap) / (itemWidth + gap)));
+                const maxIndex = Math.max(0, totalItems - visible);
+                let currentIndex = parseInt(container.dataset.currentIndex || 0);
+                currentIndex = Math.min(currentIndex, maxIndex);
+                container.style.transform = `translateX(-${currentIndex * (itemWidth + gap)}px)`;
+                container.dataset.currentIndex = currentIndex;
+
+                const prev = carousel.querySelector('.carousel-buttons button:first-child');
+                const next = carousel.querySelector('.carousel-buttons button:last-child');
+                if (prev && next) {
+                    prev.disabled = currentIndex === 0;
+                    next.disabled = currentIndex >= maxIndex;
+                }
+            });
+        });
+
+        window.dispatchEvent(new Event('resize'));
+    </script>
+
+</body>
+</html>
