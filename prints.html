@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paintings by Ashley | Chalet 222®</title>
+    <title>Prints | Chalet 222®</title>
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -15,11 +15,17 @@
         h1 {
             color: #f4f4f4;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .intro {
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.65);
+            margin: 0 0 1.5rem;
+            max-width: 860px;
         }
         .image-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
         }
         .product-card {
@@ -69,7 +75,7 @@
         <nav>
         <ul>
            <li class="nav-dropdown"><a href="decor.html">222 Decor</a><ul class="dropdown-menu"><li><a href="222-decor-shower-curtain.html">Shower Curtains</a></li><li><a href="222-decor-pillows.html">Pillows</a></li></ul></li>
-            <li><a href="custom-paintings.html" aria-current="page">Paintings by Ashley</a></li><li><a href="prints.html">Prints</a></li>
+            <li><a href="custom-paintings.html">Paintings by Ashley</a></li><li><a href="prints.html" aria-current="page">Prints</a></li>
             <li class="nav-dropdown"><a href="glass-metal.html">Beautifully Broken®</a><ul class="dropdown-menu"><li><a href="glass-metal.html#tree-of-life">Tree of Life</a></li><li><a href="beautifully-broken-creatures.html">Creatures</a></li><li><a href="beautifully-broken-cactus.html">Cactus</a></li></ul></li>
         </ul>
         </nav>
@@ -77,16 +83,33 @@
     </header>
 
     <main>
-        <h1>Paintings by Ashley</h1>
+        <h1>Prints</h1>
+        <p class="intro">Shop print-ready Chalet 222 designs inspired by our decor and original art collections. Contact us to request available sizes and current pricing.</p>
 
         <div class="image-grid">
-            <a class="product-card" href="ashley-bella.html">
-                <img src="images/Ashley/Bella/bella-final-painting-on-canvas-by-ashley.png" alt="Bella custom portrait painting">
+            <article class="product-card">
+                <img src="images/222-Decor/shower-curtain/original/Chalet222-shower-curtain-original-og.jpg" alt="Origin design print preview">
                 <div class="product-card-body">
-                    <h3>Bella Custom Portrait</h3>
-                    <p>View progress photos and final painted canvas.</p>
+                    <h3>Origin Design Print</h3>
+                    <p>A clean, modern composition adapted from our signature Origin collection.</p>
                 </div>
-            </a>
+            </article>
+
+            <article class="product-card">
+                <img src="images/222-Decor/shower-curtain/peaceful-buddha/Chalet222-shower-curtain-peaceful-buddha-og.jpg" alt="Peaceful Buddha print preview">
+                <div class="product-card-body">
+                    <h3>Peaceful Buddha Print</h3>
+                    <p>A calm and balanced piece made for soothing spaces and mindful interiors.</p>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <img src="images/Ashley/Bella/bella-final-painting-on-canvas-by-ashley.png" alt="Bella portrait print preview">
+                <div class="product-card-body">
+                    <h3>Bella Portrait Print</h3>
+                    <p>A fine-art print inspired by Ashley's hand-painted custom portrait work.</p>
+                </div>
+            </article>
         </div>
     </main>
 
