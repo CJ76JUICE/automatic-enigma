@@ -38,8 +38,8 @@ body {
         footer {
             text-align: center;
             background-color: rgba(34, 85, 34, 0.10);
-            color: #1f4d2e;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+            color: #000000;
+            text-shadow: none;
             margin-top: 2rem;
         }
         main {
@@ -86,7 +86,7 @@ body {
         }
 
         footer nav a {
-            color: #1f4d2e;
+            color: #000000;
         }
 
         footer p {
@@ -328,7 +328,8 @@ footer,
 footer p,
 footer li,
 footer nav a {
-    color: #1f4d2e !important;
+    color: #000000 !important;
+    text-shadow: none !important;
 }
 
 @media (max-width: 900px) {
