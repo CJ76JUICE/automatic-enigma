@@ -283,6 +283,47 @@ button,
     justify-items: start !important;
 }
 
+main,
+main h1,
+main h2,
+main h3,
+main h4,
+.intro,
+.folder-meta,
+.product-meta,
+.product-card-body,
+.product-info,
+.product-info h1,
+.product-info .price,
+.product-info .description,
+.product-card-body h3,
+.product-card-body p,
+.related-products h2,
+.related-card span,
+.product-layout h2,
+.breadcrumb li,
+.breadcrumb a,
+.breadcrumb li + li::before,
+.breadcrumb li[aria-current="page"] {
+    color: #1f241d !important;
+    text-shadow: none !important;
+}
+
+.product-box,
+.product-card,
+.related-card {
+    background: rgba(255, 255, 255, 0.82) !important;
+    border-color: rgba(31, 36, 29, 0.18) !important;
+}
+
+.product-card-placeholder {
+    color: rgba(31, 36, 29, 0.45) !important;
+}
+
+.divider {
+    border-top-color: rgba(31, 36, 29, 0.16) !important;
+}
+
 @media (max-width: 900px) {
     .site-header {
         flex-direction: column;
