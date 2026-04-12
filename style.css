@@ -595,3 +595,14 @@ input[type="radio"] {
     }
 }
 
+/* Black text under all category/carousel product images */
+.carousel-item p,
+.carousel-item p a,
+.carousel-item a,
+.mixed-card span,
+.product-card-body h3,
+.product-card-body p,
+.related-card span {
+    color: #000000 !important;
+}
+
