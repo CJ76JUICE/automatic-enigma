@@ -33,6 +33,7 @@
             padding: 2em 1.5rem;
             display: block;
             max-width: 100%;
+            overflow-x: hidden;
             margin: 0 auto 2rem;
         }
         nav ul {
@@ -138,24 +139,28 @@
 
         .carousel {
             position: relative;
-            overflow: hidden;
+            overflow: visible;
             width: 100%;
             margin: 0 auto;
         }
         .carousel-container {
             display: flex;
-            gap: 2rem;
-            transition: transform 0.5s ease;
+            flex-wrap: nowrap;
+            gap: 1.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.35rem;
+            scroll-snap-type: x proximity;
+            transition: none;
         }
         .carousel-item {
-            min-width: calc((100% - 6rem) / 4);
+            flex: 0 0 260px;
             box-sizing: border-box;
-            padding: 0;
             text-align: center;
+            scroll-snap-align: start;
         }
         .carousel-item img {
             width: 100%;
-            aspect-ratio: 3 / 5;
+            aspect-ratio: 3 / 4;
             object-fit: cover;
             display: block;
         }
@@ -163,38 +168,11 @@
             margin: 0.6rem 0 0;
         }
         .carousel-buttons {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            transform: translateY(-50%);
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            pointer-events: none;
-            z-index: 2;
-        }
-        .carousel-buttons button {
-            pointer-events: all;
-            background: rgba(0, 0, 0, 0.45);
-            color: white;
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            padding: 0;
-            cursor: pointer;
-            font-size: 14px;
-            line-height: 1;
-        }
-        @media (max-width: 900px) {
-            .carousel-item {
-                min-width: calc((100% - 1.5rem) / 2);
-            }
+            display: none;
         }
         @media (max-width: 640px) {
             .carousel-item {
-                min-width: 100%;
+                flex-basis: 80vw;
             }
         }
     </style>
