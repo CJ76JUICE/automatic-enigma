@@ -30,9 +30,11 @@
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
         }
         main {
+            flex: 1;
+            width: 100%;
+            box-sizing: border-box;
             padding: 2em 1.5rem;
-            display: block;
-            max-width: 100%;
+            max-width: 1400px;
             margin: 0 auto 2rem;
         }
         nav ul {
@@ -143,6 +145,7 @@
             overflow-x: auto;
             padding-bottom: 0.35rem;
             scroll-snap-type: x proximity;
+            justify-content: center;
         }
         .tol-card {
             display: block;
@@ -272,80 +275,6 @@
             });
         });
 
-        function nextSlide(carouselId) {
-            const carousel = document.getElementById(carouselId);
-            const container = carousel.querySelector('.carousel-container');
-            const items = container.children;
-            const totalItems = items.length;
-            const gap = parseFloat(getComputedStyle(container).columnGap || getComputedStyle(container).gap || '0');
-            const itemWidth = items[0].getBoundingClientRect().width;
-            const visible = Math.max(1, Math.floor((container.parentElement.clientWidth + gap) / (itemWidth + gap)));
-            const maxIndex = Math.max(0, totalItems - visible);
-            let currentIndex = parseInt(container.dataset.currentIndex || 0);
-            currentIndex = Math.min(maxIndex, currentIndex + 1);
-            container.style.transform = `translateX(-${currentIndex * (itemWidth + gap)}px)`;
-            container.dataset.currentIndex = currentIndex;
-
-            const prev = carousel.querySelector('.carousel-buttons button:first-child');
-            const next = carousel.querySelector('.carousel-buttons button:last-child');
-            if (prev && next) {
-                prev.disabled = currentIndex === 0;
-                next.disabled = currentIndex >= maxIndex;
-            }
-        }
-
-        function prevSlide(carouselId) {
-            const carousel = document.getElementById(carouselId);
-            const container = carousel.querySelector('.carousel-container');
-            const items = container.children;
-            const gap = parseFloat(getComputedStyle(container).columnGap || getComputedStyle(container).gap || '0');
-            const itemWidth = items[0].getBoundingClientRect().width;
-            const totalItems = items.length;
-            const visible = Math.max(1, Math.floor((container.parentElement.clientWidth + gap) / (itemWidth + gap)));
-            const maxIndex = Math.max(0, totalItems - visible);
-            let currentIndex = parseInt(container.dataset.currentIndex || 0);
-            currentIndex = Math.max(0, currentIndex - 1);
-            container.style.transform = `translateX(-${currentIndex * (itemWidth + gap)}px)`;
-            container.dataset.currentIndex = currentIndex;
-
-            const prev = carousel.querySelector('.carousel-buttons button:first-child');
-            const next = carousel.querySelector('.carousel-buttons button:last-child');
-            if (prev && next) {
-                prev.disabled = currentIndex === 0;
-                next.disabled = currentIndex >= maxIndex;
-            }
-        }
-
-        window.addEventListener('resize', () => {
-            const carousels = Array.from(document.querySelectorAll('.carousel'));
-
-            carousels.forEach((carousel) => {
-                const container = carousel.querySelector('.carousel-container');
-                if (!container || !container.children.length) {
-                    return;
-                }
-
-                const items = container.children;
-                const totalItems = items.length;
-                const gap = parseFloat(getComputedStyle(container).columnGap || getComputedStyle(container).gap || '0');
-                const itemWidth = items[0].getBoundingClientRect().width;
-                const visible = Math.max(1, Math.floor((container.parentElement.clientWidth + gap) / (itemWidth + gap)));
-                const maxIndex = Math.max(0, totalItems - visible);
-                let currentIndex = parseInt(container.dataset.currentIndex || 0);
-                currentIndex = Math.min(currentIndex, maxIndex);
-                container.style.transform = `translateX(-${currentIndex * (itemWidth + gap)}px)`;
-                container.dataset.currentIndex = currentIndex;
-
-                const prev = carousel.querySelector('.carousel-buttons button:first-child');
-                const next = carousel.querySelector('.carousel-buttons button:last-child');
-                if (prev && next) {
-                    prev.disabled = currentIndex === 0;
-                    next.disabled = currentIndex >= maxIndex;
-                }
-            });
-        });
-
-        window.dispatchEvent(new Event('resize'));
     </script>
 
 </body>
