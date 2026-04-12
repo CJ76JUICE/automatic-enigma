@@ -136,43 +136,43 @@
             max-width: 860px;
         }
 
-        .carousel {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            margin: 0 auto;
-        }
-        .carousel-container {
+        .tol-row {
             display: flex;
             flex-wrap: nowrap;
             gap: 1.5rem;
-            max-width: none;
             overflow-x: auto;
-            overflow-y: visible;
             padding-bottom: 0.35rem;
             scroll-snap-type: x proximity;
-            transition: none;
         }
-        .carousel-item {
+        .tol-card {
+            display: block;
             flex: 0 0 260px;
-            box-sizing: border-box;
-            text-align: center;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            overflow: hidden;
+            text-decoration: none;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
             scroll-snap-align: start;
         }
-        .carousel-item img {
+        .tol-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+        }
+        .tol-card img {
             width: 100%;
             aspect-ratio: 3 / 4;
             object-fit: cover;
             display: block;
         }
-        .carousel-item p {
-            margin: 0.6rem 0 0;
-        }
-        .carousel-buttons {
-            display: none;
+        .tol-card span {
+            display: block;
+            padding: 0.75rem 0.85rem 0.9rem;
+            color: #000000;
+            font-size: 0.95rem;
+            line-height: 1.35;
         }
         @media (max-width: 640px) {
-            .carousel-item {
+            .tol-card {
                 flex-basis: 80vw;
             }
         }
@@ -205,36 +205,24 @@
         <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="glass-metal.html">Mixed</a></li><li aria-current="page">Tree of Life</li></ol></nav>
         <p class="intro">Browse the complete Tree of Life mixed-media collection and open each piece for full product details.</p>
 
-        <section class="carousel" id="tree-of-life-carousel" aria-label="Tree of Life products">
-            <div class="carousel-container">
-                <div class="carousel-item">
-                    <a href="four-seasons-26x8.html">
-                        <img src="images/Beautifully-Broken-images/tree-of-life/four-seasons-beautifully-broken.JPG" alt="Four Seasons 26x8 mixed-media artwork">
-                    </a>
-                    <p><a href="four-seasons-26x8.html">Tree of Life: Four Seasons 26x8.</a></p>
-                </div>
-                <div class="carousel-item">
-                    <a href="tree-of-life-beautifully-broken.html">
-                        <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken.JPG" alt="Tree of Life mixed-media artwork">
-                    </a>
-                    <p><a href="tree-of-life-beautifully-broken.html">Tree of Life: Original.</a></p>
-                </div>
-                <div class="carousel-item">
-                    <a href="tree-of-life-journal-5x7.html">
-                        <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken-journal.jpeg" alt="Tree of Life journal 5x7 mixed-media artwork">
-                    </a>
-                    <p><a href="tree-of-life-journal-5x7.html">Tree of Life: Journal 5x7.</a></p>
-                </div>
-                <div class="carousel-item">
-                    <a href="tree-of-life-large-wood-metal-glass.html">
-                        <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-large-wood-metal-glass.png" alt="Tree of Life large wood metal glass art">
-                    </a>
-                    <p><a href="tree-of-life-large-wood-metal-glass.html">Tree of Life: Large Wood Metal Glass.</a></p>
-                </div>
-            </div>
-            <div class="carousel-buttons">
-                <button onclick="prevSlide('tree-of-life-carousel')">&lt;</button>
-                <button onclick="nextSlide('tree-of-life-carousel')">&gt;</button>
+        <section aria-label="Tree of Life products">
+            <div class="tol-row">
+                <a class="tol-card" href="four-seasons-26x8.html">
+                    <img src="images/Beautifully-Broken-images/tree-of-life/four-seasons-beautifully-broken.JPG" alt="Four Seasons 26x8 mixed-media artwork">
+                    <span>Tree of Life: Four Seasons 26x8.</span>
+                </a>
+                <a class="tol-card" href="tree-of-life-beautifully-broken.html">
+                    <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken.JPG" alt="Tree of Life mixed-media artwork">
+                    <span>Tree of Life: Original.</span>
+                </a>
+                <a class="tol-card" href="tree-of-life-journal-5x7.html">
+                    <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken-journal.jpeg" alt="Tree of Life journal 5x7 mixed-media artwork">
+                    <span>Tree of Life: Journal 5x7.</span>
+                </a>
+                <a class="tol-card" href="tree-of-life-large-wood-metal-glass.html">
+                    <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-large-wood-metal-glass.png" alt="Tree of Life large wood metal glass art">
+                    <span>Tree of Life: Large Wood Metal Glass.</span>
+                </a>
             </div>
         </section>
     </main>
