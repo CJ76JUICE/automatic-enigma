@@ -48,6 +48,24 @@
         .request-form .field-note { font-size: 0.78rem; color: #555; margin-top: 0.15rem; }
         .request-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
         @media (max-width: 480px) { .request-form .form-row { grid-template-columns: 1fr; } }
+        .form-feedback {
+            display: none;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            font-size: 0.97rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .form-feedback.success {
+            background: rgba(24, 69, 59, 0.12);
+            border: 1px solid #18453B;
+            color: #18453B;
+        }
+        .form-feedback.error {
+            background: rgba(180, 30, 30, 0.08);
+            border: 1px solid #b41e1e;
+            color: #b41e1e;
+        }
     </style>
 </head>
 <body>
@@ -115,6 +133,7 @@
                         <button type="submit" class="btn-cart" style="width:100%;margin-top:0.25rem;">Submit Request</button>
                     </fieldset>
                 </form>
+                <div class="form-feedback" id="form-feedback" role="alert" aria-live="polite"></div>
                 <hr class="divider">
                 <a class="btn-cart" href="https://buy.stripe.com/cNi5kDfsq7G7e1h0bscjS01" target="_blank" rel="noopener noreferrer">Pay with Stripe</a>
             </div>
@@ -139,5 +158,47 @@
         <p>©2026 All rights reserved. | Spartan Designed</p>
     </footer>
     <script src="gallery-lightbox.js"></script>
+    <script>
+        (function () {
+            const form = document.querySelector('.request-form');
+            const feedback = document.getElementById('form-feedback');
+
+            function showFeedback(type, message) {
+                feedback.className = 'form-feedback ' + type;
+                feedback.textContent = message;
+                feedback.style.display = 'block';
+                feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const submitBtn = form.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending…';
+                feedback.style.display = 'none';
+
+                const data = new FormData(form);
+
+                fetch('/', {
+                    method: 'POST',
+                    body: data,
+                })
+                    .then(function (res) {
+                        if (res.ok) {
+                            form.reset();
+                            showFeedback('success', '✓ Your request was sent! We\'ll be in touch soon.');
+                            submitBtn.textContent = 'Request Sent';
+                        } else {
+                            throw new Error('Server responded with ' + res.status);
+                        }
+                    })
+                    .catch(function () {
+                        showFeedback('error', 'Something went wrong. Please try again or email us directly.');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Submit Request';
+                    });
+            });
+        })();
+    </script>
 </body>
 </html>
