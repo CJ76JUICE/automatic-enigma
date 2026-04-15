@@ -37,8 +37,8 @@ body {
         }
         footer {
             text-align: center;
-            background-color: white;
-            color: #000000;
+            background-color: rgba(20, 20, 20, 0.88);
+            color: #ffffff;
             text-shadow: none;
             margin-top: 2rem;
         }
@@ -86,7 +86,7 @@ body {
         }
 
         footer nav a {
-            color: #000000;
+            color: #d0d0d0;
         }
 
         footer p {
@@ -328,7 +328,7 @@ footer,
 footer p,
 footer li,
 footer nav a {
-    color: #000000 !important;
+    color: #ffffff !important;
     text-shadow: none !important;
 }
 
