@@ -259,6 +259,8 @@ button,
 .btn-cart,
 .carousel-buttons button {
     border-radius: 0 !important;
+    background-color: #18453B;
+    color: #ffffff;
 }
 
 .site-header .dropdown-menu a:hover {
