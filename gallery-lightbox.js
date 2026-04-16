@@ -59,7 +59,21 @@
     }
 
     galleryImages.forEach((image, index) => {
-        image.style.cursor = 'zoom-in';
+        image.style.cursor = 'pointer';
+        let tapStartX = 0;
+        let tapStartY = 0;
+        image.addEventListener('touchstart', function (e) {
+            tapStartX = e.touches[0].clientX;
+            tapStartY = e.touches[0].clientY;
+        }, { passive: true });
+        image.addEventListener('touchend', function (e) {
+            const dx = Math.abs(e.changedTouches[0].clientX - tapStartX);
+            const dy = Math.abs(e.changedTouches[0].clientY - tapStartY);
+            if (dx < 10 && dy < 10) {
+                e.preventDefault();
+                openAt(index);
+            }
+        });
         image.addEventListener('click', function (event) {
             event.preventDefault();
             openAt(index);
