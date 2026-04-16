@@ -92,7 +92,7 @@
             </div>
             <div class="product-info">
                 <h1>Ashley Custom Painting</h1>
-                <span class="price">From $200.00</span>
+                <span class="price" id="painting-price">From $125.00</span>
                 <hr class="divider">
                 <p class="description">
                     A hand-painted custom pet portrait by Ashley. This page shows the reference photo,
@@ -117,12 +117,9 @@
                             <label for="cp-size">Painting Size</label>
                             <select id="cp-size" name="size" required>
                                 <option value="" disabled selected>Select a size…</option>
-                                <option value="8x10">8 × 10 in</option>
-                                <option value="11x14">11 × 14 in</option>
-                                <option value="16x20">16 × 20 in</option>
-                                <option value="18x24">18 × 24 in</option>
-                                <option value="24x36">24 × 36 in</option>
-                                <option value="custom">Custom size</option>
+                                <option value="8x10" data-price="12500">8 × 10 in — $125.00</option>
+                                <option value="16x20" data-price="15000">16 × 20 in — $150.00</option>
+                                <option value="32x40" data-price="25000">32 × 40 in — $250.00</option>
                             </select>
                         </div>
                         <div>
@@ -210,6 +207,24 @@
                         submitBtn.disabled = false;
                         submitBtn.textContent = 'Submit Request';
                     });
+            });
+        })();
+
+        /* Update price display and cart button when size is selected */
+        (function () {
+            var sizeSelect = document.getElementById('cp-size');
+            var priceEl = document.getElementById('painting-price');
+            var cartBtn = document.querySelector('.btn-add-to-cart');
+
+            sizeSelect.addEventListener('change', function () {
+                var opt = sizeSelect.options[sizeSelect.selectedIndex];
+                var price = opt.dataset.price;
+                var label = opt.textContent.split('—')[0].trim();
+                if (price) {
+                    priceEl.textContent = '$' + (parseInt(price, 10) / 100).toFixed(2);
+                    cartBtn.dataset.productPrice = price;
+                    cartBtn.dataset.productName = 'Ashley Custom Painting ' + label;
+                }
             });
         })();
     </script>
