@@ -23,6 +23,7 @@
 
         .carousel-viewport {
             overflow: hidden;
+            width: 100%;
         }
 
         .carousel-track {
@@ -226,11 +227,13 @@
         }
 
         function updateCarousel() {
-            const slideWidth = slides[0].offsetWidth;
+            const viewport = document.querySelector('.carousel-viewport');
+            const count = visibleCount();
             const gap = 16;
+            const slideWidth = (viewport.offsetWidth - (gap * (count - 1))) / count;
+            slides.forEach(s => { s.style.width = slideWidth + 'px'; s.style.flexShrink = '0'; });
+            const maxIndex = Math.max(0, slides.length - count);
             const offset = startIndex * (slideWidth + gap);
-            const maxIndex = Math.max(0, slides.length - visibleCount());
-
             track.style.transform = `translateX(-${offset}px)`;
             prevBtn.disabled = startIndex === 0;
             nextBtn.disabled = startIndex >= maxIndex;
