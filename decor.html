@@ -9,7 +9,7 @@
     <style>
         main {
             max-width: 1400px;
-            margin: 0 auto 2rem;
+            margin-bottom: 2rem;
         }
 
         .product-carousel {
@@ -29,12 +29,6 @@
             gap: 16px;
             transition: transform 0.45s ease;
             will-change: transform;
-        }
-
-        @media (min-width: 721px) {
-            .carousel-track {
-                justify-content: center;
-            }
         }
 
         .carousel-slide {
@@ -172,8 +166,12 @@
         let startIndex = 0;
 
         function visibleCount() {
-            if (window.innerWidth <= 720) return 1;
-            if (window.innerWidth <= 960) return 2;
+            if (window.innerWidth <= 720) {
+                return 1;
+            }
+            if (window.innerWidth <= 960) {
+                return 2;
+            }
             return 3;
         }
 
