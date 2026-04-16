@@ -609,3 +609,41 @@ input[type="radio"] {
     color: #000000 !important;
 }
 
+/* ── Cart icon in site header ── */
+.cart-icon-link {
+    position: absolute;
+    right: 186px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.cart-icon-link:hover { color: #18453B; }
+
+.cart-count {
+    background: #18453B;
+    color: #fff;
+    border-radius: 999px;
+    min-width: 18px;
+    height: 18px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    line-height: 1;
+}
+
+@media (max-width: 900px) {
+    .cart-icon-link {
+        position: static;
+        transform: none;
+    }
+}
+

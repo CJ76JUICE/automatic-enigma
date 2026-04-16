@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart | Chalet 42®</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: sans-serif; margin: 0; min-height: 100vh; display: flex; flex-direction: column; }
+        main { width: min(820px, 96vw); margin: 2rem auto; flex: 1; padding: 0 1rem; }
+        a { color: #1f241d; text-decoration: none; }
+
+        .cart-empty {
+            text-align: center;
+            padding: 4rem 1rem;
+            color: #555;
+        }
+        .cart-empty h2 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+        .cart-empty p { margin-bottom: 1.5rem; }
+        .cart-empty a {
+            display: inline-block;
+            background: #18453B;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0;
+            font-weight: 600;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+        .cart-table th {
+            text-align: left;
+            padding: 0.6rem 0.75rem;
+            border-bottom: 2px solid rgba(31, 36, 29, 0.2);
+            font-size: 0.88rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .cart-table td {
+            padding: 1rem 0.75rem;
+            border-bottom: 1px solid rgba(31, 36, 29, 0.1);
+            vertical-align: middle;
+        }
+        .cart-item-img {
+            width: 72px;
+            height: 72px;
+            object-fit: cover;
+            border-radius: 0;
+            display: block;
+        }
+        .cart-item-name {
+            font-weight: 600;
+            font-size: 0.97rem;
+        }
+        .cart-qty-input {
+            width: 52px;
+            padding: 0.35rem 0.4rem;
+            border: 1px solid rgba(31, 36, 29, 0.25);
+            border-radius: 0;
+            font-size: 0.95rem;
+            text-align: center;
+            background: rgba(255,255,255,0.9);
+        }
+        .cart-remove-btn {
+            background: none;
+            border: none;
+            color: #a00;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 0.3rem 0.5rem;
+            border-radius: 0 !important;
+        }
+        .cart-remove-btn:hover { color: #700; }
+
+        .cart-summary {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.75rem;
+        }
+        .cart-total {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .cart-total span { color: #18453B; }
+        .cart-notice {
+            font-size: 0.83rem;
+            color: #666;
+            max-width: 340px;
+            text-align: right;
+        }
+        .btn-checkout {
+            background: #18453B;
+            color: #fff;
+            border: none;
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 0.02em;
+            border-radius: 0 !important;
+            transition: background 0.18s;
+        }
+        .btn-checkout:hover { background: #14392f; }
+        .btn-checkout:disabled { opacity: 0.55; cursor: not-allowed; }
+
+        .checkout-error {
+            color: #a00;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .breadcrumb { margin: 0 0 1rem; }
+        .breadcrumb ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem; align-items: center; }
+        .breadcrumb li { font-size: 0.88rem; color: #555; }
+        .breadcrumb li + li::before { content: '/'; margin-right: 0.25rem; color: #666; }
+        .breadcrumb a { color: #555; }
+        .breadcrumb li[aria-current="page"] { color: #444; font-weight: 500; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a href="index.html" class="logo-link">
+            <img src="images/chalet42.png" alt="Chalet 42 logo" class="logo-img" width="200" height="65">
+        </a>
+        <nav>
+            <ul>
+                <li class="nav-dropdown"><a href="decor.html">Décor</a><ul class="dropdown-menu"><li><a href="42-decor-shower-curtain.html">Shower Curtains</a></li><li><a href="42-decor-pillows.html">Pillows</a></li></ul></li>
+                <li><a href="custom-paintings.html">Paint</a></li>
+                <li><a href="prints.html">Print</a></li>
+                <li class="nav-dropdown"><a href="glass-metal.html">Mixed</a><ul class="dropdown-menu"><li><a href="tree-of-life.html">Tree of Life</a></li><li><a href="beautifully-broken-creatures.html">Creatures</a></li><li><a href="beautifully-broken-cactus.html">Cactus</a></li></ul></li>
+            </ul>
+        </nav>
+        <a href="cart.html" class="cart-icon-link" aria-label="View cart" aria-current="page">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <span class="cart-count" hidden>0</span>
+        </a>
+        <a href="check-order-status.html" class="header-signin">Check Order Status</a>
+    </header>
+
+    <main>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol><li><a href="index.html">Home</a></li><li aria-current="page">Cart</li></ol>
+        </nav>
+        <h1>Your Cart</h1>
+
+        <!-- Empty state (shown when cart has no items) -->
+        <div id="cart-empty" class="cart-empty" hidden>
+            <h2>Your cart is empty</h2>
+            <p>Browse our collections and add something you love.</p>
+            <a href="index.html">Continue Shopping</a>
+        </div>
+
+        <!-- Cart items table (shown when cart has items) -->
+        <div id="cart-filled" hidden>
+            <table class="cart-table" aria-label="Cart items">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Subtotal</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="cart-tbody"></tbody>
+            </table>
+
+            <div class="cart-summary">
+                <p class="cart-total">Total: <span id="cart-total-amount">$0.00</span></p>
+                <p class="cart-notice">
+                    Secure checkout powered by Stripe. You will be redirected to Stripe to complete payment.
+                </p>
+                <button class="btn-checkout" id="btn-checkout">Checkout with Stripe</button>
+                <p class="checkout-error" id="checkout-error" hidden></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <nav><ul><li><a href="about-us.html">Origin</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+        <p>©2026 All rights reserved. | Spartan Designed</p>
+    </footer>
+
+    <script src="cart.js"></script>
+    <script>
+        (function () {
+            function formatPrice(cents) {
+                return '$' + (cents / 100).toFixed(2);
+            }
+
+            function renderCart() {
+                var items = Cart.getItems();
+                var empty = document.getElementById('cart-empty');
+                var filled = document.getElementById('cart-filled');
+                var tbody = document.getElementById('cart-tbody');
+                var totalEl = document.getElementById('cart-total-amount');
+
+                if (items.length === 0) {
+                    empty.hidden = false;
+                    filled.hidden = true;
+                    return;
+                }
+
+                empty.hidden = true;
+                filled.hidden = false;
+                tbody.innerHTML = '';
+
+                items.forEach(function (item) {
+                    var tr = document.createElement('tr');
+                    tr.innerHTML =
+                        '<td><img class="cart-item-img" src="' + escHtml(item.image) + '" alt="' + escHtml(item.name) + '"></td>' +
+                        '<td class="cart-item-name">' + escHtml(item.name) + '</td>' +
+                        '<td>' + formatPrice(item.price) + '</td>' +
+                        '<td><input class="cart-qty-input" type="number" min="1" max="99" value="' + item.qty + '" data-id="' + escHtml(item.id) + '" aria-label="Quantity for ' + escHtml(item.name) + '"></td>' +
+                        '<td>' + formatPrice(item.price * item.qty) + '</td>' +
+                        '<td><button class="cart-remove-btn" data-id="' + escHtml(item.id) + '" aria-label="Remove ' + escHtml(item.name) + '">&#x2715;</button></td>';
+                    tbody.appendChild(tr);
+                });
+
+                totalEl.textContent = formatPrice(Cart.getTotal());
+
+                /* Qty change handlers */
+                tbody.querySelectorAll('.cart-qty-input').forEach(function (input) {
+                    input.addEventListener('change', function () {
+                        Cart.setQty(this.dataset.id, this.value);
+                        renderCart();
+                    });
+                });
+
+                /* Remove handlers */
+                tbody.querySelectorAll('.cart-remove-btn').forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        Cart.remove(this.dataset.id);
+                        renderCart();
+                    });
+                });
+            }
+
+            function escHtml(str) {
+                return String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;');
+            }
+
+            document.getElementById('btn-checkout').addEventListener('click', function () {
+                var btn = this;
+                var errEl = document.getElementById('checkout-error');
+                var items = Cart.getItems();
+                errEl.hidden = true;
+
+                /* Check all items have a Stripe Price ID configured */
+                var missing = items.filter(function (i) { return !i.priceId || !i.priceId.startsWith('price_'); });
+                if (missing.length > 0) {
+                    errEl.textContent = 'Checkout is not yet configured for: ' + missing.map(function (i) { return i.name; }).join(', ') + '. Please contact us to place your order.';
+                    errEl.hidden = false;
+                    return;
+                }
+
+                btn.disabled = true;
+                btn.textContent = 'Redirecting…';
+
+                fetch('/.netlify/functions/create-checkout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        items: items.map(function (i) {
+                            return { priceId: i.priceId, qty: i.qty, name: i.name };
+                        })
+                    })
+                })
+                .then(function (res) {
+                    if (!res.ok) { throw new Error('Server error ' + res.status); }
+                    return res.json();
+                })
+                .then(function (data) {
+                    if (data.url) {
+                        window.location.href = data.url;
+                    } else {
+                        throw new Error('No checkout URL returned');
+                    }
+                })
+                .catch(function (err) {
+                    console.error(err);
+                    btn.disabled = false;
+                    btn.textContent = 'Checkout with Stripe';
+                    errEl.textContent = 'Something went wrong. Please try again or contact us.';
+                    errEl.hidden = false;
+                });
+            });
+
+            renderCart();
+        })();
+    </script>
+</body>
+</html>

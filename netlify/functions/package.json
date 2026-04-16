@@ -1,0 +1,9 @@
+{
+  "name": "chalet42-functions",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Netlify serverless functions for Chalet 42",
+  "dependencies": {
+    "stripe": "^16.0.0"
+  }
+}
