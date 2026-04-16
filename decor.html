@@ -10,10 +10,13 @@
         main {
             max-width: 1400px;
             margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
         }
 
         .product-carousel {
             width: 100%;
+            max-width: 860px;
             box-sizing: border-box;
             position: relative;
             overflow: hidden;
@@ -97,19 +100,11 @@
             .product-carousel {
                 padding: 16px 48px 22px;
             }
-
-            .carousel-slide {
-                flex: 0 0 calc((100% - 16px) / 2);
-            }
         }
 
         @media (max-width: 720px) {
             .product-carousel {
                 padding: 12px 40px 18px;
-            }
-
-            .carousel-slide {
-                flex: 0 0 calc((100% - 16px) / 2);
             }
         }
     </style>
@@ -166,9 +161,7 @@
         let startIndex = 0;
 
         function visibleCount() {
-            if (window.innerWidth <= 720) return 2;
-            if (window.innerWidth <= 960) return 2;
-            return 3;
+            return 2;
         }
 
         function updateCarousel() {
