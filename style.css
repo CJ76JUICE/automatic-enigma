@@ -594,6 +594,18 @@ input[type="radio"] {
         font-size: 1.55rem;
     }
 
+    .product-lightbox-stage {
+        position: relative;
+    }
+
+    .product-lightbox-prev,
+    .product-lightbox-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+    }
+
     .product-lightbox-prev {
         left: 8px;
     }
