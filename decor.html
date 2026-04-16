@@ -26,13 +26,14 @@
 
         .carousel-track {
             display: flex;
+            justify-content: center;
             gap: 16px;
             transition: transform 0.45s ease;
             will-change: transform;
         }
 
         .carousel-slide {
-            flex: 0 0 calc((100% - 16px) / 2);
+            flex: 0 0 calc((100% - 32px) / 3);
         }
 
         .carousel-slide img {
@@ -103,7 +104,7 @@
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 720px) {
             .product-carousel {
                 padding: 12px 40px 18px;
             }
@@ -166,7 +167,7 @@
         let startIndex = 0;
 
         function visibleCount() {
-            if (window.innerWidth <= 768) return 1;
+            if (window.innerWidth <= 720) return 1;
             if (window.innerWidth <= 960) return 2;
             return 3;
         }
