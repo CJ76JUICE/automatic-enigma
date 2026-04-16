@@ -10,8 +10,6 @@
         main {
             max-width: 1400px;
             margin-bottom: 2rem;
-            display: flex;
-            justify-content: center;
         }
 
         .product-carousel {
@@ -100,6 +98,10 @@
             .product-carousel {
                 padding: 16px 48px 22px;
             }
+
+            .carousel-slide {
+                flex: 0 0 calc((100% - 16px) / 2);
+            }
         }
 
         @media (max-width: 720px) {
@@ -165,7 +167,9 @@
         let startIndex = 0;
 
         function visibleCount() {
-            return window.innerWidth <= 720 ? 1 : 2;
+            if (window.innerWidth <= 720) return 1;
+            if (window.innerWidth <= 960) return 2;
+            return 3;
         }
 
         function updateCarousel() {
