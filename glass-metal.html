@@ -7,144 +7,95 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Basic CSS for the layout can go here */
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        header, footer {
-            background-color: #333;
-            color: white;
-            padding: 1em 0;
-        }
-        header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        footer {
-            text-align: center;
-            background-color: rgba(24, 69, 59, 0.88);
-            color: #bdbdbd;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
-        }
         main {
-            padding: 2em;
-            display: block;
             max-width: 1400px;
-            margin: 0 auto 2rem;
-        }
-        nav ul {
-            list-style-type: none;
+            margin-bottom: 2rem;
             padding: 0;
-            text-align: center;
-        }
-        nav ul li {
-            display: inline;
-            margin-right: 10px;
-        }
-        .site-header nav > ul > li {
-            position: relative;
-            display: inline-block;
-        }
-        .site-header nav > ul > li:last-child {
-            margin-right: 0;
-        }
-        .site-header .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            min-width: 170px;
-            background: rgba(24, 24, 24, 0.96);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            border-radius: 0;
-            padding: 0.45rem;
-            margin-top: 4px;
-            text-align: left;
-            display: none;
-            z-index: 20;
-        }
-        .site-header .nav-dropdown::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 100%;
-            height: 10px;
-        }
-        .site-header .dropdown-menu li {
-            display: block;
-            margin: 0;
-        }
-        .site-header .dropdown-menu a {
-            display: block;
-            padding: 0.45rem 0.55rem;
-            border-radius: 0;
-            color: #d0d0d0;
-        }
-        .site-header .dropdown-menu a:hover {
-            background: rgba(255, 255, 255, 0.12);
-        }
-        .site-header .nav-dropdown:hover .dropdown-menu,
-        .site-header .nav-dropdown.is-open .dropdown-menu,
-        .site-header .nav-dropdown:focus-within .dropdown-menu {
-            display: block;
-        }
-        a {
-            text-decoration: none;
-            color: #d0d0d0;
-        }
-        footer nav a {
-            color: #bdbdbd;
-        }
-        .mixed-row {
-            display: flex;
-            flex-wrap: nowrap;
-            gap: 1.5rem;
-            overflow-x: auto;
-            padding-bottom: 0.35rem;
-            scroll-snap-type: x proximity;
-        }
-        .mixed-card {
-            display: block;
-            flex: 0 0 260px;
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            border-radius: 0;
-            overflow: hidden;
-            text-decoration: none;
-            transition: transform 0.18s ease, box-shadow 0.18s ease;
-            scroll-snap-align: start;
-        }
-        .mixed-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
-        }
-        .mixed-card img {
-            width: 100%;
-            aspect-ratio: 3 / 4;
-            object-fit: cover;
-            border-radius: 0;
-            display: block;
-        }
-        .mixed-card span {
-            display: block;
-            padding: 0.75rem 0.85rem 0.9rem;
-            color: #d0d0d0;
-            font-size: 0.95rem;
-            line-height: 1.35;
         }
         .intro {
+            padding: 0 56px;
             color: #4a4a4a;
-            margin: 0 0 1.5rem;
+            margin: 0 0 0.5rem;
             max-width: 860px;
         }
-        @media (max-width: 640px) {
-            .mixed-card {
-                flex-basis: 80vw;
-            }
+        .product-carousel {
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+            padding: 22px 56px 28px;
+        }
+        .carousel-viewport {
+            overflow: hidden;
+        }
+        .carousel-track {
+            display: flex;
+            gap: 16px;
+            transition: transform 0.45s ease;
+            will-change: transform;
+        }
+        .carousel-slide {
+            flex: 0 0 calc((100% - 32px) / 3);
+        }
+        .carousel-slide img {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
+        .slide-image-link {
+            display: block;
+        }
+        .slide-caption {
+            padding: 10px 2px 6px;
+            background: transparent;
+            color: #273227;
+        }
+        .slide-caption h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            border-radius: 50%;
+            border: none;
+            background: #18453B;
+            color: #fff;
+            font-size: 14px;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .carousel-btn:hover { background: #14392f; }
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+        .carousel-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+        a { text-decoration: none; color: #d0d0d0; }
+        .breadcrumb { margin: 0 56px 1rem; }
+        .breadcrumb ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem; align-items: center; }
+        .breadcrumb li { font-size: 0.88rem; color: #555; }
+        .breadcrumb li + li::before { content: '/'; margin-right: 0.25rem; color: #666; }
+        .breadcrumb a { color: #555; text-decoration: none; }
+        .breadcrumb a:hover { color: #444; }
+        .breadcrumb li[aria-current="page"] { color: #444; font-weight: 500; }
+        @media (max-width: 960px) {
+            .product-carousel { padding: 16px 48px 22px; }
+            .carousel-slide { flex: 0 0 calc((100% - 16px) / 2); }
+            .intro { padding: 0 48px; }
+            .breadcrumb { margin: 0 48px 1rem; }
+        }
+        @media (max-width: 720px) {
+            .product-carousel { padding: 12px 40px 18px; }
+            .carousel-slide { flex: 0 0 100%; }
+            .intro { padding: 0 40px; }
+            .breadcrumb { margin: 0 40px 1rem; }
         }
     </style>
 </head>
@@ -172,40 +123,84 @@
     </header>
 
     <main>
+        <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Mixed</li></ol></nav>
         <p class="intro">Discover mixed-media work blending glass, metal, and texture across Tree of Life, Creatures, and Cactus themes.</p>
-        
-        <span id="tree-of-life" aria-hidden="true"></span>
-        <section aria-label="Mixed media image cards">
-            <div class="mixed-row">
-                <a class="mixed-card" href="tree-of-life.html">
-                    <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-large-wood-metal-glass.png" alt="Tree of Life large wood metal glass art">
-                    <span>Tree of Life: Large Wood Metal Glass.</span>
-                </a>
-                <a class="mixed-card" href="beautifully-broken-creatures.html">
-                    <img src="images/Beautifully-Broken-images/bird-metal-glass-stone.png" alt="Bird in metal, glass, and stone artwork">
-                    <span>Creatures: Bird in Metal, Glass and Stone.</span>
-                </a>
-                <a class="mixed-card" href="beautifully-broken-cactus.html">
-                    <img src="images/Beautifully-Broken-images/cactus/saguaro-cactus-livingroom.png" alt="Saguaro cactus mixed-media artwork">
-                    <span>Cactus: Saguaro Cactus.</span>
-                </a>
-                <a class="mixed-card" href="tree-of-life.html">
-                    <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken.JPG" alt="Tree of Life mixed-media artwork">
-                    <span>Tree of Life: Main Page.</span>
-                </a>
-                <a class="mixed-card" href="tree-of-life.html">
-                    <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken-journal.jpeg" alt="Tree of Life journal 5x7 mixed-media artwork">
-                    <span>Tree of Life: Journal 5x7.</span>
-                </a>
-                <a class="mixed-card" href="four-seasons-26x8.html">
-                    <img src="images/Beautifully-Broken-images/tree-of-life/four-seasons-beautifully-broken.JPG" alt="Four Seasons 26x8 mixed-media artwork">
-                    <span>Tree of Life: Four Seasons 26x8.</span>
-                </a>
+        <section class="product-carousel" aria-label="Mixed media products">
+            <button class="carousel-btn prev" type="button" aria-label="Previous products">&#10094;</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <article class="carousel-slide">
+                        <a class="slide-image-link" href="tree-of-life.html" aria-label="Go to Tree of Life">
+                            <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-large-wood-metal-glass.png" alt="Tree of Life large wood metal glass art">
+                        </a>
+                        <div class="slide-caption"><h4>Tree of Life</h4></div>
+                    </article>
+                    <article class="carousel-slide">
+                        <a class="slide-image-link" href="beautifully-broken-creatures.html" aria-label="Go to Creatures">
+                            <img src="images/Beautifully-Broken-images/bird-metal-glass-stone.png" alt="Bird in metal, glass, and stone artwork">
+                        </a>
+                        <div class="slide-caption"><h4>Creatures</h4></div>
+                    </article>
+                    <article class="carousel-slide">
+                        <a class="slide-image-link" href="beautifully-broken-cactus.html" aria-label="Go to Cactus">
+                            <img src="images/Beautifully-Broken-images/cactus/saguaro-cactus-livingroom.png" alt="Saguaro cactus mixed-media artwork">
+                        </a>
+                        <div class="slide-caption"><h4>Cactus</h4></div>
+                    </article>
+                    <article class="carousel-slide">
+                        <a class="slide-image-link" href="four-seasons-26x8.html" aria-label="Go to Four Seasons">
+                            <img src="images/Beautifully-Broken-images/tree-of-life/four-seasons-beautifully-broken.JPG" alt="Four Seasons 26x8 mixed-media artwork">
+                        </a>
+                        <div class="slide-caption"><h4>Four Seasons 26×8</h4></div>
+                    </article>
+                    <article class="carousel-slide">
+                        <a class="slide-image-link" href="tree-of-life-journal-5x7.html" aria-label="Go to Tree of Life Journal">
+                            <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken-journal.jpeg" alt="Tree of Life journal 5x7">
+                        </a>
+                        <div class="slide-caption"><h4>Tree of Life Journal 5×7</h4></div>
+                    </article>
+                    <article class="carousel-slide">
+                        <a class="slide-image-link" href="tree-of-life-large-wood-metal-glass.html" aria-label="Go to Tree of Life Large">
+                            <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken.JPG" alt="Tree of Life beautifully broken">
+                        </a>
+                        <div class="slide-caption"><h4>Tree of Life Large</h4></div>
+                    </article>
+                </div>
             </div>
+            <button class="carousel-btn next" type="button" aria-label="Next products">&#10095;</button>
         </section>
-
-
     </main>
+
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+        const prevBtn = document.querySelector('.carousel-btn.prev');
+        const nextBtn = document.querySelector('.carousel-btn.next');
+
+        let startIndex = 0;
+
+        function visibleCount() {
+            if (window.innerWidth <= 720) { return 1; }
+            if (window.innerWidth <= 960) { return 2; }
+            return 3;
+        }
+
+        function updateCarousel() {
+            const slideWidth = slides[0].offsetWidth;
+            const gap = 16;
+            const offset = startIndex * (slideWidth + gap);
+            const maxIndex = Math.max(0, slides.length - visibleCount());
+            track.style.transform = `translateX(-${offset}px)`;
+            prevBtn.disabled = startIndex === 0;
+            nextBtn.disabled = startIndex >= maxIndex;
+        }
+
+        prevBtn.addEventListener('click', () => { startIndex = Math.max(0, startIndex - 1); updateCarousel(); });
+        nextBtn.addEventListener('click', () => { const maxIndex = Math.max(0, slides.length - visibleCount()); startIndex = Math.min(maxIndex, startIndex + 1); updateCarousel(); });
+        window.addEventListener('resize', () => { const maxIndex = Math.max(0, slides.length - visibleCount()); startIndex = Math.min(startIndex, maxIndex); updateCarousel(); });
+
+        updateCarousel();
+    </script>
 
     <footer>
         <nav>
