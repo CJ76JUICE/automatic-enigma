@@ -95,6 +95,24 @@
         .contact-card button[type="submit"]:hover {
             background-color: #14392f;
         }
+        .form-feedback {
+            display: none;
+            border-radius: 4px;
+            padding: 0.85rem 1rem;
+            font-size: 0.97rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .form-feedback.success {
+            background: rgba(24, 69, 59, 0.12);
+            border: 1px solid #18453B;
+            color: #18453B;
+        }
+        .form-feedback.error {
+            background: rgba(180, 30, 30, 0.08);
+            border: 1px solid #b41e1e;
+            color: #b41e1e;
+        }
     </style>
 </head>
 <body>
@@ -117,6 +135,7 @@
         <p style="max-width: 640px; margin: 0 auto 0.5em; text-align: left; font-size: 1.6em;">Questions about our hand designed creations?</p>
         <section class="contact-card">
             <h3>Drop us a line</h3>
+            <div class="form-feedback" id="form-feedback" role="alert" aria-live="polite"></div>
             <form name="contact" method="POST" data-netlify="true">
                 <input type="hidden" name="form-name" value="contact">
                 <div style="margin-bottom: 1em;">
@@ -147,15 +166,45 @@
     </footer>
 
     <script>
-        let currentSlide = 1;
-        const totalSlides = 3;
+        (function () {
+            const form = document.querySelector('form[name="contact"]');
+            const feedback = document.getElementById('form-feedback');
 
-        function changeSlide(direction) {
-            currentSlide += direction;
-            if (currentSlide < 1) currentSlide = totalSlides;
-            if (currentSlide > totalSlides) currentSlide = 1;
-            document.getElementById('slide' + currentSlide).checked = true;
-        }
+            function showFeedback(type, message) {
+                feedback.className = 'form-feedback ' + type;
+                feedback.textContent = message;
+                feedback.style.display = 'block';
+                feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const submitBtn = form.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending…';
+                feedback.style.display = 'none';
+
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(new FormData(form)).toString(),
+                })
+                    .then(function (res) {
+                        if (res.ok) {
+                            form.reset();
+                            showFeedback('success', '✓ Message sent! We\'ll be in touch soon.');
+                            submitBtn.textContent = 'Sent';
+                        } else {
+                            throw new Error('Server error ' + res.status);
+                        }
+                    })
+                    .catch(function () {
+                        showFeedback('error', 'Something went wrong. Please try again or email us directly.');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Send Inquiry';
+                    });
+            });
+        })();
     </script>
 
 </body>
