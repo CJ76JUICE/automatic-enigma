@@ -26,10 +26,15 @@
 
         .carousel-track {
             display: flex;
-            justify-content: center;
             gap: 16px;
             transition: transform 0.45s ease;
             will-change: transform;
+        }
+
+        @media (min-width: 721px) {
+            .carousel-track {
+                justify-content: center;
+            }
         }
 
         .carousel-slide {
