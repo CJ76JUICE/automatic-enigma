@@ -106,6 +106,10 @@
             .product-carousel {
                 padding: 12px 40px 18px;
             }
+
+            .carousel-slide {
+                flex: 0 0 100%;
+            }
         }
     </style>
 </head>
@@ -161,7 +165,7 @@
         let startIndex = 0;
 
         function visibleCount() {
-            return 2;
+            return window.innerWidth <= 720 ? 1 : 2;
         }
 
         function updateCarousel() {
