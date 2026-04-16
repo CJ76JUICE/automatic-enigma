@@ -7,127 +7,110 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        header, footer {
-            background-color: #333;
-            color: white;
-            padding: 1em 0;
-        }
-        header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        footer {
-            text-align: center;
-            background-color: rgba(24, 69, 59, 0.88);
-            color: #bdbdbd;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
-        }
         main {
-            width: min(1280px, 96vw);
-            margin: 2rem auto;
-            flex: 1;
+            max-width: 1400px;
+            margin-bottom: 2rem;
         }
-        .intro {
-            color: #4a4a4a;
-            margin: 0 0 1.5rem;
-            max-width: 860px;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            text-align: center;
-        }
-        nav ul li {
-            display: inline;
-            margin-right: 10px;
-        }
-        a {
-            text-decoration: none;
-            color: #d0d0d0;
-        }
-        footer nav a {
-            color: #bdbdbd;
-        }
-        /* Category sections */
-        .category {
-            margin-top: 2.5rem;
-        }
-        .category-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.25rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-        }
-        .category-header h2 {
-            margin: 0;
-            font-size: 1.35rem;
-            color: #d0d0d0;
-            letter-spacing: 0.02em;
-        }
-        .category-header .count {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.45);
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 0.15rem 0.55rem;
-        }
-        /* Product grid */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 1.5rem;
-        }
-        .product-card {
-            display: block;
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            border-radius: 12px;
+
+        .product-carousel {
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
             overflow: hidden;
-            text-decoration: none;
-            transition: transform 0.18s ease, box-shadow 0.18s ease;
+            padding: 22px 56px 28px;
         }
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+
+        .carousel-viewport {
+            overflow: hidden;
         }
-        .product-card img {
+
+        .carousel-track {
+            display: flex;
+            gap: 16px;
+            transition: transform 0.45s ease;
+            will-change: transform;
+        }
+
+        .carousel-slide {
+            flex: 0 0 calc((100% - 16px) / 2);
+        }
+
+        .carousel-slide img {
             width: 100%;
             aspect-ratio: 3 / 4;
+            height: auto;
             object-fit: cover;
             display: block;
         }
-        .product-card-placeholder {
-            width: 100%;
-            aspect-ratio: 3 / 4;
-            background: rgba(255, 255, 255, 0.04);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 2.5rem;
+
+        .slide-image-link {
+            display: block;
         }
-        .product-card-body {
-            padding: 0.85rem 1rem 1rem;
+
+        .slide-caption {
+            padding: 10px 2px 6px;
+            background: transparent;
+            color: #273227;
         }
-        .product-card-body h3 {
-            margin: 0 0 0.2rem;
-            font-size: 1.05rem;
-            color: #d0d0d0;
-            text-transform: capitalize;
-        }
-        .product-card-body p {
+
+        .slide-caption h4 {
             margin: 0;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.55);
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            border-radius: 50%;
+            border: none;
+            background: #18453B;
+            color: #fff;
+            font-size: 14px;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .carousel-btn:hover {
+            background: #14392f;
+        }
+
+        .carousel-btn.prev {
+            left: 10px;
+        }
+
+        .carousel-btn.next {
+            right: 10px;
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 960px) {
+            .product-carousel {
+                padding: 16px 48px 22px;
+            }
+
+            .carousel-slide {
+                flex: 0 0 calc((100% - 16px) / 2);
+            }
+        }
+
+        @media (max-width: 720px) {
+            .product-carousel {
+                padding: 12px 40px 18px;
+            }
+
+            .carousel-slide {
+                flex: 0 0 calc((100% - 16px) / 2);
+            }
         }
     </style>
 </head>
@@ -148,25 +131,75 @@
     </header>
 
     <main>
-        <p class="intro">Explore Chalet 42 decor collections designed to elevate your space with original style and calm detail.</p>
-        <div class="product-grid">
-
-            <a class="product-card" href="42-decor-shower-curtain.html">
-                <img src="images/42-Decor/shower-curtain/original/chalet42-origin-shower-curtin-bath.jpg" alt="Shower Curtains">
-                <div class="product-card-body">
-                    <h3>Shower Curtains</h3>
+        <section class="product-carousel" aria-label="Décor collections">
+            <button class="carousel-btn prev" type="button" aria-label="Previous">&#10094;</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <article class="carousel-slide">
+                        <a class="slide-image-link" href="42-decor-shower-curtain.html" aria-label="Go to Shower Curtains">
+                            <img src="images/42-Decor/shower-curtain/original/chalet42-origin-shower-curtin-bath.jpg" alt="Shower Curtains">
+                        </a>
+                        <div class="slide-caption">
+                            <h4>Shower Curtains</h4>
+                        </div>
+                    </article>
+                    <article class="carousel-slide">
+                        <a class="slide-image-link" href="42-decor-pillows.html" aria-label="Go to Pillows">
+                            <img src="images/42-Decor/pillows/peaceful-buddha/Chalet42-peacefull-buddha-pillow-12x12.b.jpg" alt="Pillows">
+                        </a>
+                        <div class="slide-caption">
+                            <h4>Pillows</h4>
+                        </div>
+                    </article>
                 </div>
-            </a>
-
-            <a class="product-card" href="42-decor-pillows.html">
-                <img src="images/42-Decor/pillows/peaceful-buddha/Chalet42-peacefull-buddha-pillow-12x12.b.jpg" alt="Pillows">
-                <div class="product-card-body">
-                    <h3>Pillows</h3>
-                </div>
-            </a>
-
-        </div>
+            </div>
+            <button class="carousel-btn next" type="button" aria-label="Next">&#10095;</button>
+        </section>
     </main>
+
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+        const prevBtn = document.querySelector('.carousel-btn.prev');
+        const nextBtn = document.querySelector('.carousel-btn.next');
+
+        let startIndex = 0;
+
+        function visibleCount() {
+            if (window.innerWidth <= 720) return 2;
+            if (window.innerWidth <= 960) return 2;
+            return 3;
+        }
+
+        function updateCarousel() {
+            const slideWidth = slides[0].offsetWidth;
+            const gap = 16;
+            const offset = startIndex * (slideWidth + gap);
+            const maxIndex = Math.max(0, slides.length - visibleCount());
+            track.style.transform = `translateX(-${offset}px)`;
+            prevBtn.disabled = startIndex === 0;
+            nextBtn.disabled = startIndex >= maxIndex;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            startIndex = Math.max(0, startIndex - 1);
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const maxIndex = Math.max(0, slides.length - visibleCount());
+            startIndex = Math.min(maxIndex, startIndex + 1);
+            updateCarousel();
+        });
+
+        window.addEventListener('resize', () => {
+            const maxIndex = Math.max(0, slides.length - visibleCount());
+            startIndex = Math.min(startIndex, maxIndex);
+            updateCarousel();
+        });
+
+        updateCarousel();
+    </script>
 
     <footer>
         <nav>
