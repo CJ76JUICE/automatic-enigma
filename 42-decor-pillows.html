@@ -32,6 +32,12 @@
             grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
             gap: 1.5rem;
         }
+        @media (max-width: 680px) {
+            .image-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+        }
         .product-card {
             display: block;
             background: rgba(255, 255, 255, 0.07);
