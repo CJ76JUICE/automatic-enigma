@@ -231,7 +231,7 @@
             const count = visibleCount();
             const gap = 16;
             const slideWidth = (viewport.offsetWidth - (gap * (count - 1))) / count;
-            slides.forEach(s => { s.style.width = slideWidth + 'px'; s.style.flexShrink = '0'; });
+            slides.forEach(s => { s.style.flex = '0 0 ' + slideWidth + 'px'; });
             const maxIndex = Math.max(0, slides.length - count);
             const offset = startIndex * (slideWidth + gap);
             track.style.transform = `translateX(-${offset}px)`;
