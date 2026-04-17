@@ -112,14 +112,14 @@
             .carousel-btn.next { right: 8px; z-index: 3; }
             .carousel-slide {
                 flex: none;
-            }
-            .slide-image-link {
-                width: 100%;
+                display: flex;
+                justify-content: center;
             }
             .carousel-slide img {
-                width: 100%;
-                aspect-ratio: 3 / 4;
-                height: auto;
+                height: 48vh;
+                width: auto;
+                max-width: 100%;
+                aspect-ratio: unset;
                 object-fit: cover;
             }
         }
