@@ -111,6 +111,10 @@
             .carousel-slide {
                 flex: 0 0 100%;
             }
+            .carousel-slide img {
+                aspect-ratio: unset;
+                max-height: 260px;
+            }
         }
     </style>
 </head>
@@ -277,6 +281,11 @@
         window.addEventListener('load', updateCarousel);
         updateCarousel();
     </script>
+
+    <footer>
+        <nav>
+        <ul>
+            <li><a href="about-us.html">Origin</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
         </nav>
