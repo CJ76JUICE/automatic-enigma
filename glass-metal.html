@@ -93,13 +93,13 @@
             .carousel-slide { flex: 0 0 calc((100% - 16px) / 2); }
         }
         @media (max-width: 720px) {
-            .product-carousel { padding: 12px 0 18px; }
-            .carousel-btn.prev { left: 8px; z-index: 3; }
-            .carousel-btn.next { right: 8px; z-index: 3; }
-            .intro { padding: 0 16px; }
-            .breadcrumb { margin: 0 16px 1rem; }
-            .carousel-slide { flex: none; display: flex; justify-content: center; }
-            .carousel-slide img { height: 48vh; width: auto; max-width: 100%; aspect-ratio: unset; object-fit: cover; }
+            .product-carousel { padding: 12px 40px 18px; }
+            .intro { padding: 0 40px; }
+            .breadcrumb { margin: 0 40px 1rem; }
+            .carousel-slide { flex: 0 0 100%; }
+            .carousel-slide img { max-height: 50vh; object-fit: cover; }
+            .carousel-btn.prev { left: 6px; }
+            .carousel-btn.next { right: 6px; }
         }
     </style>
 </head>
@@ -190,13 +190,10 @@
         }
 
         function updateCarousel() {
-            const viewportWidth = document.querySelector('.carousel-viewport').offsetWidth;
-            const count = visibleCount();
+            const slideWidth = slides[0].offsetWidth;
             const gap = 16;
-            const slideWidth = (viewportWidth - gap * (count - 1)) / count;
-            slides.forEach(s => { s.style.width = slideWidth + 'px'; });
-            const maxIndex = Math.max(0, slides.length - count);
             const offset = startIndex * (slideWidth + gap);
+            const maxIndex = Math.max(0, slides.length - visibleCount());
             track.style.transform = `translateX(-${offset}px)`;
             prevBtn.disabled = startIndex === 0;
             nextBtn.disabled = startIndex >= maxIndex;
