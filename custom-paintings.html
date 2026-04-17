@@ -29,6 +29,13 @@
             text-shadow: none;
             line-height: 1.8;
         }
+        .breadcrumb { margin: 0 56px 1rem; }
+        .breadcrumb ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem; align-items: center; }
+        .breadcrumb li { font-size: 0.88rem; color: #555; }
+        .breadcrumb li + li::before { content: '/'; margin-right: 0.25rem; color: #666; }
+        .breadcrumb a { color: #555; text-decoration: none; }
+        .breadcrumb a:hover { color: #444; }
+        .breadcrumb li[aria-current="page"] { color: #444; font-weight: 500; }
         a { color: #d0d0d0; text-decoration: none; }
         .product-carousel { width: 100%; box-sizing: border-box; position: relative; overflow: hidden; padding: 22px 56px 28px; }
         .carousel-viewport { overflow: hidden; width: 100%; }
@@ -75,6 +82,7 @@
     </header>
 
     <main>
+        <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Paint</li></ol></nav>
         <p class="intro">Browse custom painting options and start a one-of-a-kind piece created from your vision. Every painting is made by <strong>Ashley</strong> — a hands-on artist who works directly with each client to bring their story to life on canvas. Working in fresh acrylics on canvas, she brings energy and excitement to every piece &mdash; each one made specifically for you.</p>
         <section class="product-carousel" aria-label="Paint products">
             <button class="carousel-btn prev" type="button" aria-label="Previous products">&#10094;</button>

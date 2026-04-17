@@ -29,6 +29,13 @@
             text-shadow: none;
             line-height: 1.8;
         }
+        .breadcrumb { margin: 0 56px 1rem; }
+        .breadcrumb ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem; align-items: center; }
+        .breadcrumb li { font-size: 0.88rem; color: #555; }
+        .breadcrumb li + li::before { content: '/'; margin-right: 0.25rem; color: #666; }
+        .breadcrumb a { color: #555; text-decoration: none; }
+        .breadcrumb a:hover { color: #444; }
+        .breadcrumb li[aria-current="page"] { color: #444; font-weight: 500; }
         a { color: #d0d0d0; text-decoration: none; }
         .product-carousel { width: 100%; box-sizing: border-box; position: relative; overflow: hidden; padding: 22px 56px 28px; }
         .carousel-viewport { overflow: hidden; width: 100%; }
@@ -75,6 +82,7 @@
     </header>
 
     <main>
+        <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Print</li></ol></nav>
         <p class="intro">Shop print-ready Chalet 42 designs inspired by our decor and original art collections. Prints are designed by <strong>Carrie</strong>, a graphic designer with a passion for the amalgamation of life — drawing inspiration from the places, textures, and living things that surround us. Contact us to request available sizes and current pricing.</p>
         <section class="product-carousel" aria-label="Print products">
             <button class="carousel-btn prev" type="button" aria-label="Previous products">&#10094;</button>

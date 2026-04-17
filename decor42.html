@@ -14,6 +14,13 @@
             padding: 2em;
         }
         .intro { background: rgba(255,255,255,0.75); box-shadow: 0 4px 20px rgba(0,0,0,0.4); padding: 1em 1.5em; margin: 0 56px 1.5rem; color: #333; text-shadow: none; line-height: 1.8; }
+        .breadcrumb { margin: 0 56px 1rem; }
+        .breadcrumb ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem; align-items: center; }
+        .breadcrumb li { font-size: 0.88rem; color: #555; }
+        .breadcrumb li + li::before { content: '/'; margin-right: 0.25rem; color: #666; }
+        .breadcrumb a { color: #555; text-decoration: none; }
+        .breadcrumb a:hover { color: #444; }
+        .breadcrumb li[aria-current="page"] { color: #444; font-weight: 500; }
 
 
 
@@ -164,6 +171,7 @@
     </header>
 
     <main>
+        <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Décor</li></ol></nav>
         <p class="intro">Browse the Chalet 42 décor collection, featuring original artwork adapted into shower curtains, pillows, and more.</p>
         <section class="product-carousel" aria-label="Décor collections">
             <button class="carousel-btn prev" type="button" aria-label="Previous products">&#10094;</button>
