@@ -38,7 +38,7 @@
 
         .carousel-slide img {
             width: 100%;
-            aspect-ratio: 4 / 3;
+            aspect-ratio: 3 / 4;
             height: auto;
             object-fit: cover;
             display: block;
@@ -106,35 +106,22 @@
 
         @media (max-width: 720px) {
             .product-carousel {
-                padding: 12px 10px 18px;
-            }
-
-            .carousel-btn {
-                display: none;
+                padding: 12px 40px 18px;
             }
 
             .carousel-viewport {
-                overflow-x: scroll;
-                overflow-y: hidden;
-                scroll-snap-type: x mandatory;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-            }
-
-            .carousel-viewport::-webkit-scrollbar {
-                display: none;
+                overflow: hidden;
             }
 
             .carousel-track {
-                transform: none !important;
-                transition: none !important;
-                width: max-content;
+                transform: translateX(0);
+                transition: transform 0.45s ease;
+                width: auto;
             }
 
             .carousel-slide {
-                scroll-snap-align: start;
-                flex: 0 0 80vw;
-                max-width: 80vw;
+                flex: 0 0 100%;
+                max-width: 100%;
             }
         }
     </style>

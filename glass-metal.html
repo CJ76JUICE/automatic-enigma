@@ -39,7 +39,7 @@
         }
         .carousel-slide img {
             width: 100%;
-            aspect-ratio: 4 / 3;
+            aspect-ratio: 3 / 4;
             height: auto;
             object-fit: cover;
             display: block;
@@ -95,6 +95,9 @@
             .product-carousel { padding: 12px 40px 18px; }
             .intro { padding: 0 40px; }
             .breadcrumb { margin: 0 40px 1rem; }
+            .carousel-viewport { overflow: hidden; }
+            .carousel-track { transform: translateX(0); transition: transform 0.45s ease; width: auto; }
+            .carousel-slide { flex: 0 0 100%; max-width: 100%; }
         }
     </style>
 </head>
