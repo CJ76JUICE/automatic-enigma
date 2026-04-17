@@ -106,30 +106,30 @@
 
         @media (max-width: 720px) {
             .product-carousel {
-                padding: 0;
+                padding: 8px 0 16px;
             }
             .carousel-slide {
-                flex: 0 0 100vw;
+                flex: 0 0 100%;
                 display: flex;
-                justify-content: center;
-                align-items: flex-start;
+                flex-direction: column;
+                align-items: center;
             }
             .slide-image-link {
                 display: block;
-                width: 70vw;
+                width: 72%;
             }
             .carousel-slide img {
-                aspect-ratio: unset;
-                width: 70vw;
-                height: 93vw;
+                width: 100%;
+                aspect-ratio: 3 / 4;
+                height: auto;
                 object-fit: cover;
                 display: block;
             }
             .slide-caption {
-                width: 70vw;
+                width: 72%;
             }
-            .carousel-btn.prev { left: calc(15vw - 32px); }
-            .carousel-btn.next { right: calc(15vw - 32px); }
+            .carousel-btn.prev { left: calc(14% - 16px); }
+            .carousel-btn.next { right: calc(14% - 16px); }
         }
     </style>
 </head>
