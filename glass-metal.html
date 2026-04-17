@@ -98,8 +98,9 @@
             .carousel-btn.next { right: 8px; z-index: 3; }
             .intro { padding: 0 16px; }
             .breadcrumb { margin: 0 16px 1rem; }
-            .carousel-slide { flex: 0 0 100%; }
-            .carousel-slide img { width: 72vw; height: 96vw; object-fit: cover; aspect-ratio: unset; margin: 0 auto; display: block; }
+            .carousel-slide { flex: 0 0 100%; display: flex; flex-direction: column; align-items: center; }
+            .slide-image-link { width: 72vw; }
+            .carousel-slide img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; }
         }
     </style>
 </head>

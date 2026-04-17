@@ -112,14 +112,18 @@
             .carousel-btn.next { right: 8px; z-index: 3; }
             .carousel-slide {
                 flex: 0 0 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .slide-image-link {
+                width: 72vw;
             }
             .carousel-slide img {
-                width: 72vw;
-                height: 96vw;
+                width: 100%;
+                height: auto;
+                aspect-ratio: 3 / 4;
                 object-fit: cover;
-                aspect-ratio: unset;
-                margin: 0 auto;
-                display: block;
             }
         }
     </style>
