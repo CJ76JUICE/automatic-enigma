@@ -11,6 +11,7 @@
         main {
             max-width: 1400px;
             margin-bottom: 2rem;
+            padding: 0;
         }
 
         .product-carousel {
@@ -270,13 +271,9 @@
             }
         }, { passive: true });
 
+        window.addEventListener('load', updateCarousel);
         updateCarousel();
     </script>
-
-    <footer>
-        <nav>
-        <ul>
-            <li><a href="about-us.html">Origin</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
         </nav>

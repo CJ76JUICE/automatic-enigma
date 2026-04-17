@@ -10,6 +10,7 @@
         main {
             max-width: 1400px;
             margin-bottom: 2rem;
+            padding: 0;
         }
         .intro {
             padding: 0 56px;
@@ -223,6 +224,7 @@
             }
         }, { passive: true });
 
+        window.addEventListener('load', updateCarousel);
         updateCarousel();
     </script>
 
