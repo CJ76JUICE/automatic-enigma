@@ -106,11 +106,35 @@
 
         @media (max-width: 720px) {
             .product-carousel {
-                padding: 12px 40px 18px;
+                padding: 12px 10px 18px;
+            }
+
+            .carousel-btn {
+                display: none;
+            }
+
+            .carousel-viewport {
+                overflow-x: scroll;
+                overflow-y: hidden;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+
+            .carousel-viewport::-webkit-scrollbar {
+                display: none;
+            }
+
+            .carousel-track {
+                transform: none !important;
+                transition: none !important;
+                width: max-content;
             }
 
             .carousel-slide {
-                flex: 0 0 100%;
+                scroll-snap-align: start;
+                flex: 0 0 80vw;
+                max-width: 80vw;
             }
         }
     </style>
