@@ -22,52 +22,32 @@
             margin: 0 0 1.5rem;
             max-width: 860px;
         }
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 1.5rem;
-        }
-        .product-card {
-            display: block;
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            border-radius: 12px;
-            overflow: hidden;
-            text-decoration: none;
-            transition: transform 0.18s ease, box-shadow 0.18s ease;
-        }
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
-        }
-        .product-card img {
-            width: 100%;
-            aspect-ratio: 3 / 4;
-            object-fit: cover;
-            display: block;
-        }
-        .product-card-body {
-            padding: 0.85rem 1rem 1rem;
-        }
-        .product-card-body h3 {
-            margin: 0;
-            font-size: 1.05rem;
-            color: #d0d0d0;
-        }
-        .product-card-body p {
-            margin: 0.5rem 0 0;
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.95rem;
-        }
-        a {
-            color: #d0d0d0;
-            text-decoration: none;
-        }
-        @media (max-width: 680px) {
-            .image-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.75rem;
-            }
+        a { color: #d0d0d0; text-decoration: none; }
+        .product-carousel { width: 100%; box-sizing: border-box; position: relative; overflow: hidden; padding: 22px 56px 28px; }
+        .carousel-viewport { overflow: hidden; width: 100%; }
+        .carousel-track { display: flex; gap: 16px; transition: transform 0.45s ease; will-change: transform; }
+        .carousel-slide { flex: 0 0 calc((100% - 32px) / 3); }
+        .carousel-slide img { width: 100%; aspect-ratio: 3 / 4; height: auto; object-fit: cover; display: block; }
+        .slide-image-link { display: block; }
+        .slide-caption { padding: 10px 2px 6px; background: transparent; color: #273227; }
+        .slide-caption h4 { margin: 0; font-size: 1.1rem; letter-spacing: 0.02em; }
+        .slide-caption p { margin: 0.25rem 0 0; font-size: 0.95rem; color: rgba(255,255,255,0.75); }
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; padding: 0; border-radius: 50%; border: none; background: #18453B; color: #fff; font-size: 14px; line-height: 1; cursor: pointer; z-index: 2; }
+        .carousel-btn:hover { background: #14392f; }
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+        .carousel-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+        @media (max-width: 960px) { .product-carousel { padding: 16px 48px 22px; } .carousel-slide { flex: 0 0 calc((100% - 16px) / 2); } }
+        @media (max-width: 720px) {
+            main { max-width: 800px; }
+            .product-carousel { padding: 12px 40px 18px; overflow: visible; max-width: 451px; margin-left: auto; margin-right: auto; }
+            .carousel-viewport { overflow: hidden; }
+            .carousel-slide { flex: 0 0 100%; display: flex; flex-direction: column; align-items: center; }
+            .slide-image-link { display: block; width: 100%; }
+            .carousel-slide img { width: 100%; aspect-ratio: 3 / 4; height: auto; object-fit: cover; display: block; }
+            .slide-caption { width: 100%; }
+            .carousel-btn.prev { left: 10px; }
+            .carousel-btn.next { right: 10px; }
         }
     </style>
 </head>
@@ -89,24 +69,75 @@
 
     <main>
         <p class="intro">Browse custom painting options and start a one-of-a-kind piece created from your vision.</p>
-        <div class="image-grid">
-            <a class="product-card" href="ashley-custom-painting.html">
-                <img src="images/Ashley/Bella/bella-final-painting-on-canvas-by-ashley.png" alt="Bella custom portrait painting">
-                <div class="product-card-body">
-                    <h3>Custom Acrylic Painting</h3>
-                    <p>View progress photos and final painted canvas.</p>
+        <section class="product-carousel" aria-label="Paint products">
+            <button class="carousel-btn prev" type="button" aria-label="Previous products">&#10094;</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <article class="carousel-slide">
+                        <a class="slide-image-link" href="ashley-custom-painting.html" aria-label="Go to Custom Acrylic Painting">
+                            <img src="images/Ashley/Bella/bella-final-painting-on-canvas-by-ashley.png" alt="Bella custom portrait painting">
+                        </a>
+                        <div class="slide-caption">
+                            <h4>Custom Acrylic Painting</h4>
+                            <p>View progress photos and final painted canvas.</p>
+                        </div>
+                    </article>
                 </div>
-            </a>
-        </div>
+            </div>
+            <button class="carousel-btn next" type="button" aria-label="Next products">&#10095;</button>
+        </section>
     </main>
-    <footer>
-        <nav>
-        <ul>
-            <li><a href="about-us.html">Origin</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        </nav>
-        <p>©2026 All rights reserved. | Spartan Designed</p><p>If you are using a screen reader and are having problems using this website, please call (248) 123-4567 for assistance.</p>
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+        const prevBtn = document.querySelector('.carousel-btn.prev');
+        const nextBtn = document.querySelector('.carousel-btn.next');
+        let startIndex = 0;
+        function visibleCount() { if (window.innerWidth <= 720) return 1; if (window.innerWidth <= 960) return 2; return 3; }
+        function updateCarousel() {
+            const slideWidth = slides[0].offsetWidth;
+            const gap = 16;
+            const offset = startIndex * (slideWidth + gap);
+            const maxIndex = Math.max(0, slides.length - visibleCount());
+            track.style.transform = `translateX(-${offset}px)`;
+            prevBtn.disabled = startIndex === 0;
+            nextBtn.disabled = startIndex >= maxIndex;
+        }
+        prevBtn.addEventListener('click', () => { startIndex = Math.max(0, startIndex - 1); updateCarousel(); });
+        nextBtn.addEventListener('click', () => { const maxIndex = Math.max(0, slides.length - visibleCount()); startIndex = Math.min(maxIndex, startIndex + 1); updateCarousel(); });
+        window.addEventListener('resize', () => { const maxIndex = Math.max(0, slides.length - visibleCount()); startIndex = Math.min(startIndex, maxIndex); updateCarousel(); });
+        let touchStartX = 0, touchStartY = 0;
+        track.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; touchStartY = e.touches[0].clientY; }, { passive: true });
+        track.addEventListener('touchend', (e) => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            const dy = e.changedTouches[0].clientY - touchStartY;
+            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+                const maxIndex = Math.max(0, slides.length - visibleCount());
+                startIndex = dx < 0 ? Math.min(maxIndex, startIndex + 1) : Math.max(0, startIndex - 1);
+                updateCarousel();
+            }
+        }, { passive: true });
+        const navDropdowns = Array.from(document.querySelectorAll('.site-header .nav-dropdown'));
+        navDropdowns.forEach((dropdown) => {
+            const trigger = dropdown.querySelector('a');
+            if (!trigger) return;
+            trigger.setAttribute('aria-expanded', 'false');
+            trigger.addEventListener('click', (event) => {
+                const isTouchLike = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+                const isOpen = dropdown.classList.contains('is-open');
+                if (isTouchLike && !isOpen) { event.preventDefault(); dropdown.classList.add('is-open'); trigger.setAttribute('aria-expanded', 'true'); }
+            });
+        });
+        document.addEventListener('click', (event) => {
+            navDropdowns.forEach((dropdown) => {
+                const trigger = dropdown.querySelector('a');
+                if (!dropdown.contains(event.target)) { dropdown.classList.remove('is-open'); if (trigger) trigger.setAttribute('aria-expanded', 'false'); }
+            });
+        });
+        window.addEventListener('load', updateCarousel);
+        updateCarousel();
+    </script>
+    <footer> and are having problems using this website, please call (248) 123-4567 for assistance.</p>
     </footer>
 
 </body>
