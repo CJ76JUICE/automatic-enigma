@@ -93,14 +93,15 @@
             .carousel-slide { flex: 0 0 calc((100% - 16px) / 2); }
         }
         @media (max-width: 720px) {
-            .product-carousel { padding: 12px 38px 18px; }
-            .intro { padding: 0 38px; }
-            .breadcrumb { margin: 0 38px 1rem; }
-            .carousel-btn.prev { left: 3px; }
-            .carousel-btn.next { right: 3px; }
-            .carousel-slide { flex: 0 0 100%; height: 52vh; overflow: hidden; }
-            .slide-image-link { display: block; width: 100%; height: 100%; }
-            .carousel-slide img { aspect-ratio: unset; width: 100%; height: 100%; object-fit: cover; }
+            .product-carousel { padding: 0; }
+            .intro { padding: 0 16px; }
+            .breadcrumb { margin: 0 16px 1rem; }
+            .carousel-slide { flex: 0 0 100vw; display: flex; justify-content: center; align-items: flex-start; }
+            .slide-image-link { display: block; width: 70vw; }
+            .carousel-slide img { aspect-ratio: unset; width: 70vw; height: 93vw; object-fit: cover; display: block; }
+            .slide-caption { width: 70vw; }
+            .carousel-btn.prev { left: calc(15vw - 32px); }
+            .carousel-btn.next { right: calc(15vw - 32px); }
         }
     </style>
 </head>
