@@ -108,21 +108,6 @@
             .product-carousel {
                 padding: 12px 40px 18px;
             }
-
-            .carousel-viewport {
-                overflow: hidden;
-            }
-
-            .carousel-track {
-                transform: translateX(0);
-                transition: transform 0.45s ease;
-                width: auto;
-            }
-
-            .carousel-slide {
-                flex: 0 0 100%;
-                max-width: 100%;
-            }
         }
     </style>
 </head>
@@ -237,10 +222,14 @@
         }
 
         function updateCarousel() {
-            const slideWidth = slides[0].offsetWidth;
+            const viewport = document.querySelector('.carousel-viewport');
+            const viewportWidth = viewport.offsetWidth;
+            const count = visibleCount();
             const gap = 16;
+            const slideWidth = (viewportWidth - (gap * (count - 1))) / count;
+            slides.forEach(s => { s.style.width = slideWidth + 'px'; });
+            const maxIndex = Math.max(0, slides.length - count);
             const offset = startIndex * (slideWidth + gap);
-            const maxIndex = Math.max(0, slides.length - visibleCount());
 
             track.style.transform = `translateX(-${offset}px)`;
             prevBtn.disabled = startIndex === 0;
