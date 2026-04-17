@@ -52,13 +52,6 @@
             .carousel-btn.prev { left: 10px; }
             .carousel-btn.next { right: 10px; }
         }
-        .page-layout { display: flex; gap: 2rem; align-items: flex-start; }
-        .page-layout .product-carousel { flex: 0 0 55%; min-width: 0; }
-        .artist-bio { background: rgba(255,255,255,0.75); padding: 1.5em 2em; box-shadow: 0 4px 20px rgba(0,0,0,0.4); color: #222; flex: 1; min-width: 200px; }
-        .artist-bio h3 { margin-top: 0; color: #333; border-bottom: 1px solid #ddd; padding-bottom: 0.3em; margin-bottom: 0.6em; }
-        .artist-bio p { font-size: 1em; line-height: 1.8; color: #444; margin-top: 0; }
-        .artist-bio a { color: #555; text-decoration: underline; }
-        @media (max-width: 720px) { .page-layout { flex-direction: column; } .page-layout .product-carousel { flex: 0 0 auto; width: 100%; } }
     </style>
 </head>
 <body>
@@ -78,7 +71,7 @@
     </header>
 
     <main>
-        <div class="page-layout">
+        <p class="intro">Shop print-ready Chalet 42 designs inspired by our decor and original art collections. Prints are designed by <strong>Carrie</strong>, a graphic designer with a passion for the amalgamation of life — drawing inspiration from the places, textures, and living things that surround us. Contact us to request available sizes and current pricing.</p>
         <section class="product-carousel" aria-label="Print products">
             <button class="carousel-btn prev" type="button" aria-label="Previous products">&#10094;</button>
             <div class="carousel-viewport">
@@ -96,13 +89,6 @@
             </div>
             <button class="carousel-btn next" type="button" aria-label="Next products">&#10095;</button>
         </section>
-        <aside class="artist-bio">
-            <h3>Carrie &mdash; Graphic Designer</h3>
-            <p>Carrie is a graphic designer with a passion for the amalgamation of life &mdash; drawing inspiration from the places, textures, and living things that surround us. Her prints blend natural beauty with contemporary design, creating pieces that feel at once familiar and singular.</p>
-            <p>Each print is a reflection of that philosophy: carefully composed, professionally produced, and designed to bring lasting character to any space.</p>
-            <p>Looking for something personalized? Carrie welcomes custom print requests. <a href="contact.html">Reach out to start a conversation.</a></p>
-        </aside>
-        </div>
     </main>
 
     <script>
