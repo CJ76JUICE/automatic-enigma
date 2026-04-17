@@ -34,7 +34,7 @@
         }
 
         .carousel-slide {
-            flex: 0 0 calc((100% - 32px) / 3);
+            flex: none;
         }
 
         .carousel-slide img {
@@ -99,19 +99,11 @@
             .product-carousel {
                 padding: 16px 48px 22px;
             }
-
-            .carousel-slide {
-                flex: 0 0 calc((100% - 16px) / 2);
-            }
         }
 
         @media (max-width: 720px) {
             .product-carousel {
                 padding: 12px 40px 18px;
-            }
-
-            .carousel-slide {
-                flex: 0 0 100%;
             }
         }
     </style>
@@ -227,11 +219,13 @@
         }
 
         function updateCarousel() {
-            const slideWidth = slides[0].offsetWidth;
+            const viewportWidth = document.querySelector('.carousel-viewport').offsetWidth;
+            const count = visibleCount();
             const gap = 16;
+            const slideWidth = (viewportWidth - gap * (count - 1)) / count;
+            slides.forEach(s => { s.style.width = slideWidth + 'px'; });
+            const maxIndex = Math.max(0, slides.length - count);
             const offset = startIndex * (slideWidth + gap);
-            const maxIndex = Math.max(0, slides.length - visibleCount());
-
             track.style.transform = `translateX(-${offset}px)`;
             prevBtn.disabled = startIndex === 0;
             nextBtn.disabled = startIndex >= maxIndex;
