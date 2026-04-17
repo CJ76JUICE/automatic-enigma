@@ -106,17 +106,20 @@
 
         @media (max-width: 720px) {
             .product-carousel {
-                padding: 12px 36px 18px;
+                padding: 12px 0 18px;
             }
-            .carousel-btn.prev { left: 4px; }
-            .carousel-btn.next { right: 4px; }
+            .carousel-btn.prev { left: 8px; z-index: 3; }
+            .carousel-btn.next { right: 8px; z-index: 3; }
             .carousel-slide {
                 flex: 0 0 100%;
             }
             .carousel-slide img {
-                width: 100%;
-                aspect-ratio: 3 / 4;
-                height: auto;
+                width: 72vw;
+                height: 96vw;
+                object-fit: cover;
+                aspect-ratio: unset;
+                margin: 0 auto;
+                display: block;
             }
         }
     </style>
