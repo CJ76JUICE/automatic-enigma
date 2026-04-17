@@ -138,52 +138,87 @@
             max-width: 860px;
         }
 
-        .tol-row {
-            display: flex;
-            flex-wrap: nowrap;
-            gap: 1.5rem;
-            overflow-x: auto;
-            padding-bottom: 0.35rem;
-            scroll-snap-type: x proximity;
-            justify-content: center;
-        }
-        .tol-card {
-            display: block;
-            flex: 0 0 260px;
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.14);
+        .product-carousel {
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
             overflow: hidden;
-            text-decoration: none;
-            transition: transform 0.18s ease, box-shadow 0.18s ease;
-            scroll-snap-align: start;
+            padding: 22px 56px 28px;
         }
-        .tol-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+        .carousel-viewport {
+            overflow: hidden;
+            width: 100%;
         }
-        .tol-card img {
+        .carousel-track {
+            display: flex;
+            gap: 16px;
+            transition: transform 0.45s ease;
+            will-change: transform;
+        }
+        .carousel-slide {
+            flex: 0 0 calc((100% - 32px) / 3);
+        }
+        .carousel-slide img {
             width: 100%;
             aspect-ratio: 3 / 4;
+            height: auto;
             object-fit: cover;
             display: block;
         }
-        .tol-card span {
+        .slide-image-link {
             display: block;
-            padding: 0.75rem 0.85rem 0.9rem;
-            color: #000000;
-            font-size: 0.95rem;
-            line-height: 1.35;
         }
-        @media (max-width: 640px) {
-            .tol-row {
-                justify-content: flex-start;
+        .slide-caption {
+            padding: 10px 2px 6px;
+            background: transparent;
+            color: #273227;
+        }
+        .slide-caption h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            border-radius: 50%;
+            border: none;
+            background: #18453B;
+            color: #fff;
+            font-size: 14px;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .carousel-btn:hover { background: #14392f; }
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+        .carousel-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+        @media (max-width: 960px) {
+            .product-carousel { padding: 16px 48px 22px; }
+            .carousel-slide { flex: 0 0 calc((100% - 16px) / 2); }
+        }
+        @media (max-width: 720px) {
+            main { max-width: 800px; }
+            .product-carousel {
+                padding: 12px 40px 18px;
+                overflow: visible;
+                max-width: 451px;
+                margin-left: auto;
+                margin-right: auto;
             }
-            .tol-card {
-                flex-basis: 78vw;
-            }
-            .tol-card img {
-                aspect-ratio: 1 / 1;
-            }
+            .carousel-viewport { overflow: hidden; }
+            .carousel-slide { flex: 0 0 100%; display: flex; flex-direction: column; align-items: center; }
+            .slide-image-link { display: block; width: 100%; }
+            .carousel-slide img { width: 100%; aspect-ratio: 3 / 4; height: auto; object-fit: cover; display: block; }
+            .slide-caption { width: 100%; }
+            .carousel-btn.prev { left: 10px; }
+            .carousel-btn.next { right: 10px; }
         }
     </style>
 </head>
@@ -214,27 +249,82 @@
         <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="glass-metal.html">Mixed</a></li><li aria-current="page">Tree of Life</li></ol></nav>
         <p class="intro">Browse the complete Tree of Life mixed-media collection and open each piece for full product details.</p>
 
-        <section aria-label="Tree of Life products">
-            <div class="tol-row">
-                <a class="tol-card" href="four-seasons-26x8.html">
-                    <img src="images/Beautifully-Broken-images/tree-of-life/four-seasons-beautifully-broken.JPG" alt="Four Seasons 26x8 mixed-media artwork">
-                    <span>Tree of Life: Four Seasons 26x8.</span>
-                </a>
-                <a class="tol-card" href="tree-of-life-beautifully-broken.html">
-                    <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken.JPG" alt="Tree of Life mixed-media artwork">
-                    <span>Tree of Life: Original.</span>
-                </a>
-                <a class="tol-card" href="tree-of-life-journal-5x7.html">
-                    <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken-journal.jpeg" alt="Tree of Life journal 5x7 mixed-media artwork">
-                    <span>Tree of Life: Journal 5x7.</span>
-                </a>
-                <a class="tol-card" href="tree-of-life-large-wood-metal-glass.html">
-                    <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-large-wood-metal-glass.png" alt="Tree of Life large wood metal glass art">
-                    <span>Tree of Life: Large Wood Metal Glass.</span>
-                </a>
+        <section aria-label="Tree of Life products" class="product-carousel">
+            <button class="carousel-btn prev" type="button" aria-label="Previous products">&#10094;</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <article class="carousel-slide">
+                        <a class="slide-image-link" href="four-seasons-26x8.html" aria-label="Go to Four Seasons 26x8">
+                            <img src="images/Beautifully-Broken-images/tree-of-life/four-seasons-beautifully-broken.JPG" alt="Four Seasons 26x8 mixed-media artwork">
+                        </a>
+                        <div class="slide-caption"><h4>Tree of Life: Four Seasons 26x8</h4></div>
+                    </article>
+                    <article class="carousel-slide">
+                        <a class="slide-image-link" href="tree-of-life-beautifully-broken.html" aria-label="Go to Tree of Life Original">
+                            <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken.JPG" alt="Tree of Life mixed-media artwork">
+                        </a>
+                        <div class="slide-caption"><h4>Tree of Life: Original</h4></div>
+                    </article>
+                    <article class="carousel-slide">
+                        <a class="slide-image-link" href="tree-of-life-journal-5x7.html" aria-label="Go to Tree of Life Journal 5x7">
+                            <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-beautifully-broken-journal.jpeg" alt="Tree of Life journal 5x7 mixed-media artwork">
+                        </a>
+                        <div class="slide-caption"><h4>Tree of Life: Journal 5x7</h4></div>
+                    </article>
+                    <article class="carousel-slide">
+                        <a class="slide-image-link" href="tree-of-life-large-wood-metal-glass.html" aria-label="Go to Tree of Life Large Wood Metal Glass">
+                            <img src="images/Beautifully-Broken-images/tree-of-life/tree-of-life-large-wood-metal-glass.png" alt="Tree of Life large wood metal glass art">
+                        </a>
+                        <div class="slide-caption"><h4>Tree of Life: Large Wood Metal Glass</h4></div>
+                    </article>
+                </div>
             </div>
+            <button class="carousel-btn next" type="button" aria-label="Next products">&#10095;</button>
         </section>
     </main>
+
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+        const prevBtn = document.querySelector('.carousel-btn.prev');
+        const nextBtn = document.querySelector('.carousel-btn.next');
+        let startIndex = 0;
+
+        function visibleCount() {
+            if (window.innerWidth <= 720) return 1;
+            if (window.innerWidth <= 960) return 2;
+            return 3;
+        }
+
+        function updateCarousel() {
+            const slideWidth = slides[0].offsetWidth;
+            const gap = 16;
+            const offset = startIndex * (slideWidth + gap);
+            const maxIndex = Math.max(0, slides.length - visibleCount());
+            track.style.transform = `translateX(-${offset}px)`;
+            prevBtn.disabled = startIndex === 0;
+            nextBtn.disabled = startIndex >= maxIndex;
+        }
+
+        prevBtn.addEventListener('click', () => { startIndex = Math.max(0, startIndex - 1); updateCarousel(); });
+        nextBtn.addEventListener('click', () => { const maxIndex = Math.max(0, slides.length - visibleCount()); startIndex = Math.min(maxIndex, startIndex + 1); updateCarousel(); });
+        window.addEventListener('resize', () => { const maxIndex = Math.max(0, slides.length - visibleCount()); startIndex = Math.min(startIndex, maxIndex); updateCarousel(); });
+
+        let touchStartX = 0, touchStartY = 0;
+        track.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; touchStartY = e.touches[0].clientY; }, { passive: true });
+        track.addEventListener('touchend', (e) => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            const dy = e.changedTouches[0].clientY - touchStartY;
+            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+                const maxIndex = Math.max(0, slides.length - visibleCount());
+                startIndex = dx < 0 ? Math.min(maxIndex, startIndex + 1) : Math.max(0, startIndex - 1);
+                updateCarousel();
+            }
+        }, { passive: true });
+
+        window.addEventListener('load', updateCarousel);
+        updateCarousel();
+    </script>
 
     <footer>
         <nav>
