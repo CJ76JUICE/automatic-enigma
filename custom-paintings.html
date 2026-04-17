@@ -8,8 +8,11 @@
 
     <style>
         main {
+            flex: 1;
+            width: 100%;
+            box-sizing: border-box;
             max-width: 1400px;
-            margin-bottom: 2rem;
+            margin: 0 auto 2rem;
             padding: 2em;
         }
         h1 {
@@ -49,6 +52,13 @@
             .carousel-btn.prev { left: 10px; }
             .carousel-btn.next { right: 10px; }
         }
+        .page-layout { display: flex; gap: 2rem; align-items: flex-start; }
+        .page-layout .product-carousel { flex: 0 0 55%; min-width: 0; }
+        .artist-bio { background: rgba(255,255,255,0.75); padding: 1.5em 2em; box-shadow: 0 4px 20px rgba(0,0,0,0.4); color: #222; flex: 1; min-width: 200px; }
+        .artist-bio h3 { margin-top: 0; color: #333; border-bottom: 1px solid #ddd; padding-bottom: 0.3em; margin-bottom: 0.6em; }
+        .artist-bio p { font-size: 1em; line-height: 1.8; color: #444; margin-top: 0; }
+        .artist-bio a { color: #555; text-decoration: underline; }
+        @media (max-width: 720px) { .page-layout { flex-direction: column; } .page-layout .product-carousel { flex: 0 0 auto; width: 100%; } }
     </style>
 </head>
 <body>
@@ -68,7 +78,7 @@
     </header>
 
     <main>
-        <p class="intro">Browse custom painting options and start a one-of-a-kind piece created from your vision.</p>
+        <div class="page-layout">
         <section class="product-carousel" aria-label="Paint products">
             <button class="carousel-btn prev" type="button" aria-label="Previous products">&#10094;</button>
             <div class="carousel-viewport">
@@ -86,6 +96,13 @@
             </div>
             <button class="carousel-btn next" type="button" aria-label="Next products">&#10095;</button>
         </section>
+        <aside class="artist-bio">
+            <h3>Ashley &mdash; Painter</h3>
+            <p>Every painting by Ashley is a truly personal creation. No two are alike, and none are made until you order one. Ashley works directly with each client to understand their vision &mdash; the colors that move them, the moments they want to capture, the feeling they want a piece to carry into their home.</p>
+            <p>From that conversation, Ashley begins a process that is entirely hand-painted, start to finish. No prints, no reproductions. Your painting is conceived, sketched, and brought to life specifically for you, reflecting your story in every brushstroke.</p>
+            <p>Special orders are welcomed and encouraged. Whether you have a clear concept or just a feeling you can&rsquo;t quite put into words, Ashley will guide you through the process and craft something that feels unmistakably yours. <a href="contact.html">Reach out to start a conversation.</a></p>
+        </aside>
+        </div>
     </main>
     <script>
         const track = document.querySelector('.carousel-track');
