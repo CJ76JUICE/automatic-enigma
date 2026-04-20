@@ -11,11 +11,19 @@
         a { color: #d0d0d0; text-decoration: none; }
         .product-box { display: grid; grid-template-columns: 1.25fr 0.95fr; gap: 3rem; align-items: start; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 2.5rem; margin-top: 1.5rem; }
         @media (max-width: 680px) { .product-box { grid-template-columns: 1fr; padding: 1rem; } }
-        .image-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
-        .image-grid .main-image { grid-column: 1 / -1; }
-        .image-grid img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 10px; display: block; cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s; }
-        .image-grid img:hover { border-color: rgba(249,226,249,0.6); }
-        @media (max-width: 680px) { .image-grid { grid-template-columns: 1fr; } .image-grid .main-image { grid-column: auto; } }
+        .painting-carousel { position: relative; width: 100%; overflow: hidden; }
+        .painting-carousel .carousel-viewport { overflow: hidden; width: 100%; }
+        .painting-carousel .carousel-track { display: flex; gap: 12px; transition: transform 0.45s ease; will-change: transform; }
+        .painting-carousel .carousel-slide { flex: 0 0 100%; }
+        .painting-carousel .carousel-slide img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 10px; display: block; }
+        .painting-carousel .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; padding: 0; border-radius: 50%; border: none; background: #18453B; color: #fff; font-size: 14px; cursor: pointer; z-index: 2; }
+        .painting-carousel .carousel-btn:hover { background: #14392f; }
+        .painting-carousel .carousel-btn.prev { left: 6px; }
+        .painting-carousel .carousel-btn.next { right: 6px; }
+        .painting-carousel .carousel-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+        .carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 8px; }
+        .carousel-dots button { width: 8px; height: 8px; border-radius: 50%; border: none; background: rgba(255,255,255,0.3); cursor: pointer; padding: 0; }
+        .carousel-dots button.active { background: #18453B; }
         .product-info { display: flex; flex-direction: column; gap: 1rem; color: #d0d0d0; }
         .product-info h1 { margin: 0; font-size: 1.6rem; }
         .product-info .price { font-size: 1.5rem; font-weight: 700; color: #d0d0d0; }
@@ -83,13 +91,20 @@
         <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="custom-paintings.html">Paint</a></li><li aria-current="page">Ashley Custom Painting</li></ol></nav>
 
         <div class="product-box">
-            <div class="image-grid">
-                <img class="main-image" src="images/Ashley/Bella/bella-final-painting-on-canvas-by-ashley.png" alt="Final Bella portrait painting on canvas">
-                <img src="images/Ashley/Bella/bella-photo.png" alt="Reference photo of Bella">
-                <img src="images/Ashley/Bella/bella-step-1-painting-on-canvas-by-ashley.png" alt="Bella painting progress step 1">
-                <img src="images/Ashley/Bella/bella-step-2-painting-on-canvas-by-ashley.png" alt="Bella painting progress step 2">
-                <img src="images/Ashley/Bella/bella-step-3-painting-on-canvas-by-ashley.png" alt="Bella painting progress step 3">
-                <img src="images/Ashley/Bella/bella-step-4-painting-on-canvas-by-ashley.png" alt="Bella painting progress step 4">
+            <div class="painting-carousel" aria-label="Bella painting gallery">
+                <button class="carousel-btn prev" type="button" aria-label="Previous image">&#10094;</button>
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+                        <div class="carousel-slide"><img src="images/Ashley/Bella/bella-final-painting-on-canvas-by-ashley.png" alt="Final Bella portrait painting on canvas"></div>
+                        <div class="carousel-slide"><img src="images/Ashley/Bella/bella-photo.png" alt="Reference photo of Bella"></div>
+                        <div class="carousel-slide"><img src="images/Ashley/Bella/bella-step-1-painting-on-canvas-by-ashley.png" alt="Bella painting progress step 1"></div>
+                        <div class="carousel-slide"><img src="images/Ashley/Bella/bella-step-2-painting-on-canvas-by-ashley.png" alt="Bella painting progress step 2"></div>
+                        <div class="carousel-slide"><img src="images/Ashley/Bella/bella-step-3-painting-on-canvas-by-ashley.png" alt="Bella painting progress step 3"></div>
+                        <div class="carousel-slide"><img src="images/Ashley/Bella/bella-step-4-painting-on-canvas-by-ashley.png" alt="Bella painting progress step 4"></div>
+                    </div>
+                </div>
+                <button class="carousel-btn next" type="button" aria-label="Next image">&#10095;</button>
+                <div class="carousel-dots"></div>
             </div>
             <div class="product-info">
                 <h1>Ashley Custom Painting</h1>
@@ -168,6 +183,49 @@
         <nav><ul><li><a href="about-us.html">Origin</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
         <p>©2026 All rights reserved. | Spartan Designed</p>
     </footer>
+    <script>
+        (function () {
+            const carousel = document.querySelector('.painting-carousel');
+            const track = carousel.querySelector('.carousel-track');
+            const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+            const prevBtn = carousel.querySelector('.carousel-btn.prev');
+            const nextBtn = carousel.querySelector('.carousel-btn.next');
+            const dotsContainer = carousel.querySelector('.carousel-dots');
+            let current = 0;
+
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.setAttribute('aria-label', 'Go to image ' + (i + 1));
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => { current = i; update(); });
+                dotsContainer.appendChild(dot);
+            });
+
+            function update() {
+                const slideWidth = slides[0].offsetWidth;
+                track.style.transform = `translateX(-${current * (slideWidth + 12)}px)`;
+                prevBtn.disabled = current === 0;
+                nextBtn.disabled = current === slides.length - 1;
+                dotsContainer.querySelectorAll('button').forEach((d, i) => d.classList.toggle('active', i === current));
+            }
+
+            prevBtn.addEventListener('click', () => { current = Math.max(0, current - 1); update(); });
+            nextBtn.addEventListener('click', () => { current = Math.min(slides.length - 1, current + 1); update(); });
+            window.addEventListener('resize', update);
+
+            let touchStartX = 0;
+            track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+            track.addEventListener('touchend', e => {
+                const dx = e.changedTouches[0].clientX - touchStartX;
+                if (Math.abs(dx) > 40) {
+                    current = dx < 0 ? Math.min(slides.length - 1, current + 1) : Math.max(0, current - 1);
+                    update();
+                }
+            }, { passive: true });
+
+            update();
+        })();
+    </script>
     <script src="gallery-lightbox.js"></script>
     <script src="cart.js"></script>
     <script>
